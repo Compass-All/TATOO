@@ -1,0 +1,130 @@
+diff --git a/include/opcode/riscv-opc.h b/include/opcode/riscv-opc.h
+index 09d680b90b..fab29e09e3 100644
+--- a/include/opcode/riscv-opc.h
++++ b/include/opcode/riscv-opc.h
+@@ -433,6 +433,10 @@
+ #define MASK_FNMSUB_Q  0x600007f
+ #define MATCH_FNMADD_Q 0x600004f
+ #define MASK_FNMADD_Q  0x600007f
++#define MATCH_TAGR 0x57
++#define MASK_TAGR  0xfff0707f
++#define MATCH_TAGW 0x1057
++#define MASK_TAGW  0xfff0707f
+ #define MATCH_C_ADDI4SPN 0x0
+ #define MASK_C_ADDI4SPN  0xe003
+ #define MATCH_C_FLD 0x2000
+@@ -571,6 +575,7 @@
+ #define CSR_CYCLE 0xc00
+ #define CSR_TIME 0xc01
+ #define CSR_INSTRET 0xc02
++#define CSR_UTAGCTRL 0x8f0
+ #define CSR_HPMCOUNTER3 0xc03
+ #define CSR_HPMCOUNTER4 0xc04
+ #define CSR_HPMCOUNTER5 0xc05
+@@ -600,6 +605,13 @@
+ #define CSR_HPMCOUNTER29 0xc1d
+ #define CSR_HPMCOUNTER30 0xc1e
+ #define CSR_HPMCOUNTER31 0xc1f
++#define CSR_MTAGCTRL 0xbf0
++#define CSR_MUTAGCTRLEN 0x7f0
++#define CSR_MSTAGCTRLEN 0x7f1
++#define CSR_SWTRACE 0x8ff
++#define CSR_CYCLEH 0xc80
++#define CSR_TIMEH 0xc81
++#define CSR_INSTRETH 0xc82
+ #define CSR_SSTATUS 0x100
+ #define CSR_SIE 0x104
+ #define CSR_STVEC 0x105
+@@ -609,8 +621,12 @@
+ #define CSR_SBADADDR 0x143
+ #define CSR_SIP 0x144
+ #define CSR_SPTBR 0x180
++#define CSR_SASID 0x181
++#define CSR_STIME 0xd01
++#define CSR_SINSTRET 0xd02
++#define CSR_STAGCTRL 0x9f0
+ #define CSR_MSTATUS 0x300
+-#define CSR_MISA 0x301
++#define CSR_MISA 0xf10
+ #define CSR_MEDELEG 0x302
+ #define CSR_MIDELEG 0x303
+ #define CSR_MIE 0x304
+@@ -627,8 +643,8 @@
+ #define CSR_DCSR 0x7b0
+ #define CSR_DPC 0x7b1
+ #define CSR_DSCRATCH 0x7b2
+-#define CSR_MCYCLE 0xb00
+-#define CSR_MINSTRET 0xb02
++#define CSR_MCYCLE 0xf00
++#define CSR_MINSTRET 0xf02
+ #define CSR_MHPMCOUNTER3 0xb03
+ #define CSR_MHPMCOUNTER4 0xb04
+ #define CSR_MHPMCOUNTER5 0xb05
+@@ -725,8 +741,8 @@
+ #define CSR_HPMCOUNTER29H 0xc9d
+ #define CSR_HPMCOUNTER30H 0xc9e
+ #define CSR_HPMCOUNTER31H 0xc9f
+-#define CSR_MCYCLEH 0xb80
+-#define CSR_MINSTRETH 0xb82
++#define CSR_MCYCLEH 0xf80
++#define CSR_MINSTRETH 0xf82
+ #define CSR_MHPMCOUNTER3H 0xb83
+ #define CSR_MHPMCOUNTER4H 0xb84
+ #define CSR_MHPMCOUNTER5H 0xb85
+@@ -768,6 +784,7 @@
+ #define CAUSE_SUPERVISOR_ECALL 0x9
+ #define CAUSE_HYPERVISOR_ECALL 0xa
+ #define CAUSE_MACHINE_ECALL 0xb
++#define CAUSE_TAG_CHECK_FAIL 0x10
+ #endif
+ #ifdef DECLARE_INSN
+ DECLARE_INSN(slli_rv32, MATCH_SLLI_RV32, MASK_SLLI_RV32)
+@@ -986,6 +1003,8 @@ DECLARE_INSN(fmadd_q, MATCH_FMADD_Q, MASK_FMADD_Q)
+ DECLARE_INSN(fmsub_q, MATCH_FMSUB_Q, MASK_FMSUB_Q)
+ DECLARE_INSN(fnmsub_q, MATCH_FNMSUB_Q, MASK_FNMSUB_Q)
+ DECLARE_INSN(fnmadd_q, MATCH_FNMADD_Q, MASK_FNMADD_Q)
++DECLARE_INSN(tagr, MATCH_TAGR, MASK_TAGR)
++DECLARE_INSN(tagw, MATCH_TAGW, MASK_TAGW)
+ DECLARE_INSN(c_addi4spn, MATCH_C_ADDI4SPN, MASK_C_ADDI4SPN)
+ DECLARE_INSN(c_fld, MATCH_C_FLD, MASK_C_FLD)
+ DECLARE_INSN(c_lw, MATCH_C_LW, MASK_C_LW)
+@@ -1060,6 +1079,7 @@ DECLARE_CSR(fcsr, CSR_FCSR)
+ DECLARE_CSR(cycle, CSR_CYCLE)
+ DECLARE_CSR(time, CSR_TIME)
+ DECLARE_CSR(instret, CSR_INSTRET)
++DECLARE_CSR(utagctrl, CSR_UTAGCTRL)
+ DECLARE_CSR(hpmcounter3, CSR_HPMCOUNTER3)
+ DECLARE_CSR(hpmcounter4, CSR_HPMCOUNTER4)
+ DECLARE_CSR(hpmcounter5, CSR_HPMCOUNTER5)
+@@ -1089,6 +1109,8 @@ DECLARE_CSR(hpmcounter28, CSR_HPMCOUNTER28)
+ DECLARE_CSR(hpmcounter29, CSR_HPMCOUNTER29)
+ DECLARE_CSR(hpmcounter30, CSR_HPMCOUNTER30)
+ DECLARE_CSR(hpmcounter31, CSR_HPMCOUNTER31)
++DECLARE_CSR(mtagctrl, CSR_MTAGCTRL)
++DECLARE_CSR(stagctrl, CSR_STAGCTRL)
+ DECLARE_CSR(sstatus, CSR_SSTATUS)
+ DECLARE_CSR(sie, CSR_SIE)
+ DECLARE_CSR(stvec, CSR_STVEC)
+@@ -1185,6 +1207,9 @@ DECLARE_CSR(mhartid, CSR_MHARTID)
+ DECLARE_CSR(cycleh, CSR_CYCLEH)
+ DECLARE_CSR(timeh, CSR_TIMEH)
+ DECLARE_CSR(instreth, CSR_INSTRETH)
++DECLARE_CSR(sasid, CSR_SASID)
++DECLARE_CSR(stime, CSR_STIME)
++DECLARE_CSR(sinstret, CSR_SINSTRET)
+ DECLARE_CSR(hpmcounter3h, CSR_HPMCOUNTER3H)
+ DECLARE_CSR(hpmcounter4h, CSR_HPMCOUNTER4H)
+ DECLARE_CSR(hpmcounter5h, CSR_HPMCOUNTER5H)
+diff --git a/opcodes/riscv-opc.c b/opcodes/riscv-opc.c
+index cc39390ec8..db65377e51 100644
+--- a/opcodes/riscv-opc.c
++++ b/opcodes/riscv-opc.c
+@@ -200,6 +200,8 @@ const struct riscv_opcode riscv_opcodes[] =
+ {"add",       "I",   "d,s,t",  MATCH_ADD, MASK_ADD, match_opcode, 0 },
+ {"add",       "I",   "d,s,t,0",MATCH_ADD, MASK_ADD, match_opcode, 0 },
+ {"add",       "I",   "d,s,j",  MATCH_ADDI, MASK_ADDI, match_opcode, INSN_ALIAS },
++{"tagr",      "I",   "d,s",    MATCH_TAGR, MASK_TAGR, match_opcode, 0 },
++{"tagw",      "I",   "d,s",    MATCH_TAGW, MASK_TAGW, match_opcode, 0 },
+ {"la",        "I",   "d,A",  0,    (int) M_LA,  match_never, INSN_MACRO },
+ {"lla",       "I",   "d,A",  0,    (int) M_LLA,  match_never, INSN_MACRO },
+ {"la.tls.gd", "I",   "d,A",  0,    (int) M_LA_TLS_GD,  match_never, INSN_MACRO },
