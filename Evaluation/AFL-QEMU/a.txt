@@ -1,0 +1,362 @@
+
+diff -r qemu-4.1.1/accel/tcg/cpu-exec.c testdiff/qemu-4.1.1/accel/tcg/cpu-exec.c
+40c40
+< #include "../patches/afl-qemu-cpu-inl.h"
+---
+> 
+148c148
+<     AFL_QEMU_CPU_SNIPPET2;
+---
+> 
+410,413d409
+< 
+<         
+<         AFL_QEMU_CPU_SNIPPET1;
+< 
+670d665
+<     
+742a738
+> 
+diff -r qemu-4.1.1/accel/tcg/user-exec.c testdiff/qemu-4.1.1/accel/tcg/user-exec.c
+629c629
+<     greg_t pc = uc->uc_mcontext.gregs[REG_PC];
+---
+>     greg_t pc = uc->uc_mcontext.__gregs[REG_PC];
+diff -r qemu-4.1.1/configure testdiff/qemu-4.1.1/configure
+587c587
+< pkg_config_exe="${PKG_CONFIG-pkg-config}"
+---
+> pkg_config_exe="${PKG_CONFIG-${cross_prefix}pkg-config}"
+1601,1602c1601,1602
+<            CPU_CFLAGS=""
+<            LDFLAGS=" $LDFLAGS"
+---
+>            CPU_CFLAGS="-m64 -mcx16"
+>            LDFLAGS="-m64 $LDFLAGS"
+3689c3689
+< if ! compile_prog "$CFLAGS" "-L/home/gjr/Documents/AFLX86/AFL/qemu_mode/glib-2.0.7/gthread/.libs -L/home/gjr/Documents/AFLX86/AFL/qemu_mode/glib-2.0.7/glib/.libs" "$LIBS" ; then
+---
+> if ! compile_prog "$CFLAGS" "$LIBS" ; then
+diff -r qemu-4.1.1/include/qemu/futex.h testdiff/qemu-4.1.1/include/qemu/futex.h
+36,39c36
+<             
+<             continue;
+<             
+<             //abort();
+---
+>             abort();
+diff -r qemu-4.1.1/linux-user/elfload.c testdiff/qemu-4.1.1/linux-user/elfload.c
+24c24
+< extern abi_ulong afl_entry_point, afl_start_code, afl_end_code;
+---
+> 
+2390,2391d2389
+<     
+<     if (!afl_entry_point) afl_entry_point = info->entry;
+2435d2432
+<                     if (!afl_start_code) afl_start_code = vaddr;
+2439d2435
+<                     if (!afl_end_code) afl_end_code = vaddr_ef;
+diff -r qemu-4.1.1/linux-user/exit.c testdiff/qemu-4.1.1/linux-user/exit.c
+39,40d38
+< 
+< 
+diff -r qemu-4.1.1/linux-user/host/riscv64/hostdep.h testdiff/qemu-4.1.1/linux-user/host/riscv64/hostdep.h
+20,26d19
+< /*
+< extern long safe_syscall_set_errno_tail(int value)
+< {
+<     errno = value;
+<     return -1;
+< }
+< */
+31c24,25
+<     unsigned long *pcreg = &uc->uc_mcontext.gregs[REG_PC];
+---
+>     unsigned long *pcreg = &uc->uc_mcontext.__gregs[REG_PC];
+> 
+diff -r qemu-4.1.1/linux-user/main.c testdiff/qemu-4.1.1/linux-user/main.c
+160c160
+<     //cpu_exit(cpu);
+---
+>     cpu_exit(cpu);
+230c230
+<         //exit(EXIT_FAILURE);
+---
+>         exit(EXIT_FAILURE);
+252c252
+<             //usage(EXIT_FAILURE);
+---
+>             usage(EXIT_FAILURE);
+264c264
+<             //usage(EXIT_FAILURE);
+---
+>             usage(EXIT_FAILURE);
+301c301
+<         //exit(EXIT_FAILURE);
+---
+>         exit(EXIT_FAILURE);
+328c328
+<         //exit(EXIT_FAILURE);
+---
+>         exit(EXIT_FAILURE);
+362c362
+<             //exit(EXIT_FAILURE);
+---
+>             exit(EXIT_FAILURE);
+367c367
+<         //exit(EXIT_FAILURE);
+---
+>         exit(EXIT_FAILURE);
+385c385
+<     //exit(EXIT_SUCCESS);
+---
+>     exit(EXIT_SUCCESS);
+520c520
+<     //exit(exitcode);
+---
+>     exit(exitcode);
+538a539
+> 
+557,558d557
+<         
+<         for (arginfo = arg_table; arginfo->handle_opt != NULL; arginfo++) {
+559a559
+>         for (arginfo = arg_table; arginfo->handle_opt != NULL; arginfo++) {
+561d560
+<             
+563d561
+<                 
+565d562
+<                        
+568,569c565
+<                             
+<                         //exit(EXIT_FAILURE);
+---
+>                         exit(EXIT_FAILURE);
+571d566
+<                     
+575d569
+<                 
+581c575
+<         
+---
+> 
+584d577
+<        
+586c579
+<             //exit(EXIT_FAILURE);
+---
+>             exit(EXIT_FAILURE);
+589c582
+<     
+---
+> 
+592c585
+<         //exit(EXIT_FAILURE);
+---
+>         exit(EXIT_FAILURE);
+596d588
+< 
+598c590
+<   
+---
+> 
+604d595
+<    
+622a614
+> 
+623a616
+> 
+638a632
+> 
+643a638
+> 
+674,677d668
+< 
+<     if (cpu_model == NULL) {
+<     	cpu_model="any";
+<     }
+694d684
+<     cpu = cpu_create(cpu_type);
+695a686
+>     cpu = cpu_create(cpu_type);
+827d817
+< 
+829d818
+< 
+832,833d820
+<     
+<     
+838d824
+< 
+851,853d836
+<     
+< 
+<     
+855d837
+< 
+diff -r qemu-4.1.1/linux-user/Makefile.objs testdiff/qemu-4.1.1/linux-user/Makefile.objs
+4c4
+<         $(TARGET_ABI_DIR)/cpu_loop.o exit.o fd-trans.o safe-syscall-error.o
+---
+>         $(TARGET_ABI_DIR)/cpu_loop.o exit.o fd-trans.o
+diff -r qemu-4.1.1/linux-user/qemu.h testdiff/qemu-4.1.1/linux-user/qemu.h
+223d222
+< 
+348d346
+< 
+362,363d359
+< 
+< 
+diff -r qemu-4.1.1/linux-user/riscv/cpu_loop.c testdiff/qemu-4.1.1/linux-user/riscv/cpu_loop.c
+43c43
+<         
+---
+> 
+58d57
+<                 
+70d68
+<            
+diff -r qemu-4.1.1/linux-user/riscv/signal.c testdiff/qemu-4.1.1/linux-user/riscv/signal.c
+133d132
+<     
+Only in qemu-4.1.1/linux-user: safe-syscall-error.c
+diff -r qemu-4.1.1/linux-user/safe-syscall.S testdiff/qemu-4.1.1/linux-user/safe-syscall.S
+19,20d18
+< 
+< 
+23d20
+< 
+diff -r qemu-4.1.1/linux-user/syscall.c testdiff/qemu-4.1.1/linux-user/syscall.c
+111d110
+< extern unsigned int afl_forksrv_pid;
+4299c4298
+<     ret = get_errno(ioctl(fd, ie->host_cmd, fm));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, fm));
+4394c4393
+<     ret = get_errno(ioctl(fd, ie->host_cmd, host_ifconf));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, host_ifconf));
+4488c4487
+<     ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+4544c4543
+<     return get_errno(ioctl(fd, ie->host_cmd, &lurb->host_urb));
+---
+>     return get_errno(safe_ioctl(fd, ie->host_cmd, &lurb->host_urb));
+4597c4596
+<     ret = get_errno(ioctl(fd, ie->host_cmd, &lurb->host_urb));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, &lurb->host_urb));
+4705c4704
+<     ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+4886c4885
+<     ret = get_errno(ioctl(fd, ie->host_cmd, host_blkpg));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, host_blkpg));
+4947c4946
+<     ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>     ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+4962c4961
+<     return get_errno(ioctl(fd, ie->host_cmd, sig));
+---
+>     return get_errno(safe_ioctl(fd, ie->host_cmd, sig));
+4971c4970
+<     ret = get_errno(ioctl(fd, SIOCGSTAMP, &tv));
+---
+>     ret = get_errno(safe_ioctl(fd, SIOCGSTAMP, &tv));
+4995c4994
+<     ret = get_errno(ioctl(fd, SIOCGSTAMPNS, &ts));
+---
+>     ret = get_errno(safe_ioctl(fd, SIOCGSTAMPNS, &ts));
+5018c5017
+<     return get_errno(ioctl(fd, ie->host_cmd, flags));
+---
+>     return get_errno(safe_ioctl(fd, ie->host_cmd, flags));
+5066c5065
+<         ret = get_errno(ioctl(fd, ie->host_cmd));
+---
+>         ret = get_errno(safe_ioctl(fd, ie->host_cmd));
+5070c5069
+<         ret = get_errno(ioctl(fd, ie->host_cmd, arg));
+---
+>         ret = get_errno(safe_ioctl(fd, ie->host_cmd, arg));
+5077c5076
+<             ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>             ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+5092c5091
+<             ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>             ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+5101c5100
+<             ret = get_errno(ioctl(fd, ie->host_cmd, buf_temp));
+---
+>             ret = get_errno(safe_ioctl(fd, ie->host_cmd, buf_temp));
+7092c7091
+<         return execfd ? execfd : openat(dirfd, exec_path, flags, mode);
+---
+>         return execfd ? execfd : safe_openat(dirfd, exec_path, flags, mode);
+7128c7127
+<     return openat(dirfd, path(pathname), flags, mode);
+---
+>     return safe_openat(dirfd, path(pathname), flags, mode);
+7283c7282
+<             return get_errno(read(arg1, 0, 0));
+---
+>             return get_errno(safe_read(arg1, 0, 0));
+7287c7286
+<             ret = get_errno(read(arg1, p, arg3));
+---
+>             ret = get_errno(safe_read(arg1, p, arg3));
+7297c7296
+<             return get_errno(write(arg1, 0, 0));
+---
+>             return get_errno(safe_write(arg1, 0, 0));
+7306c7305
+<                 ret = get_errno(write(arg1, copy, ret));
+---
+>                 ret = get_errno(safe_write(arg1, copy, ret));
+7310c7309
+<             ret = get_errno(write(arg1, p, arg3));
+---
+>             ret = get_errno(safe_write(arg1, p, arg3));
+9632c9631
+<                 ret = get_errno(readv(arg1, vec, arg3));
+---
+>                 ret = get_errno(safe_readv(arg1, vec, arg3));
+9643c9642
+<                 ret = get_errno(writev(arg1, vec, arg3));
+---
+>                 ret = get_errno(safe_writev(arg1, vec, arg3));
+11269,11283c11268
+<         {
+<           int pid  = (int)arg1,
+<               tgid = (int)arg2,
+<               sig  = (int)arg3;
+< 
+<          /* Not entirely sure if the below is correct for all architectures. */
+< 
+<           if(afl_forksrv_pid && afl_forksrv_pid == pid && sig == SIGABRT)
+<               pid = tgid = getpid();
+< 
+<           ret = get_errno(safe_tgkill(pid, tgid, target_to_host_signal(sig)));
+< 	   return ret;
+<         }        
+<         
+<         /*return get_errno(safe_tgkill((int)arg1, (int)arg2,
+---
+>         return get_errno(safe_tgkill((int)arg1, (int)arg2,
+11285c11270
+<  	*/
+---
+> 
+diff -r qemu-4.1.1/qom/object.c testdiff/qemu-4.1.1/qom/object.c
+629a630
+> 

@@ -1,0 +1,605 @@
+diff --git a/fpga b/fpga
+--- a/fpga
++++ b/fpga
+@@ -1 +1 @@
+-Subproject commit 0ea248fab2a3ef14704bcbbd9f0508a9306b7b90
++Subproject commit 0ea248fab2a3ef14704bcbbd9f0508a9306b7b90-dirty
+diff --git a/riscv-tools b/riscv-tools
+--- a/riscv-tools
++++ b/riscv-tools
+@@ -1 +1 @@
+-Subproject commit 1e1b07dfd637d08b2532c0672998a7d46a12a381
++Subproject commit 1e1b07dfd637d08b2532c0672998a7d46a12a381-dirty
+diff --git a/rocket b/rocket
+--- a/rocket
++++ b/rocket
+@@ -1 +1 @@
+-Subproject commit febbdc3a897bb1f25661c2b8b28729a5e894f4b3
++Subproject commit febbdc3a897bb1f25661c2b8b28729a5e894f4b3-dirty
+diff --git a/src/main/scala/Configs.scala b/src/main/scala/Configs.scala
+index b6606e1..380e901 100644
+--- a/src/main/scala/Configs.scala
++++ b/src/main/scala/Configs.scala
+@@ -16,7 +16,6 @@ case object UseUART extends Field[Boolean]
+ case object UseSPI extends Field[Boolean]
+ case object UseBootRAM extends Field[Boolean]
+ case object UseFlash extends Field[Boolean]
+-case object RAMSize extends Field[BigInt]
+ case object IOTagBits extends Field[Int]
+ 
+ class BaseConfig extends Config (
+@@ -37,29 +36,29 @@ class BaseConfig extends Config (
+       val entries = collection.mutable.ArrayBuffer[AddrMapEntry]()
+       if (site(UseBootRAM)) {
+         entries += AddrMapEntry("bram", MemSize(1<<16, 1<<30, MemAttr(AddrMapProt.RWX)))
+-        Dump("ADD_BRAM", true)
++        Dump("ADD_BRAM", 1)
+       }
+       if (site(UseFlash)) {
+         entries += AddrMapEntry("flash", MemSize(1<<24, 1<<24, MemAttr(AddrMapProt.RX)))
+-          Dump("ADD_FLASH", true)
++          Dump("ADD_FLASH", 1)
+       }
+       if (site(UseHost)) {
+         entries += AddrMapEntry("host", MemSize(1<<6, 1<<13, MemAttr(AddrMapProt.W)))
+-        Dump("ADD_HOST", true)
++        Dump("ADD_HOST", 1)
+       }
+       if (site(UseUART)) {
+         entries += AddrMapEntry("uart", MemSize(1<<13, 1<<13, MemAttr(AddrMapProt.RW)))
+-        Dump("ADD_UART", true)
++        Dump("ADD_UART", 1)
+       }
+       if (site(UseSPI)) {
+         entries += AddrMapEntry("spi", MemSize(1<<13, 1<<13, MemAttr(AddrMapProt.RW)))
+-        Dump("ADD_SPI", true)
++        Dump("ADD_SPI", 1)
+       }
+       new AddrMap(entries)
+     }
+ 
+     lazy val (globalAddrMap, globalAddrHashMap) = {
+-      val memSize:BigInt = site(RAMSize)
++      val memSize:BigInt = if(site(UseTagMem)) site(RAMSize) / 64 * (64 - site(TagBits)) else site(RAMSize)
+       val memAlign = BigInt(1L << 30)
+       val io = AddrMap(
+         AddrMapEntry("int", MemSubmap(internalIOAddrMap.computeSize, internalIOAddrMap)),
+@@ -70,7 +69,7 @@ class BaseConfig extends Config (
+ 
+       val addrHashMap = new AddrHashMap(addrMap)
+       Dump("ROCKET_MEM_BASE", addrHashMap("mem").start)
+-      Dump("ROCKET_MEM_SIZE", memSize)
++      Dump("ROCKET_MEM_SIZE", site(RAMSize))
+       Dump("ROCKET_IO_BASE", addrHashMap("io:ext").start)
+       Dump("ROCKET_IO_SIZE", addrHashMap("io:ext").region.size)
+       (addrMap, addrHashMap)
+@@ -118,12 +117,14 @@ class BaseConfig extends Config (
+         res append  "  };\n"
+       }
+       res append  "};\n"
++      //res append s"      cacge ${L1D.toString(16)};\n"
+       res append '\u0000'
+       res.toString.getBytes
+     }
+ 
+     // parameter definitions
+     pname match {
++
+       //Memory Parameters
+       case CacheBlockBytes => 64
+       case CacheBlockOffsetBits => log2Up(here(CacheBlockBytes))
+@@ -161,8 +162,8 @@ class BaseConfig extends Config (
+       }:PF
+ 
+       //L1 D$
+-      case StoreDataQueueDepth => 17
+-      case ReplayQueueDepth => 16
++      case StoreDataQueueDepth => 5
++      case ReplayQueueDepth => 4
+       case NMSHRs => Knob("L1D_MSHRS")
+       case LRSCCycles => 32 
+       case "L1D" => {
+@@ -177,8 +178,9 @@ class BaseConfig extends Config (
+       case Replacer => () => new RandomReplacement(site(NWays))
+       case AmoAluOperandBits => site(XLen)
+       case WordBits => site(XLen)
+-
++      
+       //L2 $
++      case UseL2Cache => false
+       case NAcquireTransactors => Knob("L2_XACTORS")
+       case L2StoreDataQueueDepth => 1
+       case NSecondaryMisses => 4
+@@ -193,21 +195,29 @@ class BaseConfig extends Config (
+       }: PF
+ 
+       // Tag Cache
++      case UseTagMem => false
+       case TagBits => 4
+-      case TCBlockBits => site(MIFDataBits)
+-      case TCTransactors => Knob("TC_XACTORS")
+-      case TCBlockTags => 1 << log2Down(site(TCBlockBits) / site(TagBits))
+-      case TCBaseAddr => Knob("TC_BASE_ADDR")
++      case TagMapRatio => site(CacheBlockBytes) * 8
++      case TCMemTransactors  => Knob("TC_MEM_XACTORS")
++      case TCTagTransactors  => Knob("TC_TAG_XACTORS")
+       case "TagCache" => {
+         case NSets => Knob("TC_SETS")
+         case NWays => Knob("TC_WAYS")
+-        case RowBits => site(TCBlockTags) * site(TagBits)
++        case RowBits => site(TLKey(site(TLId))).dataBitsPerBeat
+         case CacheIdBits => 0
++	    case SplitMetadata => false
+       }: PF
+-      
++
+       //Tile Constants
+       case NTiles => Knob("NTILES")
+-      case BuildRoCC => Nil
++      
++      case BuildRoCC => 
++      
++      Seq(RoccParameters(    
++                              opcodes = OpcodeSet.custom1,
++                              generator = (p: Parameters) => (Module(new Komodo()(p)))) )
++      
++      //Nil
+       case RoccNMemChannels => site(BuildRoCC).map(_.nMemChannels).foldLeft(0)(_ + _)
+       case RoccNPTWPorts => site(BuildRoCC).map(_.nPTWPorts).foldLeft(0)(_ + _)
+       case RoccNCSRs => site(BuildRoCC).map(_.csrs.size).foldLeft(0)(_ + _)
+@@ -276,42 +286,39 @@ class BaseConfig extends Config (
+         )
+       case TLKey("IONet") =>
+         site(TLKey("L2toIO")).copy(
++          dataBits = site(CacheBlockBytes)*8,
+           dataBeats = site(CacheBlockBytes)*8 / site(XLen)
+         )
+       case TLKey("ExtIONet") =>
+-        site(TLKey("L2toIO")).copy(
++        site(TLKey("IONet")).copy(
+           dataBeats = site(CacheBlockBytes)*8 / site(IODataBits)
+         )
+-      case TLKey("L2toTC") =>
++      case TLKey("L2toMem") =>
+         TileLinkParameters(
+-          coherencePolicy = new MEICoherence(new NullRepresentation(site(NBanks))),
++          coherencePolicy = new MICoherence(new NullRepresentation(site(NBanks))),
+           nManagers = 1,
+-          nCachingClients = 0,
+-          nCachelessClients = site(NBanks),
++          nCachingClients = site(NBanks),
++          nCachelessClients = 0,
+           maxClientXacts = site(NAcquireTransactors) + 2,
+           maxClientsPerPort = site(NAcquireTransactors) + 2,
+-          maxManagerXacts = 1, //site(TCTransactors),
++          maxManagerXacts = 1,
+           dataBits = site(CacheBlockBytes)*8,
+           dataBeats = 8
+         )
++      case TLKey("L2toTC") =>
++        site(TLKey("L2toMem")).copy(
++          coherencePolicy = new MICoherence(new NullRepresentation(site(NBanks))),
++          maxManagerXacts = site(TCMemTransactors) + 1
++        )
+       case TLKey("TCtoMem") =>
+         site(TLKey("L2toTC")).copy(
+-          dataBeats = 8
++          nCachingClients = 0,
++          nCachelessClients = 1,
++          maxClientXacts = 1,
++          maxClientsPerPort = site(TCMemTransactors) + 1 + site(TCTagTransactors) + 1,
++          maxManagerXacts = 1
+         )
+ 
+-//      case TLKey("TCtoMem") =>
+-//        TileLinkParameters(
+-//          coherencePolicy = new MEICoherence(new NullRepresentation(site(NBanks))),
+-//          nManagers = 1,
+-//          nCachingClients = 0,
+-//          nCachelessClients = 1,
+-//          maxClientXacts = site(TCTransactors),
+-//          maxClientsPerPort = 1,
+-//          maxManagerXacts = 1,
+-//          dataBits = site(CacheBlockBytes)*8,
+-//          dataBeats = 8
+-//        )
+-
+ 
+       // debug
+       // disabled in Default
+@@ -348,35 +355,44 @@ class BaseConfig extends Config (
+       case GlobalAddrMap => globalAddrMap
+       case GlobalAddrHashMap => globalAddrHashMap
+       //case _ => throw new CDEMatchError
++      
++      case KomodoMatchUnits => 4   
++      //case DebugCommitLog => false
++      case DebugKomodo => false
+   }},
+   knobValues = {
+     case "NTILES" => Dump("ROCKET_NTILES", 1)
+     case "NBANKS" => 1
+ 
+     case "L1D_MSHRS" => 2
+-    case "L1D_SETS" => 64
++    case "L1D_SETS" => 32
+     case "L1D_WAYS" => 4
+ 
+-    case "L1I_SETS" => 64
++    case "L1I_SETS" => 32
+     case "L1I_WAYS" => 4
+     case "L1I_BUFFER_WAYS" => false
+ 
+     case "L2_XACTORS" => 2
+-    case "L2_SETS" => 256 // 1024
++    case "L2_SETS" => 128
+     case "L2_WAYS" => 8
+ 
+-    case "TC_XACTORS" => 1
+-    case "TC_SETS" => 64
+-    case "TC_WAYS" => 8
+-    case "TC_BASE_ADDR" => 15 << 28 // 0xf000_0000
++    case "TC_MEM_XACTORS" => 1
++    case "TC_TAG_XACTORS" => 1
++    case "TC_SETS" => 32
++    case "TC_WAYS" => 4
+   }
+ )
+ 
+-
++class WithTagConfig extends Config (
++  (pname,site,here) => pname match {
++    case UseTagMem => true
++    case TagBits => 4
++  }
++)
+ 
+ class WithDebugConfig extends Config (
+   (pname,site,here) => pname match {
+-    case UseDebug => Dump("ENABLE_DEBUG", true)
++    case UseDebug => Dump("ENABLE_DEBUG", 1) != 0
+     case UseUART => true
+     //case EmitLogMessages => false
+     case MamIODataWidth => Dump("ROCKET_MAM_IO_DWIDTH", 16)
+@@ -392,21 +408,39 @@ class WithDebugConfig extends Config (
+   }
+ )
+ 
+-class DebugConfig extends Config(new WithDebugConfig ++ new BaseConfig)
+-
+ class WithHostConfig extends Config (
+   (pname,site,here) => pname match {
+     case UseHost => true
+   }
+ )
+ 
++class WithL2 extends Config (
++  (pname,site,here) => pname match {
++    case UseL2Cache => true
++  }
++)
++
+ class With4Banks extends Config (
+   knobValues = {
+     case "NBANKS" => 4
+   }
+ )
+ 
+-class DefaultConfig extends Config(new With4Banks ++ new WithHostConfig ++ new BaseConfig)
++class BaseL2Config extends Config(new WithL2 ++ new With4Banks ++ new BaseConfig)
++
++class DefaultConfig extends Config(new WithHostConfig ++ new BaseConfig)
++
++class DefaultL2Config extends Config(new WithL2 ++ new With4Banks ++ new BaseConfig)
++//class DefaultL2Config extends Config(new WithHostConfig ++  new WithL2 ++ new With4Banks ++ new BaseConfig)
++
++class TagConfig extends Config(new WithTCTLId ++ new WithTagConfig ++ new DefaultConfig)
++//class TagTestConfig extends Config(new WithTagConfig ++ new WithHostConfig ++  new DefaultConfig)
++class TagL2Config extends Config(new WithTCTLId ++ new WithTagConfig ++ new DefaultL2Config)
++
++class DebugConfig extends Config(new WithDebugConfig ++ new BaseConfig)
++class DebugTagConfig extends Config(new WithTagConfig ++ new DebugConfig)
++class DebugL2Config extends Config(new WithDebugConfig ++ new BaseL2Config)
++class DebugTagL2Config extends Config(new WithTagConfig ++ new DebugL2Config)
+ 
+ class WithSPIConfig extends Config (
+   (pname,site,here) => pname match {
+@@ -452,7 +486,8 @@ class With6BitTags extends Config(
+ )
+ 
+ class BasicFPGAConfig extends
+-    Config(new WithSPIConfig ++ new WithBootRAMConfig ++ new WithFlashConfig ++ new BaseConfig)
++    Config(new WithTagConfig ++ new WithBootRAMConfig ++ new WithL2 ++ new BaseConfig)
++    //Config(new WithTagConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new WithFlashConfig ++ new WithL2 ++ new BaseConfig)
+ 
+ class FPGAConfig extends
+     Config(new WithUARTConfig ++ new BasicFPGAConfig)
+@@ -472,11 +507,56 @@ class Nexys4VideoConfig extends
+ class Nexys4VideoDebugConfig extends
+     Config(new With512MRamConfig ++ new FPGADebugConfig)
+ 
++class ZedConfig extends 
++    Config(new With6BitTags ++ new With128MRamConfig ++ new WithUARTConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new BaseConfig)
++
++
++// TagCache unit tests configurations
++
++class WithParallelTCConfig extends Config (
++  knobValues = {
++    case "L2_XACTORS" => Dump("N_L2_TRACKERS", 4)
++    case "TC_MEM_XACTORS" => 6
++    case "TC_TAG_XACTORS" => 4
++  }
++)
++
++class WithSmallTCConfig extends Config (
++  knobValues = {
++    case "TC_SETS" => 16
++    case "TC_WAYS" => 2
++  }
++)
++
++class WithTCTLId extends Config (
++  (pname,site,here) => pname match {
++    case CacheName => "TagCache"
++    case TLId => "TCtoMem"
++    case InnerTLId => "L2toTC"
++    case OuterTLId => "TCtoMem"
++  }
++)
++
++class BaseTagConfig extends Config(new WithTCTLId ++ new TagConfig)
++
++class BigTCConfig extends Config(new BaseTagConfig)
++class BigParallelTCConfig extends Config(new WithParallelTCConfig ++ new BigTCConfig)
++class SmallTCConfig extends Config(new WithSmallTCConfig ++ new BaseTagConfig)
++class SmallParallelTCConfig extends Config(new WithParallelTCConfig ++ new SmallTCConfig)
++class SmallSmallTCConfig extends Config(new With128MRamConfig ++ new WithSmallTCConfig ++ new BaseTagConfig) 
++
++class With1024MRamConfig extends Config (
++  (pname,site,here) => pname match {
++    case RAMSize => BigInt(1L << 30)  // 1024 MB
++  }
++)
++/*
+ class KC705Config extends
+-    Config(new With128MRamConfig ++ new WithUARTConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new BaseConfig)
++    Config(new With1024MRamConfig ++ new WithUARTConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new DefaultL2Config)
++*/
++//tag
++class KC705Config extends
++    Config(new With1024MRamConfig ++  new WithUARTConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new TagL2Config)
+ 
+ class KC705DebugConfig extends
+     Config(new With128MRamConfig ++ new WithDebugConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new BaseConfig)
+-
+-class ZedConfig extends 
+-    Config(new With6BitTags ++ new With128MRamConfig ++ new WithUARTConfig ++ new WithSPIConfig ++ new WithBootRAMConfig ++ new BaseConfig)
+diff --git a/src/main/scala/LowRISCChip.scala b/src/main/scala/LowRISCChip.scala
+index 882747c..f0119bb 100644
+--- a/src/main/scala/LowRISCChip.scala
++++ b/src/main/scala/LowRISCChip.scala
+@@ -16,6 +16,7 @@ case object NSCR extends Field[Int]
+ case object BankIdLSB extends Field[Int]
+ case object IODataBits extends Field[Int]
+ case object ConfigString extends Field[Array[Byte]]
++case object UseL2Cache extends Field[Boolean]
+ 
+ trait HasTopLevelParameters {
+   implicit val p: Parameters
+@@ -27,6 +28,7 @@ trait HasTopLevelParameters {
+   lazy val scrAddrBits = log2Up(nSCR)
+   val csrAddrBits = 12
+   val l1tol2TLId = "L1toL2"
++  val l2tomemTLId = "L2toMem"
+   val l2totcTLId = "L2toTC"
+   val tctomemTLId = "TCtoMem"
+   val l2toioTLId = "L2toIO"
+@@ -51,11 +53,11 @@ class TopIO(implicit val p: Parameters) extends ParameterizedBundle()(p) with Ha
+ object TopUtils {
+   // Connect two Nasti interfaces with queues in-between
+   def connectNasti(outer: NastiIO, inner: NastiIO)(implicit p: Parameters) {
+-    outer.ar <> Queue(inner.ar)
+-    outer.aw <> Queue(inner.aw)
+-    outer.w  <> Queue(inner.w)
+-    inner.r  <> Queue(outer.r)
+-    inner.b  <> Queue(outer.b)
++    outer.ar <> Queue(inner.ar,1)
++    outer.aw <> Queue(inner.aw,1)
++    outer.w  <> Queue(inner.w,1)
++    inner.r  <> Queue(outer.r,1)
++    inner.b  <> Queue(outer.b,1)
+   }
+ 
+   // connect uncached tilelike -> nasti
+@@ -100,11 +102,12 @@ class Top(topParams: Parameters) extends Module with HasTopLevelParameters {
+ 
+   val rocketParams = p.alterPartial({ case TLId => l1tol2TLId })
+   val coherentNetParams = p.alterPartial({ case TLId => l1tol2TLId })
+-  val tagCacheParams = p.alterPartial({ case TLId => l2totcTLId; case CacheName => tagCacheId })
+-  val tagNetParams = p.alterPartial({ case TLId => l2totcTLId })
++  val memNetParams = if(p(UseTagMem)) p.alterPartial({ case TLId => l2totcTLId })
++                     else p.alterPartial({ case TLId => l2tomemTLId })
+   val ioManagerParams = p.alterPartial({ case TLId => l2toioTLId })
+   val ioNetParams = p.alterPartial({ case TLId => ioTLId; case BusId => ioBusId })
+-  val memConvParams = p.alterPartial({ case TLId => tctomemTLId; case BusId => memBusId })
++  val memConvParams = if(p(UseTagMem)) p.alterPartial({ case TLId => tctomemTLId; case BusId => memBusId })
++                      else p.alterPartial({ case TLId => l2tomemTLId; case BusId => memBusId })
+   val smiConvParams = p.alterPartial({ case BusId => ioBusId })
+   val ioConvParams = p.alterPartial({ case TLId => extIoTLId; case BusId => ioBusId })
+ 
+@@ -132,27 +135,40 @@ class Top(topParams: Parameters) extends Module with HasTopLevelParameters {
+     val isMemory = addrHashMap.isInRegion("mem", addr << log2Up(p(CacheBlockBytes)))
+     Mux(isMemory, (addr >> lsb) % UInt(nBanks), UInt(nBanks))
+   }
+-  val preBuffering = TileLinkDepths(2,2,2,2,2)
+-  val mem_net = Module(new PortedTileLinkCrossbar(addrToBank, sharerToClientId, preBuffering)(coherentNetParams))
++  val preBuffering = TileLinkDepths(0,0,1,0,1)
++  val coherent_net = Module(new PortedTileLinkCrossbar(addrToBank, sharerToClientId, preBuffering)(coherentNetParams))
+ 
+-  mem_net.io.clients_cached <> tileList.map(_.io.cached).flatten
++  coherent_net.io.clients_cached <> tileList.map(_.io.cached).flatten
+   if(p(UseDebug)) {
+     val debug_mam = Module(new TileLinkIOMamIOConverter()(coherentNetParams))
+     debug_mam.io.mam <> io.debug_mam
+-    mem_net.io.clients_uncached <> tileList.map(_.io.uncached).flatten :+ debug_mam.io.tl
++    coherent_net.io.clients_uncached <> tileList.map(_.io.uncached).flatten :+ debug_mam.io.tl
+   } else
+-    mem_net.io.clients_uncached <> tileList.map(_.io.uncached).flatten
++    coherent_net.io.clients_uncached <> tileList.map(_.io.uncached).flatten
+ 
+   ////////////////////////////////////////////
+   // L2 cache coherence managers
+   val managerEndpoints = List.tabulate(nBanks){ id =>
+-    //Module(new L2BroadcastHub()(p.alterPartial({
+-    Module(new L2HellaCacheBank()(p.alterPartial({
+-      case CacheId => id
+-      case TLId => coherentNetParams(TLId)
+-      case CacheName => l2CacheId
+-      case InnerTLId => coherentNetParams(TLId)
+-      case OuterTLId => tagNetParams(TLId)})))}
++    {
++      if(p(UseL2Cache)) {
++        Module(new L2HellaCacheBank()(p.alterPartial({
++          case CacheId => id
++          case TLId => coherentNetParams(TLId)
++          case CacheName => l2CacheId
++          case InnerTLId => coherentNetParams(TLId)
++          case OuterTLId => memNetParams(TLId)
++        })))
++      } else { // broadcasting coherent hub
++        Module(new L2BroadcastHub()(p.alterPartial({
++          case CacheId => id
++          case TLId => coherentNetParams(TLId)
++          case CacheName => l2CacheId
++          case InnerTLId => coherentNetParams(TLId)
++          case OuterTLId => memNetParams(TLId)
++        })))
++      }
++    }
++  }
+ 
+   val mmioManager = Module(new MMIOTileLinkManager()(p.alterPartial({
+     case TLId => coherentNetParams(TLId)
+@@ -160,21 +176,30 @@ class Top(topParams: Parameters) extends Module with HasTopLevelParameters {
+     case OuterTLId => ioManagerParams(TLId)
+   })))
+ 
+-  mem_net.io.managers <> managerEndpoints.map(_.innerTL) :+ mmioManager.io.inner
+-  managerEndpoints.foreach { _.incoherent := io.cpu_rst } // revise when tiles are reset separately
++  coherent_net.io.managers <> managerEndpoints.map(_.innerTL) :+ mmioManager.io.inner
++  managerEndpoints.foreach { _.incoherent.foreach { _ := io.cpu_rst } } // revise when tiles are reset separately
+ 
+   ////////////////////////////////////////////
+-  // the network between L2 and tag cache
+-  def routeL2ToTC(addr: UInt) = UInt(1) // this route function is one-hot
+-  def routeTCToL2(id: UInt) = id
+-  val tc_net = Module(new ClientUncachedTileLinkIOCrossbar(nBanks, 1, routeL2ToTC)(tagNetParams))
+-  tc_net.io.in <> managerEndpoints.map(_.outerTL).map(ClientTileLinkIOUnwrapper(_)(tagNetParams))
++  // the network between L2 and memory/tag cache
++  def routeL2ToMem(addr: UInt) = UInt(1) // this route function is one-hot
++  def routeMemToL2(id: UInt) = id
++  val mem_net = Module(new ClientUncachedTileLinkIOCrossbar(nBanks, 1, routeL2ToMem)(memNetParams))
++  mem_net.io.in <> managerEndpoints.map(_.outerTL).map(ClientTileLinkIOUnwrapper(_)(memNetParams))
+ 
+   ////////////////////////////////////////////
+   // tag cache
+-  //val tc = Module(new TagCache, {case TLId => "L2ToTC"; case CacheName => "TagCache"})
+-  // currently a TileLink to NASTI converter
+-  TopUtils.connectTilelinkNasti(io.nasti_mem, tc_net.io.out(0))(memConvParams)
++  if(p(UseTagMem)) {
++    val tc = Module(new TagCache()(p.alterPartial({
++      case CacheName => tagCacheId
++      case TLId => memConvParams(TLId)
++      case InnerTLId => memNetParams(TLId)
++      case OuterTLId => memConvParams(TLId)
++    })))
++    tc.io.inner <> mem_net.io.out(0)
++    TopUtils.connectTilelinkNasti(io.nasti_mem, tc.io.outer)(memConvParams)
++  } else {
++    TopUtils.connectTilelinkNasti(io.nasti_mem, mem_net.io.out(0))(memConvParams)
++  }
+ 
+   ////////////////////////////////////////////
+   // MMIO interconnect
+diff --git a/src/main/verilog/chip_top.sv b/src/main/verilog/chip_top.sv
+index 3a39f51..55dd741 100644
+--- a/src/main/verilog/chip_top.sv
++++ b/src/main/verilog/chip_top.sv
+@@ -5,7 +5,60 @@ import dii_package::dii_flit;
+ `include "consts.vh"
+ `include "dev_map.vh"
+ `include "config.vh"  // For the definition of LOWRISC_IO_DAT_WIDTH
++/*
++  `define LOWRISC_IO_DAT_WIDTH 32
++  `define ROCKET_NTILES 1
++  `define ROCKET_IO_DAT_WIDTH 64
++  `define ADD_HOST 1
++  `define ROCKET_PADDR_WIDTH 32
++  `define ROCKET_MEM_DAT_WIDTH 64
++  `define ROCKET_IO_SIZE 90112
++  `define ROCKET_MEM_BASE 2147483648
++  `define ROCKET_IO_BASE 1073741824
++  `define ROCKET_MEM_TAG_WIDTH 8
++  `define ROCKET_IO_TAG_WIDTH 8
++  `define ROCKET_MEM_SIZE 1073741824
++  `define ADD_UART 1
++  `define ADD_SPI 1
++  `define ADD_BRAM 1
++  `define DEV_MAP__io_ext_bram__BASE 'h40000000
++  `define DEV_MAP__io_ext_bram__MASK 'hffff
++  `define DEV_MAP__io_ext_host__BASE 'h40010000
++  `define DEV_MAP__io_ext_host__MASK 'h3f
++  `define DEV_MAP__mem__BASE 'h80000000
++  `define DEV_MAP__mem__MASK 'h3bffffff
++  `define DEV_MAP__io_int_prci0__BASE 'h3000
++  `define DEV_MAP__io_int_prci0__MASK 'hfff
++  `define DEV_MAP__io_int_rtc__BASE 'h2000
++  `define DEV_MAP__io_int_rtc__MASK 'hfff
++  `define DEV_MAP__io_ext_uart__BASE 'h40012000
++  `define DEV_MAP__io_ext_uart__MASK 'h1fff
++  `define DEV_MAP__io_ext_spi__BASE 'h40014000
++  `define DEV_MAP__io_ext_spi__MASK 'h1fff
++  `define DEV_MAP__io_int_bootrom__BASE 'h0
++  `define DEV_MAP__io_int_bootrom__MASK 'h1fff
++  `define KC705 true
+ 
++  `ifdef ADD_UART
++   `define ADD_UART_IO
++  `endif
++
++  `ifdef ADD_SPI
++   `define ADD_SPI_IO
++  `endif
++
++  `ifdef FPGA_FULL
++   `define ADD_PHY_DDR
++  `endif
++
++  `ifdef NEXYS4_VIDEO
++   `define NEXYS4_COMMON
++  `endif
++
++  `ifdef NEXYS4
++   `define NEXYS4_COMMON
++  `endif
++*/
+ module chip_top
+ (
+ `ifdef ADD_PHY_DDR
+@@ -919,6 +972,8 @@ module chip_top
+        .DATA_WIDTH  ( `LOWRISC_IO_DAT_WIDTH     ))
+    io_host_lite();
+ 
++
++
+  `ifdef ADD_HOST
+    host_behav host
+      (
+diff --git a/uncore b/uncore
+index 77f1789..9dcae1d 160000
+--- a/uncore
++++ b/uncore
+@@ -1 +1 @@
+-Subproject commit 77f1789d0d487db23aa383490a5184354e161ef2
++Subproject commit 9dcae1dac969a2cdb7cd8cb272f2654c6461cfb8

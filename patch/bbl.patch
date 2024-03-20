@@ -1,0 +1,115 @@
+diff --git a/driver/uart.c b/driver/uart.c
+index af098eb..b4cc420 100644
+--- a/driver/uart.c
++++ b/driver/uart.c
+@@ -11,8 +11,8 @@ void uart_init() {
+ 
+   // System clock 25 MHz, 115200 baud rate
+   // divisor = clk_freq / (16 * Baud)
+-  *(uart_base_ptr + UART_DLL) = 25*1000*1000u / (16u * 115200u) % 0x100u;
+-  *(uart_base_ptr + UART_DLM) = 25*1000*1000u / (16u * 115200u) >> 8;
++  *(uart_base_ptr + UART_DLL) = 50*1000*1000u / (16u * 115200u) % 0x100u;
++  *(uart_base_ptr + UART_DLM) = 50*1000*1000u / (16u * 115200u) >> 8;
+ 
+   // 8-bit data, 1-bit odd parity
+   *(uart_base_ptr + UART_LCR) = 0x000Bu;
+diff --git a/machine/configstring.c b/machine/configstring.c
+index 34de618..91569b9 100644
+--- a/machine/configstring.c
++++ b/machine/configstring.c
+@@ -1,7 +1,7 @@
+ #include "configstring.h"
+ #include "encoding.h"
+ #include "mtrap.h"
+-//#include "uart.h"
++#include "uart.h"
+ #include <stdio.h>
+ 
+ static void query_mem(const char* config_string)
+@@ -25,7 +25,7 @@ static void query_harts(const char* config_string)
+ {
+   for (int core = 0, hart; ; core++) {
+     for (hart = 0; ; hart++) {
+-      char buf[32];
++      char buf[35];
+       snprintf(buf, sizeof buf, "core{%d{%d{ipi", core, hart);
+       query_result res = query_config_string(config_string, buf);
+       if (!res.start)
+@@ -51,7 +51,7 @@ void parse_config_string()
+ {
+   uint32_t addr = *(uint32_t*)CONFIG_STRING_ADDR;
+   const char* s = (const char*)(uintptr_t)addr;
+-  //uart_send_string(s);
++  uart_send_string(s);
+   query_mem(s);
+   query_rtc(s);
+   query_harts(s);
+diff --git a/machine/encoding.h b/machine/encoding.h
+index b7dc287..5f092aa 100644
+--- a/machine/encoding.h
++++ b/machine/encoding.h
+@@ -41,6 +41,7 @@
+ #define MIP_STIP            (1 << IRQ_S_TIMER)
+ #define MIP_HTIP            (1 << IRQ_H_TIMER)
+ #define MIP_MTIP            (1 << IRQ_M_TIMER)
++#define MIP_MCIP            (1 << IRQ_COP)
+ 
+ #define SIP_SSIP MIP_SSIP
+ #define SIP_STIP MIP_STIP
+diff --git a/machine/minit.c b/machine/minit.c
+index 52a971c..03e22a8 100644
+--- a/machine/minit.c
++++ b/machine/minit.c
+@@ -17,6 +17,7 @@ static void mstatus_init()
+   uintptr_t ms = 0;
+   ms = INSERT_FIELD(ms, MSTATUS_VM, VM_CHOICE);
+   ms = INSERT_FIELD(ms, MSTATUS_FS, 1);
++  ms = INSERT_FIELD(ms, MSTATUS_XS, 3);
+   write_csr(mstatus, ms);
+ 
+   // Make sure the hart actually supports the VM mode we want
+@@ -24,15 +25,15 @@ static void mstatus_init()
+   assert(EXTRACT_FIELD(ms, MSTATUS_VM) == VM_CHOICE);
+ 
+   // Enable user/supervisor use of perf counters
+-  write_csr(mucounteren, -1);
+-  write_csr(mscounteren, -1);
++  //write_csr(mucounteren, -1);
++  //write_csr(mscounteren, -1);
+   write_csr(mie, ~MIP_MTIP); // disable timer; enable other interrupts
+ }
+ 
+ // send S-mode interrupts and most exceptions straight to S-mode
+ static void delegate_traps()
+ {
+-  uintptr_t interrupts = MIP_SSIP | MIP_STIP;
++  uintptr_t interrupts = MIP_SSIP | MIP_STIP | MIP_MCIP;
+   uintptr_t exceptions =
+     (1U << CAUSE_MISALIGNED_FETCH) |
+     (1U << CAUSE_FAULT_FETCH) |
+diff --git a/machine/sbi_entry.S b/machine/sbi_entry.S
+index 1cc1b4b..6d2aa1b 100644
+--- a/machine/sbi_entry.S
++++ b/machine/sbi_entry.S
+@@ -56,7 +56,7 @@ sbi_base:
+ 
+   # timebase
+   .align 4
+-  li a0, 10000000 # or, you know, we could provide the correct answer
++  li a0, 500000 # or, you know, we could provide the correct answer
+   ret
+ 
+   # shutdown
+diff --git a/machine/sbi_impl.c b/machine/sbi_impl.c
+index f5ed8c9..e46706e 100644
+--- a/machine/sbi_impl.c
++++ b/machine/sbi_impl.c
+@@ -12,7 +12,7 @@ uintptr_t __sbi_query_memory(uintptr_t id, memory_block_info *p)
+   return -1;
+ }
+ 
+-#define LOW_IRQ_OK(n) ((n) == IRQ_S_SOFT || (n) == IRQ_S_TIMER)
++#define LOW_IRQ_OK(n) ((n) == IRQ_S_SOFT || (n) == IRQ_S_TIMER  || (n) == IRQ_COP)
+ 
+ uintptr_t __sbi_mask_interrupt(uintptr_t which)
+ {
