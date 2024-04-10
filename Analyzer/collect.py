@@ -11,24 +11,24 @@ countjcj=0
 
 
 JMPS = (
-RISCV_jal,
-RISCV_jalr
+    RISCV_jal,
+    RISCV_jalr
 )
 
 # Conditional jump instructions
 CJMPS = (
-RISCV_beq,
-RISCV_bne,
-RISCV_blt,
-RISCV_bge,
-RISCV_bltu,
-RISCV_bgeu,
-RISCV_beqz,
-RISCV_bnez,
-RISCV_blez,
-RISCV_bgez,
-RISCV_bltz,
-RISCV_bgtz
+    RISCV_beq,
+    RISCV_bne,
+    RISCV_blt,
+    RISCV_bge,
+    RISCV_bltu,
+    RISCV_bgeu,
+    RISCV_beqz,
+    RISCV_bnez,
+    RISCV_blez,
+    RISCV_bgez,
+    RISCV_bltz,
+    RISCV_bgtz
 )
 
 # Return instructions
@@ -73,23 +73,20 @@ print(key_value)
 for seg in Segments():
     if 'text' in idc.get_segm_name(seg):
         for func in Functions(idc.get_segm_start(seg),idc.get_segm_end(seg)):
-            if idc.get_func_name(func) in key_value:
-                #print(1)
+            if idc.get_func_name(func) in key_value:      
                 dism_addr = list(FuncItems(func))
                 for line in dism_addr:
                     instcount = instcount + 1
                     ins = ida_ua.insn_t()
                     idaapi.decode_insn(ins, line)     
-                    #res.append(str(ins.itype)+" "+idc.generate_disasm_line(line, 0))
+                    
                     if ins.itype in JMPS or ins.itype in CJMPS:
                         instcount=instcount+1
                         ##jump locate not equal to plt or libfuntion
                         if ins.itype ==  RISCV_jal:
                             if (idc.generate_disasm_line(line, 0).split("             ")[1] in filterfuncnameplt):
-                                #print("ahfkd %x"  %(idc.generate_disasm_line(line, 0).split("             ")[1] in filterfuncnameplt))
-                                #print("gifgh %s"  %(idc.generate_disasm_line(line, 0).split("             ")[1]))
                                 continue
-                        #res.append(str(hex(line))+"  "+idc.generate_disasm_line(line, 0))
+        
                         res.append(line)
                         print("0x%x %s" % (line, idc.generate_disasm_line(line, 0)))
                         countjcj=countjcj+1
@@ -108,29 +105,21 @@ print(textstart)
 #initialize the dict
 for i in res:
     dictkey=i>>3<<3
-    #print("%x  %d" %(dictkey,dict1[dictkey]))
     dict1[dictkey-textstart]=0
   
-#print(dict1)
+
 for i in res:
     dictkey=i>>3<<3
-    #print(i&7)
     if i&7==4:
         dict1[dictkey-textstart]=dict1[dictkey-textstart]+4#i&7 
     else:
         dict1[dictkey-textstart]=dict1[dictkey-textstart]+1
 print("after " )
-#print(dict1)
 
 with open('pc1.txt','w') as fp:
     for key in dict1:
        fp.write(str(key)+" "+str(dict1[key])+"\n")
-#with open('pc1.txt','a') as fp:
-#    fp.write("@")
-'''
-with open('dis1.txt','w') as f:
-    for i in range(0,len(res)):
-       f.write(res[i]+"\n")
-'''
+
+
 
 

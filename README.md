@@ -3,6 +3,8 @@
 
 Our prototype is built from Programmable Hardware Monitor (PHMon) and Lowrisc. We run our experiments on the Xilinx Kintex-7 FPGA KC705 evaluation board. Considering code size, we only show the necessary modifications in this repository.
 
+Although we have extensively tested the code, Tatoo remains a research prototype and is likely to contain bugs. Moreover, due to the significant challenges associated with testing modifications to hardware code, there may be some instability in fuzz testing. If you encounter any issues, please do not hesitate to contact us. We are in the process of submitting the code and will make every effort to complete the submission by the end of June.
+
 ## Contents
 
 - `Lowrisc-chip`: patches for Lowrisc.
@@ -54,7 +56,7 @@ gnu is modified to provide the 'tagr' and 'tagw' instructions.
 
 ### patch the linux kernel
     patch -p1 < kernel.patch
-    
+
 ### patch the AFL
     patch -p1 < AFL.patch
 
@@ -232,3 +234,6 @@ However determining the cause is not always easy. One other possible work-around
 
 vivado -stack 2000
 https://www.xilinx.com/support/answers/64434.html
+
+
+# 
