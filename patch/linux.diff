@@ -1,0 +1,2607 @@
+diff -r linux-4.6.2/arch/.gitignore ../linux-4.6.2/arch/.gitignore
+1,2c1,3
+< i386
+< x86_64
+---
+> # In ../, we ignored everything, so suppress that.
+> !riscv/
+> 
+Only in ../linux-4.6.2/arch: riscv
+Only in ../linux-4.6.2/block: badblocks.o
+Only in ../linux-4.6.2/block: .badblocks.o.cmd
+Only in ../linux-4.6.2/block: bio.o
+Only in ../linux-4.6.2/block: .bio.o.cmd
+Only in ../linux-4.6.2/block: blk-core.o
+Only in ../linux-4.6.2/block: .blk-core.o.cmd
+Only in ../linux-4.6.2/block: blk-exec.o
+Only in ../linux-4.6.2/block: .blk-exec.o.cmd
+Only in ../linux-4.6.2/block: blk-flush.o
+Only in ../linux-4.6.2/block: .blk-flush.o.cmd
+Only in ../linux-4.6.2/block: blk-ioc.o
+Only in ../linux-4.6.2/block: .blk-ioc.o.cmd
+Only in ../linux-4.6.2/block: blk-lib.o
+Only in ../linux-4.6.2/block: .blk-lib.o.cmd
+Only in ../linux-4.6.2/block: blk-map.o
+Only in ../linux-4.6.2/block: .blk-map.o.cmd
+Only in ../linux-4.6.2/block: blk-merge.o
+Only in ../linux-4.6.2/block: .blk-merge.o.cmd
+Only in ../linux-4.6.2/block: blk-mq-cpumap.o
+Only in ../linux-4.6.2/block: .blk-mq-cpumap.o.cmd
+Only in ../linux-4.6.2/block: blk-mq-cpu.o
+Only in ../linux-4.6.2/block: .blk-mq-cpu.o.cmd
+Only in ../linux-4.6.2/block: blk-mq.o
+Only in ../linux-4.6.2/block: .blk-mq.o.cmd
+Only in ../linux-4.6.2/block: blk-mq-sysfs.o
+Only in ../linux-4.6.2/block: .blk-mq-sysfs.o.cmd
+Only in ../linux-4.6.2/block: blk-mq-tag.o
+Only in ../linux-4.6.2/block: .blk-mq-tag.o.cmd
+Only in ../linux-4.6.2/block: blk-settings.o
+Only in ../linux-4.6.2/block: .blk-settings.o.cmd
+Only in ../linux-4.6.2/block: blk-softirq.o
+Only in ../linux-4.6.2/block: .blk-softirq.o.cmd
+Only in ../linux-4.6.2/block: blk-sysfs.o
+Only in ../linux-4.6.2/block: .blk-sysfs.o.cmd
+Only in ../linux-4.6.2/block: blk-tag.o
+Only in ../linux-4.6.2/block: .blk-tag.o.cmd
+Only in ../linux-4.6.2/block: blk-timeout.o
+Only in ../linux-4.6.2/block: .blk-timeout.o.cmd
+Only in ../linux-4.6.2/block: built-in.mod.c
+Only in ../linux-4.6.2/block: built-in.o
+Only in ../linux-4.6.2/block: .built-in.o.cmd
+Only in ../linux-4.6.2/block: cfq-iosched.o
+Only in ../linux-4.6.2/block: .cfq-iosched.o.cmd
+Only in ../linux-4.6.2/block: elevator.o
+Only in ../linux-4.6.2/block: .elevator.o.cmd
+Only in ../linux-4.6.2/block: genhd.o
+Only in ../linux-4.6.2/block: .genhd.o.cmd
+Only in ../linux-4.6.2/block: ioctl.o
+Only in ../linux-4.6.2/block: .ioctl.o.cmd
+Only in ../linux-4.6.2/block: ioprio.o
+Only in ../linux-4.6.2/block: .ioprio.o.cmd
+Only in ../linux-4.6.2/block: modules.order
+Only in ../linux-4.6.2/block: noop-iosched.o
+Only in ../linux-4.6.2/block: .noop-iosched.o.cmd
+Only in ../linux-4.6.2/block: partition-generic.o
+Only in ../linux-4.6.2/block: .partition-generic.o.cmd
+Only in ../linux-4.6.2/block/partitions: built-in.mod.c
+Only in ../linux-4.6.2/block/partitions: built-in.o
+Only in ../linux-4.6.2/block/partitions: .built-in.o.cmd
+Only in ../linux-4.6.2/block/partitions: check.o
+Only in ../linux-4.6.2/block/partitions: .check.o.cmd
+Only in ../linux-4.6.2/block/partitions: modules.order
+Only in ../linux-4.6.2/block/partitions: msdos.o
+Only in ../linux-4.6.2/block/partitions: .msdos.o.cmd
+Only in ../linux-4.6.2/block: scsi_ioctl.o
+Only in ../linux-4.6.2/block: .scsi_ioctl.o.cmd
+Only in ../linux-4.6.2/certs: built-in.o
+Only in ../linux-4.6.2/certs: .built-in.o.cmd
+Only in ../linux-4.6.2/certs: modules.order
+Only in ../linux-4.6.2/: .config
+Only in ../linux-4.6.2/: .config.old
+Only in ../linux-4.6.2/crypto: ablkcipher.o
+Only in ../linux-4.6.2/crypto: .ablkcipher.o.cmd
+Only in ../linux-4.6.2/crypto: aead.o
+Only in ../linux-4.6.2/crypto: .aead.o.cmd
+Only in ../linux-4.6.2/crypto: aes_generic.o
+Only in ../linux-4.6.2/crypto: .aes_generic.o.cmd
+Only in ../linux-4.6.2/crypto: ahash.o
+Only in ../linux-4.6.2/crypto: .ahash.o.cmd
+Only in ../linux-4.6.2/crypto: akcipher.o
+Only in ../linux-4.6.2/crypto: .akcipher.o.cmd
+Only in ../linux-4.6.2/crypto: algapi.o
+Only in ../linux-4.6.2/crypto: .algapi.o.cmd
+Only in ../linux-4.6.2/crypto: algboss.o
+Only in ../linux-4.6.2/crypto: .algboss.o.cmd
+Only in ../linux-4.6.2/crypto: api.o
+Only in ../linux-4.6.2/crypto: .api.o.cmd
+Only in ../linux-4.6.2/crypto: blkcipher.o
+Only in ../linux-4.6.2/crypto: .blkcipher.o.cmd
+Only in ../linux-4.6.2/crypto: built-in.mod.c
+Only in ../linux-4.6.2/crypto: built-in.o
+Only in ../linux-4.6.2/crypto: .built-in.o.cmd
+Only in ../linux-4.6.2/crypto: chainiv.o
+Only in ../linux-4.6.2/crypto: .chainiv.o.cmd
+Only in ../linux-4.6.2/crypto: cipher.o
+Only in ../linux-4.6.2/crypto: .cipher.o.cmd
+Only in ../linux-4.6.2/crypto: compress.o
+Only in ../linux-4.6.2/crypto: .compress.o.cmd
+Only in ../linux-4.6.2/crypto: crypto_algapi.mod.c
+Only in ../linux-4.6.2/crypto: crypto_algapi.o
+Only in ../linux-4.6.2/crypto: .crypto_algapi.o.cmd
+Only in ../linux-4.6.2/crypto: crypto_blkcipher.mod.c
+Only in ../linux-4.6.2/crypto: crypto_blkcipher.o
+Only in ../linux-4.6.2/crypto: .crypto_blkcipher.o.cmd
+Only in ../linux-4.6.2/crypto: crypto_hash.mod.c
+Only in ../linux-4.6.2/crypto: crypto_hash.o
+Only in ../linux-4.6.2/crypto: .crypto_hash.o.cmd
+Only in ../linux-4.6.2/crypto: cryptomgr.mod.c
+Only in ../linux-4.6.2/crypto: cryptomgr.o
+Only in ../linux-4.6.2/crypto: .cryptomgr.o.cmd
+Only in ../linux-4.6.2/crypto: crypto.mod.c
+Only in ../linux-4.6.2/crypto: crypto_null.o
+Only in ../linux-4.6.2/crypto: .crypto_null.o.cmd
+Only in ../linux-4.6.2/crypto: crypto.o
+Only in ../linux-4.6.2/crypto: .crypto.o.cmd
+Only in ../linux-4.6.2/crypto: crypto_wq.o
+Only in ../linux-4.6.2/crypto: .crypto_wq.o.cmd
+Only in ../linux-4.6.2/crypto: drbg.o
+Only in ../linux-4.6.2/crypto: .drbg.o.cmd
+Only in ../linux-4.6.2/crypto: echainiv.o
+Only in ../linux-4.6.2/crypto: .echainiv.o.cmd
+Only in ../linux-4.6.2/crypto: eseqiv.o
+Only in ../linux-4.6.2/crypto: .eseqiv.o.cmd
+Only in ../linux-4.6.2/crypto: hmac.o
+Only in ../linux-4.6.2/crypto: .hmac.o.cmd
+Only in ../linux-4.6.2/crypto: jitterentropy-kcapi.o
+Only in ../linux-4.6.2/crypto: .jitterentropy-kcapi.o.cmd
+Only in ../linux-4.6.2/crypto: jitterentropy.o
+Only in ../linux-4.6.2/crypto: .jitterentropy.o.cmd
+Only in ../linux-4.6.2/crypto: jitterentropy_rng.mod.c
+Only in ../linux-4.6.2/crypto: jitterentropy_rng.o
+Only in ../linux-4.6.2/crypto: .jitterentropy_rng.o.cmd
+Only in ../linux-4.6.2/crypto: memneq.o
+Only in ../linux-4.6.2/crypto: .memneq.o.cmd
+Only in ../linux-4.6.2/crypto: modules.order
+Only in ../linux-4.6.2/crypto: proc.o
+Only in ../linux-4.6.2/crypto: .proc.o.cmd
+Only in ../linux-4.6.2/crypto: rng.o
+Only in ../linux-4.6.2/crypto: .rng.o.cmd
+Only in ../linux-4.6.2/crypto: scatterwalk.o
+Only in ../linux-4.6.2/crypto: .scatterwalk.o.cmd
+Only in ../linux-4.6.2/crypto: sha256_generic.o
+Only in ../linux-4.6.2/crypto: .sha256_generic.o.cmd
+Only in ../linux-4.6.2/crypto: shash.o
+Only in ../linux-4.6.2/crypto: .shash.o.cmd
+Only in ../linux-4.6.2/crypto: skcipher.o
+Only in ../linux-4.6.2/crypto: .skcipher.o.cmd
+Only in ../linux-4.6.2/crypto: testmgr.o
+Only in ../linux-4.6.2/crypto: .testmgr.o.cmd
+Only in ../linux-4.6.2/drivers/amba: built-in.o
+Only in ../linux-4.6.2/drivers/amba: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/amba: modules.order
+Only in ../linux-4.6.2/drivers/auxdisplay: built-in.o
+Only in ../linux-4.6.2/drivers/auxdisplay: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/auxdisplay: modules.order
+Only in ../linux-4.6.2/drivers/base: attribute_container.o
+Only in ../linux-4.6.2/drivers/base: .attribute_container.o.cmd
+Only in ../linux-4.6.2/drivers/base: built-in.mod.c
+Only in ../linux-4.6.2/drivers/base: built-in.o
+Only in ../linux-4.6.2/drivers/base: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/base: bus.o
+Only in ../linux-4.6.2/drivers/base: .bus.o.cmd
+Only in ../linux-4.6.2/drivers/base: cacheinfo.o
+Only in ../linux-4.6.2/drivers/base: .cacheinfo.o.cmd
+Only in ../linux-4.6.2/drivers/base: class.o
+Only in ../linux-4.6.2/drivers/base: .class.o.cmd
+Only in ../linux-4.6.2/drivers/base: component.o
+Only in ../linux-4.6.2/drivers/base: .component.o.cmd
+Only in ../linux-4.6.2/drivers/base: container.o
+Only in ../linux-4.6.2/drivers/base: .container.o.cmd
+Only in ../linux-4.6.2/drivers/base: core.o
+Only in ../linux-4.6.2/drivers/base: .core.o.cmd
+Only in ../linux-4.6.2/drivers/base: cpu.o
+Only in ../linux-4.6.2/drivers/base: .cpu.o.cmd
+Only in ../linux-4.6.2/drivers/base: dd.o
+Only in ../linux-4.6.2/drivers/base: .dd.o.cmd
+Only in ../linux-4.6.2/drivers/base: devres.o
+Only in ../linux-4.6.2/drivers/base: .devres.o.cmd
+Only in ../linux-4.6.2/drivers/base: devtmpfs.o
+Only in ../linux-4.6.2/drivers/base: .devtmpfs.o.cmd
+Only in ../linux-4.6.2/drivers/base: dma-coherent.o
+Only in ../linux-4.6.2/drivers/base: .dma-coherent.o.cmd
+Only in ../linux-4.6.2/drivers/base: dma-mapping.o
+Only in ../linux-4.6.2/drivers/base: .dma-mapping.o.cmd
+Only in ../linux-4.6.2/drivers/base: driver.o
+Only in ../linux-4.6.2/drivers/base: .driver.o.cmd
+Only in ../linux-4.6.2/drivers/base: firmware_class.o
+Only in ../linux-4.6.2/drivers/base: .firmware_class.o.cmd
+Only in ../linux-4.6.2/drivers/base: firmware.o
+Only in ../linux-4.6.2/drivers/base: .firmware.o.cmd
+Only in ../linux-4.6.2/drivers/base: init.o
+Only in ../linux-4.6.2/drivers/base: .init.o.cmd
+Only in ../linux-4.6.2/drivers/base: map.o
+Only in ../linux-4.6.2/drivers/base: .map.o.cmd
+Only in ../linux-4.6.2/drivers/base: modules.order
+Only in ../linux-4.6.2/drivers/base: platform.o
+Only in ../linux-4.6.2/drivers/base: .platform.o.cmd
+Only in ../linux-4.6.2/drivers/base/power: built-in.o
+Only in ../linux-4.6.2/drivers/base/power: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/base/power: modules.order
+Only in ../linux-4.6.2/drivers/base: property.o
+Only in ../linux-4.6.2/drivers/base: .property.o.cmd
+Only in ../linux-4.6.2/drivers/base: syscore.o
+Only in ../linux-4.6.2/drivers/base: .syscore.o.cmd
+Only in ../linux-4.6.2/drivers/base: topology.o
+Only in ../linux-4.6.2/drivers/base: .topology.o.cmd
+Only in ../linux-4.6.2/drivers/base: transport_class.o
+Only in ../linux-4.6.2/drivers/base: .transport_class.o.cmd
+Only in ../linux-4.6.2/drivers/block: built-in.o
+Only in ../linux-4.6.2/drivers/block: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/block: modules.order
+Only in ../linux-4.6.2/drivers: built-in.mod.c
+Only in ../linux-4.6.2/drivers: built-in.o
+Only in ../linux-4.6.2/drivers: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/bus: built-in.o
+Only in ../linux-4.6.2/drivers/bus: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/bus: modules.order
+Only in ../linux-4.6.2/drivers/cdrom: built-in.o
+Only in ../linux-4.6.2/drivers/cdrom: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/cdrom: modules.order
+Only in ../linux-4.6.2/drivers/char/agp: built-in.o
+Only in ../linux-4.6.2/drivers/char/agp: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/char/agp: modules.order
+Only in ../linux-4.6.2/drivers/char: built-in.mod.c
+Only in ../linux-4.6.2/drivers/char: built-in.o
+Only in ../linux-4.6.2/drivers/char: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/char: mem.o
+Only in ../linux-4.6.2/drivers/char: .mem.o.cmd
+Only in ../linux-4.6.2/drivers/char: misc.o
+Only in ../linux-4.6.2/drivers/char: .misc.o.cmd
+Only in ../linux-4.6.2/drivers/char: modules.order
+Only in ../linux-4.6.2/drivers/char: random.o
+Only in ../linux-4.6.2/drivers/char: .random.o.cmd
+Only in ../linux-4.6.2/drivers/clk/bcm: built-in.o
+Only in ../linux-4.6.2/drivers/clk/bcm: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/clk/bcm: modules.order
+Only in ../linux-4.6.2/drivers/clk: built-in.mod.c
+Only in ../linux-4.6.2/drivers/clk: built-in.o
+Only in ../linux-4.6.2/drivers/clk: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/clk: modules.order
+Only in ../linux-4.6.2/drivers/clk/ti: built-in.o
+Only in ../linux-4.6.2/drivers/clk/ti: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/clk/ti: modules.order
+Only in ../linux-4.6.2/drivers/clocksource: built-in.o
+Only in ../linux-4.6.2/drivers/clocksource: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/clocksource: modules.order
+Only in ../linux-4.6.2/drivers/crypto: built-in.o
+Only in ../linux-4.6.2/drivers/crypto: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/crypto: modules.order
+Only in ../linux-4.6.2/drivers/firewire: built-in.o
+Only in ../linux-4.6.2/drivers/firewire: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/firewire: modules.order
+Only in ../linux-4.6.2/drivers/firmware/broadcom: built-in.o
+Only in ../linux-4.6.2/drivers/firmware/broadcom: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/firmware/broadcom: modules.order
+Only in ../linux-4.6.2/drivers/firmware: built-in.mod.c
+Only in ../linux-4.6.2/drivers/firmware: built-in.o
+Only in ../linux-4.6.2/drivers/firmware: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/firmware: modules.order
+Only in ../linux-4.6.2/drivers/gpio: built-in.o
+Only in ../linux-4.6.2/drivers/gpio: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpio: modules.order
+Only in ../linux-4.6.2/drivers/gpu: built-in.mod.c
+Only in ../linux-4.6.2/drivers/gpu: built-in.o
+Only in ../linux-4.6.2/drivers/gpu: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/bridge: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/bridge: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/bridge: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm: built-in.mod.c
+Only in ../linux-4.6.2/drivers/gpu/drm: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/i2c: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/i2c: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/i2c: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm: built-in.mod.c
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/displays: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/displays: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/displays: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/dss: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/dss: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm/dss: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm/omapdrm: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm/panel: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/panel: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/panel: modules.order
+Only in ../linux-4.6.2/drivers/gpu/drm/tilcdc: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/drm/tilcdc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/drm/tilcdc: modules.order
+Only in ../linux-4.6.2/drivers/gpu: modules.order
+Only in ../linux-4.6.2/drivers/gpu/vga: built-in.o
+Only in ../linux-4.6.2/drivers/gpu/vga: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/gpu/vga: modules.order
+Only in ../linux-4.6.2/drivers/hid: built-in.mod.c
+Only in ../linux-4.6.2/drivers/hid: built-in.o
+Only in ../linux-4.6.2/drivers/hid: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/hid: hid-core.o
+Only in ../linux-4.6.2/drivers/hid: .hid-core.o.cmd
+Only in ../linux-4.6.2/drivers/hid: hid-debug.o
+Only in ../linux-4.6.2/drivers/hid: .hid-debug.o.cmd
+Only in ../linux-4.6.2/drivers/hid: hid-generic.o
+Only in ../linux-4.6.2/drivers/hid: .hid-generic.o.cmd
+Only in ../linux-4.6.2/drivers/hid: hid-input.o
+Only in ../linux-4.6.2/drivers/hid: .hid-input.o.cmd
+Only in ../linux-4.6.2/drivers/hid: hid.mod.c
+Only in ../linux-4.6.2/drivers/hid: hid.o
+Only in ../linux-4.6.2/drivers/hid: .hid.o.cmd
+Only in ../linux-4.6.2/drivers/hid: modules.order
+Only in ../linux-4.6.2/drivers/hsi: built-in.mod.c
+Only in ../linux-4.6.2/drivers/hsi: built-in.o
+Only in ../linux-4.6.2/drivers/hsi: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/hsi/clients: built-in.o
+Only in ../linux-4.6.2/drivers/hsi/clients: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/hsi/clients: modules.order
+Only in ../linux-4.6.2/drivers/hsi/controllers: built-in.o
+Only in ../linux-4.6.2/drivers/hsi/controllers: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/hsi/controllers: modules.order
+Only in ../linux-4.6.2/drivers/hsi: modules.order
+Only in ../linux-4.6.2/drivers/hwtracing/intel_th: built-in.o
+Only in ../linux-4.6.2/drivers/hwtracing/intel_th: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/hwtracing/intel_th: modules.order
+Only in ../linux-4.6.2/drivers/i2c/algos: built-in.o
+Only in ../linux-4.6.2/drivers/i2c/algos: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/i2c/algos: modules.order
+Only in ../linux-4.6.2/drivers/i2c: built-in.mod.c
+Only in ../linux-4.6.2/drivers/i2c: built-in.o
+Only in ../linux-4.6.2/drivers/i2c: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/i2c/busses: built-in.o
+Only in ../linux-4.6.2/drivers/i2c/busses: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/i2c/busses: modules.order
+Only in ../linux-4.6.2/drivers/i2c: modules.order
+Only in ../linux-4.6.2/drivers/i2c/muxes: built-in.o
+Only in ../linux-4.6.2/drivers/i2c/muxes: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/i2c/muxes: modules.order
+Only in ../linux-4.6.2/drivers/idle: built-in.o
+Only in ../linux-4.6.2/drivers/idle: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/idle: modules.order
+Only in ../linux-4.6.2/drivers/input: built-in.mod.c
+Only in ../linux-4.6.2/drivers/input: built-in.o
+Only in ../linux-4.6.2/drivers/input: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/input: ff-core.o
+Only in ../linux-4.6.2/drivers/input: .ff-core.o.cmd
+Only in ../linux-4.6.2/drivers/input: input-compat.o
+Only in ../linux-4.6.2/drivers/input: .input-compat.o.cmd
+Only in ../linux-4.6.2/drivers/input: input-core.mod.c
+Only in ../linux-4.6.2/drivers/input: input-core.o
+Only in ../linux-4.6.2/drivers/input: .input-core.o.cmd
+Only in ../linux-4.6.2/drivers/input: input-mt.o
+Only in ../linux-4.6.2/drivers/input: .input-mt.o.cmd
+Only in ../linux-4.6.2/drivers/input: input.o
+Only in ../linux-4.6.2/drivers/input: .input.o.cmd
+Only in ../linux-4.6.2/drivers/input: modules.order
+Only in ../linux-4.6.2/drivers/input/serio: built-in.mod.c
+Only in ../linux-4.6.2/drivers/input/serio: built-in.o
+Only in ../linux-4.6.2/drivers/input/serio: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/input/serio: modules.order
+Only in ../linux-4.6.2/drivers/input/serio: serio.o
+Only in ../linux-4.6.2/drivers/input/serio: .serio.o.cmd
+Only in ../linux-4.6.2/drivers/input/serio: serport.o
+Only in ../linux-4.6.2/drivers/input/serio: .serport.o.cmd
+Only in ../linux-4.6.2/drivers/irqchip: built-in.o
+Only in ../linux-4.6.2/drivers/irqchip: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/irqchip: modules.order
+Only in ../linux-4.6.2/drivers/leds: built-in.o
+Only in ../linux-4.6.2/drivers/leds: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/leds: modules.order
+Only in ../linux-4.6.2/drivers/lguest: built-in.o
+Only in ../linux-4.6.2/drivers/lguest: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/lguest: modules.order
+Only in ../linux-4.6.2/drivers/macintosh: built-in.o
+Only in ../linux-4.6.2/drivers/macintosh: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/macintosh: modules.order
+diff -r linux-4.6.2/drivers/Makefile ../linux-4.6.2/drivers/Makefile
+174a175
+> obj-y		+= Tatto/
+Only in ../linux-4.6.2/drivers/media: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media: built-in.o
+Only in ../linux-4.6.2/drivers/media: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/common/b2c2: built-in.o
+Only in ../linux-4.6.2/drivers/media/common/b2c2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/common/b2c2: modules.order
+Only in ../linux-4.6.2/drivers/media/common: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/common: built-in.o
+Only in ../linux-4.6.2/drivers/media/common: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/common: modules.order
+Only in ../linux-4.6.2/drivers/media/common/saa7146: built-in.o
+Only in ../linux-4.6.2/drivers/media/common/saa7146: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/common/saa7146: modules.order
+Only in ../linux-4.6.2/drivers/media/common/siano: built-in.o
+Only in ../linux-4.6.2/drivers/media/common/siano: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/common/siano: modules.order
+Only in ../linux-4.6.2/drivers/media/firewire: built-in.o
+Only in ../linux-4.6.2/drivers/media/firewire: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/firewire: modules.order
+Only in ../linux-4.6.2/drivers/media/i2c: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/i2c: built-in.o
+Only in ../linux-4.6.2/drivers/media/i2c: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/i2c: modules.order
+Only in ../linux-4.6.2/drivers/media/i2c/soc_camera: built-in.o
+Only in ../linux-4.6.2/drivers/media/i2c/soc_camera: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/i2c/soc_camera: modules.order
+Only in ../linux-4.6.2/drivers/media/mmc: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/mmc: built-in.o
+Only in ../linux-4.6.2/drivers/media/mmc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/mmc: modules.order
+Only in ../linux-4.6.2/drivers/media/mmc/siano: built-in.o
+Only in ../linux-4.6.2/drivers/media/mmc/siano: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/mmc/siano: modules.order
+Only in ../linux-4.6.2/drivers/media: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/b2c2: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/b2c2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/b2c2: modules.order
+Only in ../linux-4.6.2/drivers/media/pci: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/pci: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/ddbridge: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/ddbridge: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/ddbridge: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/dm1105: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/dm1105: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/dm1105: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/mantis: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/mantis: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/mantis: modules.order
+Only in ../linux-4.6.2/drivers/media/pci: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/netup_unidvb: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/netup_unidvb: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/netup_unidvb: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/ngene: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/ngene: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/ngene: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/pluto2: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/pluto2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/pluto2: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/pt1: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/pt1: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/pt1: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/pt3: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/pt3: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/pt3: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/saa7146: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/saa7146: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/saa7146: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/smipcie: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/smipcie: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/smipcie: modules.order
+Only in ../linux-4.6.2/drivers/media/pci/ttpci: built-in.o
+Only in ../linux-4.6.2/drivers/media/pci/ttpci: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/pci/ttpci: modules.order
+Only in ../linux-4.6.2/drivers/media/platform: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/platform: built-in.o
+Only in ../linux-4.6.2/drivers/media/platform: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/platform: modules.order
+Only in ../linux-4.6.2/drivers/media/platform/omap: built-in.o
+Only in ../linux-4.6.2/drivers/media/platform/omap: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/platform/omap: modules.order
+Only in ../linux-4.6.2/drivers/media/rc: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/rc: built-in.o
+Only in ../linux-4.6.2/drivers/media/rc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/rc/keymaps: built-in.o
+Only in ../linux-4.6.2/drivers/media/rc/keymaps: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/rc/keymaps: modules.order
+Only in ../linux-4.6.2/drivers/media/rc: modules.order
+Only in ../linux-4.6.2/drivers/media/tuners: built-in.o
+Only in ../linux-4.6.2/drivers/media/tuners: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/tuners: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/b2c2: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/b2c2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/b2c2: modules.order
+Only in ../linux-4.6.2/drivers/media/usb: built-in.mod.c
+Only in ../linux-4.6.2/drivers/media/usb: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb-v2: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb-v2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/dvb-usb-v2: modules.order
+Only in ../linux-4.6.2/drivers/media/usb: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/s2255: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/s2255: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/s2255: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/siano: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/siano: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/siano: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/stkwebcam: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/stkwebcam: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/stkwebcam: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-budget: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-budget: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-budget: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-dec: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-dec: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/ttusb-dec: modules.order
+Only in ../linux-4.6.2/drivers/media/usb/zr364xx: built-in.o
+Only in ../linux-4.6.2/drivers/media/usb/zr364xx: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/media/usb/zr364xx: modules.order
+Only in ../linux-4.6.2/drivers/mfd: built-in.o
+Only in ../linux-4.6.2/drivers/mfd: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/mfd: modules.order
+Only in ../linux-4.6.2/drivers/misc: built-in.mod.c
+Only in ../linux-4.6.2/drivers/misc: built-in.o
+Only in ../linux-4.6.2/drivers/misc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/cb710: built-in.o
+Only in ../linux-4.6.2/drivers/misc/cb710: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/cb710: modules.order
+Only in ../linux-4.6.2/drivers/misc/eeprom: built-in.o
+Only in ../linux-4.6.2/drivers/misc/eeprom: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/eeprom: modules.order
+Only in ../linux-4.6.2/drivers/misc/lis3lv02d: built-in.o
+Only in ../linux-4.6.2/drivers/misc/lis3lv02d: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/lis3lv02d: modules.order
+Only in ../linux-4.6.2/drivers/misc/mic: built-in.mod.c
+Only in ../linux-4.6.2/drivers/misc/mic: built-in.o
+Only in ../linux-4.6.2/drivers/misc/mic: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/mic/bus: built-in.o
+Only in ../linux-4.6.2/drivers/misc/mic/bus: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/mic/bus: modules.order
+Only in ../linux-4.6.2/drivers/misc/mic: modules.order
+Only in ../linux-4.6.2/drivers/misc: modules.order
+Only in ../linux-4.6.2/drivers/misc/ti-st: built-in.o
+Only in ../linux-4.6.2/drivers/misc/ti-st: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/misc/ti-st: modules.order
+Only in ../linux-4.6.2/drivers/mmc: built-in.mod.c
+Only in ../linux-4.6.2/drivers/mmc: built-in.o
+Only in ../linux-4.6.2/drivers/mmc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/card: block.o
+Only in ../linux-4.6.2/drivers/mmc/card: .block.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/card: built-in.mod.c
+Only in ../linux-4.6.2/drivers/mmc/card: built-in.o
+Only in ../linux-4.6.2/drivers/mmc/card: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/card: mmc_block.mod.c
+Only in ../linux-4.6.2/drivers/mmc/card: mmc_block.o
+Only in ../linux-4.6.2/drivers/mmc/card: .mmc_block.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/card: modules.order
+Only in ../linux-4.6.2/drivers/mmc/card: queue.o
+Only in ../linux-4.6.2/drivers/mmc/card: .queue.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: built-in.mod.c
+Only in ../linux-4.6.2/drivers/mmc/core: built-in.o
+Only in ../linux-4.6.2/drivers/mmc/core: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: bus.o
+Only in ../linux-4.6.2/drivers/mmc/core: .bus.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: core.o
+Only in ../linux-4.6.2/drivers/mmc/core: .core.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: debugfs.o
+Only in ../linux-4.6.2/drivers/mmc/core: .debugfs.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: host.o
+Only in ../linux-4.6.2/drivers/mmc/core: .host.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: mmc_core.mod.c
+Only in ../linux-4.6.2/drivers/mmc/core: mmc_core.o
+Only in ../linux-4.6.2/drivers/mmc/core: .mmc_core.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: mmc.o
+Only in ../linux-4.6.2/drivers/mmc/core: .mmc.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: mmc_ops.o
+Only in ../linux-4.6.2/drivers/mmc/core: .mmc_ops.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: modules.order
+Only in ../linux-4.6.2/drivers/mmc/core: quirks.o
+Only in ../linux-4.6.2/drivers/mmc/core: .quirks.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio_bus.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio_bus.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio_cis.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio_cis.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio_io.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio_io.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio_irq.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio_irq.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sdio_ops.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sdio_ops.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sd.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sd.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: sd_ops.o
+Only in ../linux-4.6.2/drivers/mmc/core: .sd_ops.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/core: slot-gpio.o
+Only in ../linux-4.6.2/drivers/mmc/core: .slot-gpio.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/host: built-in.mod.c
+Only in ../linux-4.6.2/drivers/mmc/host: built-in.o
+Only in ../linux-4.6.2/drivers/mmc/host: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/host: mmc_spi.o
+Only in ../linux-4.6.2/drivers/mmc/host: .mmc_spi.o.cmd
+Only in ../linux-4.6.2/drivers/mmc/host: modules.order
+Only in ../linux-4.6.2/drivers/mmc: modules.order
+Only in ../linux-4.6.2/drivers: modules.order
+Only in ../linux-4.6.2/drivers/net: built-in.mod.c
+Only in ../linux-4.6.2/drivers/net: built-in.o
+Only in ../linux-4.6.2/drivers/net: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/net: loopback.o
+Only in ../linux-4.6.2/drivers/net: .loopback.o.cmd
+Only in ../linux-4.6.2/drivers/net: modules.order
+Only in ../linux-4.6.2/drivers/net: Space.o
+Only in ../linux-4.6.2/drivers/net: .Space.o.cmd
+Only in ../linux-4.6.2/drivers/nfc: built-in.o
+Only in ../linux-4.6.2/drivers/nfc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/nfc: modules.order
+Only in ../linux-4.6.2/drivers/nvme: built-in.mod.c
+Only in ../linux-4.6.2/drivers/nvme: built-in.o
+Only in ../linux-4.6.2/drivers/nvme: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/nvme/host: built-in.o
+Only in ../linux-4.6.2/drivers/nvme/host: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/nvme/host: modules.order
+Only in ../linux-4.6.2/drivers/nvme: modules.order
+Only in ../linux-4.6.2/drivers/platform: built-in.o
+Only in ../linux-4.6.2/drivers/platform: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/platform: modules.order
+Only in ../linux-4.6.2/drivers/power: built-in.o
+Only in ../linux-4.6.2/drivers/power: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/power: modules.order
+Only in ../linux-4.6.2/drivers/pwm: built-in.o
+Only in ../linux-4.6.2/drivers/pwm: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/pwm: modules.order
+Only in ../linux-4.6.2/drivers/soc/bcm: built-in.o
+Only in ../linux-4.6.2/drivers/soc/bcm: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/soc/bcm: modules.order
+Only in ../linux-4.6.2/drivers/soc: built-in.mod.c
+Only in ../linux-4.6.2/drivers/soc: built-in.o
+Only in ../linux-4.6.2/drivers/soc: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/soc/fsl: built-in.o
+Only in ../linux-4.6.2/drivers/soc/fsl: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/soc/fsl: modules.order
+Only in ../linux-4.6.2/drivers/soc: modules.order
+Only in ../linux-4.6.2/drivers/spi: built-in.mod.c
+Only in ../linux-4.6.2/drivers/spi: built-in.o
+Only in ../linux-4.6.2/drivers/spi: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/spi: modules.order
+Only in ../linux-4.6.2/drivers/spi: spi-bitbang.o
+Only in ../linux-4.6.2/drivers/spi: .spi-bitbang.o.cmd
+Only in ../linux-4.6.2/drivers/spi: spi.o
+Only in ../linux-4.6.2/drivers/spi: .spi.o.cmd
+diff -r linux-4.6.2/drivers/spi/spi-xilinx.c ../linux-4.6.2/drivers/spi/spi-xilinx.c
+24a25
+> 
+28a30,31
+> #define XSPI_dummy_power_ctrl 0x00
+> 
+33d35
+< 
+168a171,174
+> 	// neutrino 2019 summer, power off the sd card
+> 	xspi->write_fn(1, regs_base + XSPI_dummy_power_ctrl);
+> 	//
+> 
+185a192,195
+> 
+> 	// neutrino 2019 summer, power on the sd card
+> 	xspi->write_fn(0, regs_base + XSPI_dummy_power_ctrl);
+> 	//
+273a284
+> 		int stalled;
+301a313
+> 		stalled = 10;
+302a315,323
+> 			if (rx_words == n_words && !(stalled--) &&
+> 			    !(sr & XSPI_SR_TX_EMPTY_MASK) &&
+> 			    (sr & XSPI_SR_RX_EMPTY_MASK)) {
+> 				dev_err(&spi->dev,
+> 					"Detected stall. Check C_SPI_MODE and C_SPI_MEMORY\n");
+> 				xspi_init_hw(xspi);
+> 				return -EIO;
+> 			}
+> 
+343a365
+> 		return IRQ_HANDLED;
+346c368
+< 	return IRQ_HANDLED;
+---
+> 	return IRQ_NONE;
+371a394
+> 	{ .compatible = "xlnx,axi-quad-spi-1.00.a", },
+458c481,484
+< 	if (xspi->irq >= 0) {
+---
+> 	if (xspi->irq < 0 && xspi->irq != -ENXIO) {
+> 		ret = xspi->irq;
+> 		goto put_master;
+> 	} else if (xspi->irq >= 0) {
+504c530,533
+< 
+---
+> 	
+> 	// neutrino 2019 summer, power off the sd card
+> 	xspi->write_fn(1, regs_base + XSPI_dummy_power_ctrl);
+> 	//
+Only in ../linux-4.6.2/drivers/spi: spi-xilinx.o
+Only in ../linux-4.6.2/drivers/spi: .spi-xilinx.o.cmd
+Only in ../linux-4.6.2/drivers: Tatto
+Only in ../linux-4.6.2/drivers/tty: built-in.mod.c
+Only in ../linux-4.6.2/drivers/tty: built-in.o
+Only in ../linux-4.6.2/drivers/tty: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/tty/ipwireless: built-in.o
+Only in ../linux-4.6.2/drivers/tty/ipwireless: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/tty/ipwireless: modules.order
+Only in ../linux-4.6.2/drivers/tty: modules.order
+Only in ../linux-4.6.2/drivers/tty: n_tty.o
+Only in ../linux-4.6.2/drivers/tty: .n_tty.o.cmd
+Only in ../linux-4.6.2/drivers/tty: pty.o
+Only in ../linux-4.6.2/drivers/tty: .pty.o.cmd
+Only in ../linux-4.6.2/drivers/tty/serial: built-in.o
+Only in ../linux-4.6.2/drivers/tty/serial: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/tty/serial: modules.order
+Only in ../linux-4.6.2/drivers/tty: tty_buffer.o
+Only in ../linux-4.6.2/drivers/tty: .tty_buffer.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_ioctl.o
+Only in ../linux-4.6.2/drivers/tty: .tty_ioctl.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_io.o
+Only in ../linux-4.6.2/drivers/tty: .tty_io.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_ldisc.o
+Only in ../linux-4.6.2/drivers/tty: .tty_ldisc.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_ldsem.o
+Only in ../linux-4.6.2/drivers/tty: .tty_ldsem.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_mutex.o
+Only in ../linux-4.6.2/drivers/tty: .tty_mutex.o.cmd
+Only in ../linux-4.6.2/drivers/tty: tty_port.o
+Only in ../linux-4.6.2/drivers/tty: .tty_port.o.cmd
+Only in ../linux-4.6.2/drivers/tty/vt: built-in.o
+Only in ../linux-4.6.2/drivers/tty/vt: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/tty/vt: modules.order
+Only in ../linux-4.6.2/drivers/video/backlight: built-in.o
+Only in ../linux-4.6.2/drivers/video/backlight: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/backlight: modules.order
+Only in ../linux-4.6.2/drivers/video: built-in.mod.c
+Only in ../linux-4.6.2/drivers/video: built-in.o
+Only in ../linux-4.6.2/drivers/video: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev: built-in.mod.c
+Only in ../linux-4.6.2/drivers/video/fbdev: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: built-in.mod.c
+Only in ../linux-4.6.2/drivers/video/fbdev/core: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fbcmap.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fbcmap.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fb_cmdline.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fb_cmdline.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fbcvt.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fbcvt.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fbmem.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fbmem.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fb.mod.c
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fbmon.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fbmon.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fb_notify.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fb_notify.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fb.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fb.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: fbsysfs.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .fbsysfs.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: modedb.o
+Only in ../linux-4.6.2/drivers/video/fbdev/core: .modedb.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/core: modules.order
+Only in ../linux-4.6.2/drivers/video/fbdev: modules.order
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2: built-in.mod.c
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2: modules.order
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb: built-in.mod.c
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/displays: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/displays: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/displays: modules.order
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/dss: built-in.o
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/dss: .built-in.o.cmd
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb/dss: modules.order
+Only in ../linux-4.6.2/drivers/video/fbdev/omap2/omapfb: modules.order
+Only in ../linux-4.6.2/drivers/video: modules.order
+Only in ../linux-4.6.2/firmware: built-in.o
+Only in ../linux-4.6.2/firmware: .built-in.o.cmd
+Only in ../linux-4.6.2/firmware: modules.order
+Only in ../linux-4.6.2/fs: aio.o
+Only in ../linux-4.6.2/fs: .aio.o.cmd
+Only in ../linux-4.6.2/fs: anon_inodes.o
+Only in ../linux-4.6.2/fs: .anon_inodes.o.cmd
+Only in ../linux-4.6.2/fs: attr.o
+Only in ../linux-4.6.2/fs: .attr.o.cmd
+Only in ../linux-4.6.2/fs: bad_inode.o
+Only in ../linux-4.6.2/fs: .bad_inode.o.cmd
+Only in ../linux-4.6.2/fs: binfmt_elf.o
+Only in ../linux-4.6.2/fs: .binfmt_elf.o.cmd
+Only in ../linux-4.6.2/fs: binfmt_script.o
+Only in ../linux-4.6.2/fs: .binfmt_script.o.cmd
+Only in ../linux-4.6.2/fs: block_dev.o
+Only in ../linux-4.6.2/fs: .block_dev.o.cmd
+Only in ../linux-4.6.2/fs: buffer.o
+Only in ../linux-4.6.2/fs: .buffer.o.cmd
+Only in ../linux-4.6.2/fs: built-in.mod.c
+Only in ../linux-4.6.2/fs: built-in.o
+Only in ../linux-4.6.2/fs: .built-in.o.cmd
+Only in ../linux-4.6.2/fs: char_dev.o
+Only in ../linux-4.6.2/fs: .char_dev.o.cmd
+Only in ../linux-4.6.2/fs: coredump.o
+Only in ../linux-4.6.2/fs: .coredump.o.cmd
+Only in ../linux-4.6.2/fs: dcache.o
+Only in ../linux-4.6.2/fs: .dcache.o.cmd
+Only in ../linux-4.6.2/fs/debugfs: built-in.mod.c
+Only in ../linux-4.6.2/fs/debugfs: built-in.o
+Only in ../linux-4.6.2/fs/debugfs: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/debugfs: debugfs.mod.c
+Only in ../linux-4.6.2/fs/debugfs: debugfs.o
+Only in ../linux-4.6.2/fs/debugfs: .debugfs.o.cmd
+Only in ../linux-4.6.2/fs/debugfs: file.o
+Only in ../linux-4.6.2/fs/debugfs: .file.o.cmd
+Only in ../linux-4.6.2/fs/debugfs: inode.o
+Only in ../linux-4.6.2/fs/debugfs: .inode.o.cmd
+Only in ../linux-4.6.2/fs/debugfs: modules.order
+Only in ../linux-4.6.2/fs/devpts: built-in.mod.c
+Only in ../linux-4.6.2/fs/devpts: built-in.o
+Only in ../linux-4.6.2/fs/devpts: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/devpts: devpts.mod.c
+Only in ../linux-4.6.2/fs/devpts: devpts.o
+Only in ../linux-4.6.2/fs/devpts: .devpts.o.cmd
+Only in ../linux-4.6.2/fs/devpts: inode.o
+Only in ../linux-4.6.2/fs/devpts: .inode.o.cmd
+Only in ../linux-4.6.2/fs/devpts: modules.order
+Only in ../linux-4.6.2/fs: direct-io.o
+Only in ../linux-4.6.2/fs: .direct-io.o.cmd
+Only in ../linux-4.6.2/fs: drop_caches.o
+Only in ../linux-4.6.2/fs: .drop_caches.o.cmd
+Only in ../linux-4.6.2/fs: eventfd.o
+Only in ../linux-4.6.2/fs: .eventfd.o.cmd
+Only in ../linux-4.6.2/fs: eventpoll.o
+Only in ../linux-4.6.2/fs: .eventpoll.o.cmd
+diff -r linux-4.6.2/fs/exec.c ../linux-4.6.2/fs/exec.c
+68a69,88
+> /* PHMon: begin */
+> #include <linux/varanus.h>
+> #include <linux/module.h>
+> #include <linux/init.h>
+> #include <linux/fs.h>
+> #include <linux/uaccess.h>
+> #include <linux/mman.h>
+> #include <linux/mm.h>
+> #include <asm/pgtable.h>
+> #include <asm/page.h>
+> #include <linux/pagemap.h>
+> #include <linux/sched.h>
+> #include <linux/mm_types.h>
+> 
+> 
+> #define MAP_SIZE (1 << 19) +( 1<<19 )+( 1<<16 )//(1 << 21)
+> #define DATA_OFFSET_1 (1<<19)+(1<<16)
+> #define DATA_OFFSET_2 (1<<19)+(1<<19)+(1<<16)
+> #define MAP_OFFSET (1<<16)
+> /* PHMon: end */
+74a95
+> 
+1689c1710,1753
+< 
+---
+> 	/* PHMon: begin */
+>   
+> 	  /*
+> 	   //spec2006
+> 	   ((strcmp(current->comm, "perlbench_base_1.riscv") == 0) ||
+> 	     (strcmp(current->comm, "bzip2_base_1.riscv") == 0)     ||
+> 	     (strcmp(current->comm, "gcc_base_1.riscv") == 0)       ||
+> 	     (strcmp(current->comm, "mcf_base_1.riscv") == 0)       ||
+> 	     (strcmp(current->comm, "gobmk_base_1.riscv") == 0)     ||
+> 	     (strcmp(current->comm, "hmmer_base_1.riscv") == 0)     ||
+> 	     (strcmp(current->comm, "sjeng_base_1.riscv") == 0)     ||
+> 	     (strcmp(current->comm, "libquantum_base_1.riscv") == 0)||
+> 	     (strcmp(current->comm, "h264ref_base_1.riscv") == 0)   ||
+> 	     (strcmp(current->comm, "omnetpp_base_1.riscv") == 0)   ||
+> 	     (strcmp(current->comm, "astar_base_1.riscv") == 0)     ||
+> 	     (strcmp(current->comm, "Xalan_base_1.riscv") == 0)     )
+> 	*/
+> 	
+> 	/*
+> 	if (!current->monitor_init & 
+> 	    ((strcmp(current->comm, "nbench.riscv") == 0) 
+> 	   ))     
+> 
+> 	*/
+> 		
+> 	//fuzzing experience
+> 	if (!current->monitor_init & 
+> 	((strcmp(current->comm, "size") == 0) || 
+> 	 (strcmp(current->comm, "nm-new") == 0)  || 
+> 	 (strcmp(current->comm, "objdump") == 0) ||
+> 	 (strcmp(current->comm, "readelf") == 0) ||
+> 	 (strcmp(current->comm, "nasm") == 0)    ||
+> 	 (strcmp(current->comm, "tiff2bw") == 0) ||
+> 	 (strcmp(current->comm, "tiffinfo") == 0)||
+> 	 (strcmp(current->comm, "bison") == 0)))
+> 	{
+> 		current->monitor_init = true;
+> 		current->monitor_enable = true;
+> 		// printk("TATTO has enabled\n");
+> 
+> 	}
+> 	 
+> 	
+> 	/* PHMon: end*/
+1794a1859
+> 
+1805c1870,1871
+< 
+---
+> unsigned long hello=0;
+> unsigned long int paddr=0;
+1811,1812c1877,1997
+< 	return do_execve(getname(filename), argv, envp);
+< }
+---
+> 	//return do_execve(getname(filename), argv, envp);
+> 	/* PHMon: begin */
+> 	
+> 	int res = do_execve(getname(filename), argv, envp); 
+>  /*
+>  	// performance evaluation
+> 	if ((strcmp(current->comm, "afl_fuzz") == 0)  ){
+> 		int ret;
+> 		struct mm_struct *mm = current->mm;
+> 		
+> 		struct page *page = NULL;
+> 		struct vm_area_struct *vma;
+> 		komodo_reset_all();
+> 		hello=kmalloc(MAP_SIZE,GFP_ATOMIC);
+> 		printk("[afl_fuzz] %lx\n",hello);
+> 		memset((unsigned long*)hello,0,sizeof(char)*MAP_SIZE);
+> 		paddr= virt_to_phys((unsigned long*)hello);
+> 		page = virt_to_page((unsigned long*)hello);
+> 		komodo_set_local_reg(5, (hello));
+> 		unsigned long int trace_bits = komodo_info_sp_offset(6);//shmat(shm_id, NULL, 0);//
+> 		printk("[afl_fuzz] %lx\n",trace_bits);
+> 		unsigned long int trace_bits1 = komodo_info_sp_offset(5);
+> 		printk("[afl_fuzz] %lx\n",trace_bits1);
+> 		// SetPageReserved(virt_to_page(((unsigned long)hello) + i));
+> 		// ret = remap_pfn_range(vma, vma->vm_start, page_to_pfn(page), sizeof(char)*MAP_SIZE, vma->vm_page_prot);
+> 		if (ret < 0) {
+>     			pr_err("could not map the address area\n");
+>     			//return -EIO;
+> 		}
+> 		
+> 	}
+> */ 
+> 	if (current->monitor_enable){ 
+> 		
+> 		int i=0;
+> 		
+> 		/*
+> 		// performance evaluation
+> 		struct file *fp;
+> 		fp = filp_open("/dev/shm/my_dir_shm_name",O_RDWR| O_CREAT ,0777);
+> 		
+> 		if (fp < 0){
+> 			printk("kernel open error1\n");
+> 		}
+> 		
+> 		
+> 		
+> 		hello = vm_mmap(fp, 0,MAP_SIZE,PROT_READ| PROT_WRITE, MAP_SHARED, SEEK_SET);
+> 
+> 		// hello = vm_mmap(fp, 0,MAP_SIZE,PROT_READ | PROT_WRITE, MAP_SHARED, 0);
+> 		
+> 		if (hello == (void *)-1){
+> 			printk("kernel open error2\n");
+> 		}
+> 		
+> 		// mm_populate(hello, MAP_SIZE);
+> 		mm_populate(hello, MAP_SIZE);
+> 		*/
+> 		
+> 		
+> 		
+> 		/*
+> 		if(hello==0){
+> 			// printk("only once\n");
+> 			hello=kmalloc(MAP_SIZE,GFP_ATOMIC);
+> 			memset((unsigned long*)hello,0,sizeof(char)*MAP_SIZE);
+> 			paddr= virt_to_phys((unsigned long*)hello);
+> 		}
+> 		*/
+> 		
+> 		
+> 		
+> 		/*
+> 		for(i=0;i<MAP_SIZE;i++){
+> 			printk("%x",*((char*)hello+i));
+> 		}
+> 		*/
+> 		
+> 	
+> 		// komodo_reset_all();
+> 		// komodo_set_local_reg(0, (paddr));
+> 		// komodo_set_local_reg(1, 0x0);
+> 		// komodo_set_local_reg(2, 0x0);
+> 		// komodo_set_local_reg(3, (paddr+MAP_OFFSET));
+> 		// komodo_set_local_reg(4, (paddr+DATA_OFFSET_1));
+> 		
+> 		/*
+> 		printk("\nhello kernel address %llx  paddr %lx\n",hello,paddr);
+> 		printk("size %d   %x\n",MAP_SIZE,MAP_SIZE);
+> 		printk("hello PROT_READ %x PROT_WRITE %x PROT_READ|PROT_WRITE %x MAP_SHARED %x SEEK_SET %x\n",PROT_READ,PROT_WRITE,PROT_READ|PROT_WRITE,MAP_SHARED,SEEK_SET);
+> 		
+> 		printk("3 %lx  4  %lx\n",(paddr+MAP_OFFSET),(paddr+DATA_OFFSET_1));
+> 		*/
+> 		komodo_enable_all();
+> 		asm volatile ("slli x0, x1, 0");
+> 		
+> 		
+> 		// printk("hello kernel data %x\n",*(char*)hello);
+> 		// filp_close(fp,NULL);
+> 		      
+> 		//*((unsigned char *) ( hello)) = 15;
+> 		/*
+> 		for (i = 0; i < 10; i++) {
+> 			*((unsigned char *) ( hello)) = 15;
+> 		} 
+> 		*/
+> 		 
+> 		
+> 	}
+> 	    
+> 		/*
+> 		unsigned long cycles;
+> 		asm volatile ("rdcycle %0" : "=r" (cycles) ::);
+> 		asm volatile ("rdinstret %0" : "=r" (cycles) ::);
+> 		*/
+> 		// printk("number of instr 0x%lx\n", cycles);
+> 		// csr_set(sstatus, SR_SUM);
+> 		// csr_clear(sstatus, SR_SUM);
+> 		// getnstimeofday(&(current->t0));
+> 		// printk("%s: t0 = %lld.%.9ld\n", current->comm, (long long)current->t0.tv_sec, current->t0.tv_nsec);
+> 
+1813a1999,2002
+> 	return res;
+> 	// return do_execve(getname(filename), argv, envp);
+> 	/* PHMon: end */
+> }
+Only in ../linux-4.6.2/fs: exec.o
+Only in ../linux-4.6.2/fs: .exec.o.cmd
+Only in ../linux-4.6.2/fs/exofs: built-in.o
+Only in ../linux-4.6.2/fs/exofs: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/exofs: modules.order
+Only in ../linux-4.6.2/fs/ext2: balloc.o
+Only in ../linux-4.6.2/fs/ext2: .balloc.o.cmd
+Only in ../linux-4.6.2/fs/ext2: built-in.mod.c
+Only in ../linux-4.6.2/fs/ext2: built-in.o
+Only in ../linux-4.6.2/fs/ext2: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/ext2: dir.o
+Only in ../linux-4.6.2/fs/ext2: .dir.o.cmd
+Only in ../linux-4.6.2/fs/ext2: ext2.mod.c
+Only in ../linux-4.6.2/fs/ext2: ext2.o
+Only in ../linux-4.6.2/fs/ext2: .ext2.o.cmd
+Only in ../linux-4.6.2/fs/ext2: file.o
+Only in ../linux-4.6.2/fs/ext2: .file.o.cmd
+Only in ../linux-4.6.2/fs/ext2: ialloc.o
+Only in ../linux-4.6.2/fs/ext2: .ialloc.o.cmd
+Only in ../linux-4.6.2/fs/ext2: inode.o
+Only in ../linux-4.6.2/fs/ext2: .inode.o.cmd
+Only in ../linux-4.6.2/fs/ext2: ioctl.o
+Only in ../linux-4.6.2/fs/ext2: .ioctl.o.cmd
+Only in ../linux-4.6.2/fs/ext2: modules.order
+Only in ../linux-4.6.2/fs/ext2: namei.o
+Only in ../linux-4.6.2/fs/ext2: .namei.o.cmd
+Only in ../linux-4.6.2/fs/ext2: super.o
+Only in ../linux-4.6.2/fs/ext2: .super.o.cmd
+Only in ../linux-4.6.2/fs/ext2: symlink.o
+Only in ../linux-4.6.2/fs/ext2: .symlink.o.cmd
+Only in ../linux-4.6.2/fs/fat: built-in.mod.c
+Only in ../linux-4.6.2/fs/fat: built-in.o
+Only in ../linux-4.6.2/fs/fat: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/fat: cache.o
+Only in ../linux-4.6.2/fs/fat: .cache.o.cmd
+Only in ../linux-4.6.2/fs/fat: dir.o
+Only in ../linux-4.6.2/fs/fat: .dir.o.cmd
+Only in ../linux-4.6.2/fs/fat: fatent.o
+Only in ../linux-4.6.2/fs/fat: .fatent.o.cmd
+Only in ../linux-4.6.2/fs/fat: fat.mod.c
+Only in ../linux-4.6.2/fs/fat: fat.o
+Only in ../linux-4.6.2/fs/fat: .fat.o.cmd
+Only in ../linux-4.6.2/fs/fat: file.o
+Only in ../linux-4.6.2/fs/fat: .file.o.cmd
+Only in ../linux-4.6.2/fs/fat: inode.o
+Only in ../linux-4.6.2/fs/fat: .inode.o.cmd
+Only in ../linux-4.6.2/fs/fat: misc.o
+Only in ../linux-4.6.2/fs/fat: .misc.o.cmd
+Only in ../linux-4.6.2/fs/fat: modules.order
+Only in ../linux-4.6.2/fs/fat: msdos.mod.c
+Only in ../linux-4.6.2/fs/fat: msdos.o
+Only in ../linux-4.6.2/fs/fat: .msdos.o.cmd
+Only in ../linux-4.6.2/fs/fat: namei_msdos.o
+Only in ../linux-4.6.2/fs/fat: .namei_msdos.o.cmd
+Only in ../linux-4.6.2/fs/fat: namei_vfat.o
+Only in ../linux-4.6.2/fs/fat: .namei_vfat.o.cmd
+Only in ../linux-4.6.2/fs/fat: nfs.o
+Only in ../linux-4.6.2/fs/fat: .nfs.o.cmd
+Only in ../linux-4.6.2/fs/fat: vfat.mod.c
+Only in ../linux-4.6.2/fs/fat: vfat.o
+Only in ../linux-4.6.2/fs/fat: .vfat.o.cmd
+Only in ../linux-4.6.2/fs: fcntl.o
+Only in ../linux-4.6.2/fs: .fcntl.o.cmd
+Only in ../linux-4.6.2/fs: file.o
+Only in ../linux-4.6.2/fs: .file.o.cmd
+Only in ../linux-4.6.2/fs: filesystems.o
+Only in ../linux-4.6.2/fs: .filesystems.o.cmd
+Only in ../linux-4.6.2/fs: file_table.o
+Only in ../linux-4.6.2/fs: .file_table.o.cmd
+Only in ../linux-4.6.2/fs: fs_pin.o
+Only in ../linux-4.6.2/fs: .fs_pin.o.cmd
+Only in ../linux-4.6.2/fs: fs_struct.o
+Only in ../linux-4.6.2/fs: .fs_struct.o.cmd
+Only in ../linux-4.6.2/fs: fs-writeback.o
+Only in ../linux-4.6.2/fs: .fs-writeback.o.cmd
+Only in ../linux-4.6.2/fs: inode.o
+Only in ../linux-4.6.2/fs: .inode.o.cmd
+Only in ../linux-4.6.2/fs: ioctl.o
+Only in ../linux-4.6.2/fs: .ioctl.o.cmd
+Only in ../linux-4.6.2/fs: komodo.c
+Only in ../linux-4.6.2/fs: komodo.o
+Only in ../linux-4.6.2/fs: .komodo.o.cmd
+Only in ../linux-4.6.2/fs: libfs.o
+Only in ../linux-4.6.2/fs: .libfs.o.cmd
+diff -r linux-4.6.2/fs/Makefile ../linux-4.6.2/fs/Makefile
+14c14,15
+< 		stack.o fs_struct.o statfs.o fs_pin.o nsfs.o
+---
+> 		stack.o fs_struct.o statfs.o fs_pin.o nsfs.o  \
+> 		komodo.o
+Only in ../linux-4.6.2/fs: modules.order
+Only in ../linux-4.6.2/fs: mpage.o
+Only in ../linux-4.6.2/fs: .mpage.o.cmd
+diff -r linux-4.6.2/fs/namei.c ../linux-4.6.2/fs/namei.c
+3363a3364
+> 
+3393a3395
+> 
+3414a3417
+> 
+Only in ../linux-4.6.2/fs: namei.o
+Only in ../linux-4.6.2/fs: .namei.o.cmd
+Only in ../linux-4.6.2/fs: namespace.o
+Only in ../linux-4.6.2/fs: .namespace.o.cmd
+Only in ../linux-4.6.2/fs/nls: built-in.mod.c
+Only in ../linux-4.6.2/fs/nls: built-in.o
+Only in ../linux-4.6.2/fs/nls: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/nls: modules.order
+Only in ../linux-4.6.2/fs/nls: nls_base.o
+Only in ../linux-4.6.2/fs/nls: .nls_base.o.cmd
+Only in ../linux-4.6.2/fs/nls: nls_cp437.o
+Only in ../linux-4.6.2/fs/nls: .nls_cp437.o.cmd
+Only in ../linux-4.6.2/fs/nls: nls_iso8859-1.o
+Only in ../linux-4.6.2/fs/nls: .nls_iso8859-1.o.cmd
+Only in ../linux-4.6.2/fs/nls: nls_utf8.o
+Only in ../linux-4.6.2/fs/nls: .nls_utf8.o.cmd
+Only in ../linux-4.6.2/fs/notify: built-in.mod.c
+Only in ../linux-4.6.2/fs/notify: built-in.o
+Only in ../linux-4.6.2/fs/notify: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/notify/dnotify: built-in.o
+Only in ../linux-4.6.2/fs/notify/dnotify: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/notify/dnotify: modules.order
+Only in ../linux-4.6.2/fs/notify/fanotify: built-in.o
+Only in ../linux-4.6.2/fs/notify/fanotify: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/notify/fanotify: modules.order
+Only in ../linux-4.6.2/fs/notify/inotify: built-in.o
+Only in ../linux-4.6.2/fs/notify/inotify: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/notify/inotify: modules.order
+Only in ../linux-4.6.2/fs/notify: modules.order
+Only in ../linux-4.6.2/fs: nsfs.o
+Only in ../linux-4.6.2/fs: .nsfs.o.cmd
+Only in ../linux-4.6.2/fs: open.o
+Only in ../linux-4.6.2/fs: .open.o.cmd
+Only in ../linux-4.6.2/fs: pipe.o
+Only in ../linux-4.6.2/fs: .pipe.o.cmd
+Only in ../linux-4.6.2/fs: pnode.o
+Only in ../linux-4.6.2/fs: .pnode.o.cmd
+Only in ../linux-4.6.2/fs/proc: array.o
+Only in ../linux-4.6.2/fs/proc: .array.o.cmd
+Only in ../linux-4.6.2/fs/proc: base.o
+Only in ../linux-4.6.2/fs/proc: .base.o.cmd
+Only in ../linux-4.6.2/fs/proc: built-in.mod.c
+Only in ../linux-4.6.2/fs/proc: built-in.o
+Only in ../linux-4.6.2/fs/proc: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/proc: cmdline.o
+Only in ../linux-4.6.2/fs/proc: .cmdline.o.cmd
+Only in ../linux-4.6.2/fs/proc: consoles.o
+Only in ../linux-4.6.2/fs/proc: .consoles.o.cmd
+Only in ../linux-4.6.2/fs/proc: cpuinfo.o
+Only in ../linux-4.6.2/fs/proc: .cpuinfo.o.cmd
+Only in ../linux-4.6.2/fs/proc: devices.o
+Only in ../linux-4.6.2/fs/proc: .devices.o.cmd
+Only in ../linux-4.6.2/fs/proc: fd.o
+Only in ../linux-4.6.2/fs/proc: .fd.o.cmd
+Only in ../linux-4.6.2/fs/proc: generic.o
+Only in ../linux-4.6.2/fs/proc: .generic.o.cmd
+Only in ../linux-4.6.2/fs/proc: inode.o
+Only in ../linux-4.6.2/fs/proc: .inode.o.cmd
+Only in ../linux-4.6.2/fs/proc: interrupts.o
+Only in ../linux-4.6.2/fs/proc: .interrupts.o.cmd
+Only in ../linux-4.6.2/fs/proc: kmsg.o
+Only in ../linux-4.6.2/fs/proc: .kmsg.o.cmd
+Only in ../linux-4.6.2/fs/proc: loadavg.o
+Only in ../linux-4.6.2/fs/proc: .loadavg.o.cmd
+Only in ../linux-4.6.2/fs/proc: meminfo.o
+Only in ../linux-4.6.2/fs/proc: .meminfo.o.cmd
+Only in ../linux-4.6.2/fs/proc: modules.order
+Only in ../linux-4.6.2/fs/proc: namespaces.o
+Only in ../linux-4.6.2/fs/proc: .namespaces.o.cmd
+Only in ../linux-4.6.2/fs/proc: proc.mod.c
+Only in ../linux-4.6.2/fs/proc: proc_net.o
+Only in ../linux-4.6.2/fs/proc: .proc_net.o.cmd
+Only in ../linux-4.6.2/fs/proc: proc.o
+Only in ../linux-4.6.2/fs/proc: .proc.o.cmd
+Only in ../linux-4.6.2/fs/proc: proc_sysctl.o
+Only in ../linux-4.6.2/fs/proc: .proc_sysctl.o.cmd
+Only in ../linux-4.6.2/fs/proc: proc_tty.o
+Only in ../linux-4.6.2/fs/proc: .proc_tty.o.cmd
+Only in ../linux-4.6.2/fs/proc: root.o
+Only in ../linux-4.6.2/fs/proc: .root.o.cmd
+Only in ../linux-4.6.2/fs/proc: self.o
+Only in ../linux-4.6.2/fs/proc: .self.o.cmd
+Only in ../linux-4.6.2/fs/proc: softirqs.o
+Only in ../linux-4.6.2/fs/proc: .softirqs.o.cmd
+Only in ../linux-4.6.2/fs/proc: stat.o
+Only in ../linux-4.6.2/fs/proc: .stat.o.cmd
+Only in ../linux-4.6.2/fs/proc: task_mmu.o
+Only in ../linux-4.6.2/fs/proc: .task_mmu.o.cmd
+Only in ../linux-4.6.2/fs/proc: thread_self.o
+Only in ../linux-4.6.2/fs/proc: .thread_self.o.cmd
+Only in ../linux-4.6.2/fs/proc: uptime.o
+Only in ../linux-4.6.2/fs/proc: .uptime.o.cmd
+Only in ../linux-4.6.2/fs/proc: version.o
+Only in ../linux-4.6.2/fs/proc: .version.o.cmd
+Only in ../linux-4.6.2/fs: proc_namespace.o
+Only in ../linux-4.6.2/fs: .proc_namespace.o.cmd
+Only in ../linux-4.6.2/fs/quota: built-in.o
+Only in ../linux-4.6.2/fs/quota: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/quota: modules.order
+Only in ../linux-4.6.2/fs/ramfs: built-in.mod.c
+Only in ../linux-4.6.2/fs/ramfs: built-in.o
+Only in ../linux-4.6.2/fs/ramfs: .built-in.o.cmd
+Only in ../linux-4.6.2/fs/ramfs: file-mmu.o
+Only in ../linux-4.6.2/fs/ramfs: .file-mmu.o.cmd
+Only in ../linux-4.6.2/fs/ramfs: inode.o
+Only in ../linux-4.6.2/fs/ramfs: .inode.o.cmd
+Only in ../linux-4.6.2/fs/ramfs: modules.order
+Only in ../linux-4.6.2/fs/ramfs: ramfs.mod.c
+Only in ../linux-4.6.2/fs/ramfs: ramfs.o
+Only in ../linux-4.6.2/fs/ramfs: .ramfs.o.cmd
+Only in ../linux-4.6.2/fs: readdir.o
+Only in ../linux-4.6.2/fs: .readdir.o.cmd
+Only in ../linux-4.6.2/fs: read_write.o
+Only in ../linux-4.6.2/fs: .read_write.o.cmd
+Only in ../linux-4.6.2/fs: select.o
+Only in ../linux-4.6.2/fs: .select.o.cmd
+Only in ../linux-4.6.2/fs: seq_file.o
+Only in ../linux-4.6.2/fs: .seq_file.o.cmd
+Only in ../linux-4.6.2/fs: signalfd.o
+Only in ../linux-4.6.2/fs: .signalfd.o.cmd
+Only in ../linux-4.6.2/fs: splice.o
+Only in ../linux-4.6.2/fs: .splice.o.cmd
+Only in ../linux-4.6.2/fs: stack.o
+Only in ../linux-4.6.2/fs: .stack.o.cmd
+Only in ../linux-4.6.2/fs: statfs.o
+Only in ../linux-4.6.2/fs: .statfs.o.cmd
+Only in ../linux-4.6.2/fs: stat.o
+Only in ../linux-4.6.2/fs: .stat.o.cmd
+Only in ../linux-4.6.2/fs: super.o
+Only in ../linux-4.6.2/fs: .super.o.cmd
+Only in ../linux-4.6.2/fs: sync.o
+Only in ../linux-4.6.2/fs: .sync.o.cmd
+Only in ../linux-4.6.2/fs: timerfd.o
+Only in ../linux-4.6.2/fs: .timerfd.o.cmd
+Only in ../linux-4.6.2/fs: utimes.o
+Only in ../linux-4.6.2/fs: .utimes.o.cmd
+Only in ../linux-4.6.2/fs: xattr.o
+Only in ../linux-4.6.2/fs: .xattr.o.cmd
+Only in ../linux-4.6.2/: .git
+diff -r linux-4.6.2/.gitignore ../linux-4.6.2/.gitignore
+1,39c1,2
+< #
+< # NOTE! Don't add files that are generated in specific
+< # subdirectories here. Add them in the ".gitignore" file
+< # in that subdirectory instead.
+< #
+< # NOTE! Please use 'git ls-files -i --exclude-standard'
+< # command after changing this file, to see if there are
+< # any tracked files which get ignored after the change.
+< #
+< # Normal rules
+< #
+< .*
+< *.o
+< *.o.*
+< *.a
+< *.s
+< *.ko
+< *.so
+< *.so.dbg
+< *.mod.c
+< *.i
+< *.lst
+< *.symtypes
+< *.order
+< *.elf
+< *.bin
+< *.tar
+< *.gz
+< *.bz2
+< *.lzma
+< *.xz
+< *.lz4
+< *.lzo
+< *.patch
+< *.gcno
+< modules.builtin
+< Module.symvers
+< *.dwo
+< *.su
+---
+> # Ignore everything...
+> *
+41,66c4,5
+< #
+< # Top-level generic files
+< #
+< /tags
+< /TAGS
+< /linux
+< /vmlinux
+< /vmlinux.32
+< /vmlinux-gdb.py
+< /vmlinuz
+< /System.map
+< /Module.markers
+< 
+< #
+< # Debian directory (make deb-pkg)
+< #
+< /debian/
+< 
+< #
+< # tar directory (make tar*-pkg)
+< #
+< /tar-install/
+< 
+< #
+< # git files that we don't want to ignore even it they are dot-files
+< #
+---
+> # Then include just this.
+> !arch/
+68,108c7
+< !.mailmap
+< 
+< #
+< # Generated include files
+< #
+< include/config
+< include/generated
+< arch/*/include/generated
+< 
+< # stgit generated dirs
+< patches-*
+< 
+< # quilt's files
+< patches
+< series
+< 
+< # cscope files
+< cscope.*
+< ncscope.*
+< 
+< # gnu global files
+< GPATH
+< GRTAGS
+< GSYMS
+< GTAGS
+< 
+< # id-utils files
+< ID
+< 
+< *.orig
+< *~
+< \#*#
+< 
+< #
+< # Leavings from module signing
+< #
+< extra_certificates
+< signing_key.pem
+< signing_key.priv
+< signing_key.x509
+< x509.genkey
+---
+> !README.md
+110,111c9,10
+< # Kconfig presets
+< all.config
+---
+> # The arch/.gitignore and arch/riscv/.gitignore have patterns to un-ignore the
+> # appropriate files.
+113,114d11
+< # Kdevelop4
+< *.kdev4
+Only in ../linux-4.6.2/include: config
+Only in ../linux-4.6.2/include: generated
+diff -r linux-4.6.2/include/linux/sched.h ../linux-4.6.2/include/linux/sched.h
+67c67,71
+< 
+---
+> /* PHMon: begin */
+> #ifndef CONFIG_KOMODO
+> #define CONFIG_KOMODO
+> #endif
+> /* PHMon: end */
+972a977,1021
+> 
+> /* PHMon: begin */
+> // Data structure encapsulating everything communicated by one entry
+> // in the commit log. This should match the `CommitLog` class from
+> // src/main/scala/Varanus.scala.
+> struct commit_log_t {
+>   unsigned long pc_src;
+>   unsigned long pc_dst;
+>   unsigned int inst;
+>   unsigned int priv;
+>   unsigned long rd;
+>   unsigned long data;
+>   unsigned long in1bits;
+>   unsigned long in2bits;
+> };
+> 
+> // Definition of a match on mask that can be used to match a specific
+> // commit log. To enable matching of don't cares this requires two
+> // masks, "care" and "don't care".
+> struct mask_t {
+>   struct commit_log_t care;
+>   struct commit_log_t dont_care;
+> };
+> 
+> //-------------------------------------- Config Unit
+> // Data structure encapsulating everything communicated by one entry
+> // in the config table. This should match the `ActionConfigTable` class
+> // from src/main/scala/ConfigUnit.scala.
+> struct act_conf_table_t {
+>   unsigned char op_type;
+>   unsigned char in1;
+>   unsigned char in2;
+>   unsigned char fn;
+>   unsigned char out;
+>   unsigned long data;
+> };
+> 
+> struct phmon_info {
+>   int index; /* commit index for action */
+>   unsigned long action_count; /* number of actions */
+>   struct act_conf_table_t action[16]; /* per monitor action list */
+>   struct mask_t mu; /* The mu configuration */
+> };
+> /* PHMon: end */
+> 
+1856a1906,1922
+> /* PHMon: begin */
+> #ifdef CONFIG_KOMODO
+>     bool monitor_init; /* indicates whether the monitoring process is initialized for the proc */
+>     bool monitor_enable; /* per process monitoring enable flag */
+>     // bool maintain_state; /* state has been maintened once during context swicht */
+>     
+>     // struct phmon_info info[5]; /* per process monitoring info */
+>     // unsigned long local1;
+>     // unsigned long local2;
+>     // unsigned long local3;
+>     // unsigned long local4;
+>     // unsigned long local5;
+>     // unsigned long local6;
+>     // struct timespec t0,t1;
+> #endif
+> /* PHMon: end */
+> 
+Only in ../linux-4.6.2/include/linux: varanus.h
+Only in ../linux-4.6.2/include/linux: xcustom.h
+Only in ../linux-4.6.2/init: built-in.mod.c
+Only in ../linux-4.6.2/init: built-in.o
+Only in ../linux-4.6.2/init: .built-in.o.cmd
+Only in ../linux-4.6.2/init: calibrate.o
+Only in ../linux-4.6.2/init: .calibrate.o.cmd
+Only in ../linux-4.6.2/init: do_mounts_initrd.o
+Only in ../linux-4.6.2/init: .do_mounts_initrd.o.cmd
+Only in ../linux-4.6.2/init: do_mounts.o
+Only in ../linux-4.6.2/init: .do_mounts.o.cmd
+Only in ../linux-4.6.2/init: initramfs.o
+Only in ../linux-4.6.2/init: .initramfs.o.cmd
+Only in ../linux-4.6.2/init: init_task.o
+Only in ../linux-4.6.2/init: .init_task.o.cmd
+diff -r linux-4.6.2/init/main.c ../linux-4.6.2/init/main.c
+945c945
+< 
+---
+> 	
+959a960
+> 	pr_info("Kernel init execute_command\n");
+960a962
+> 		pr_info("Kernel init execute_command1 %s\n",*execute_command);
+1020c1022
+< 
+---
+> 	pr_info("Kernel init ramdisk_execute_command\n");
+1023c1025
+< 
+---
+>         
+Only in ../linux-4.6.2/init: main.o
+Only in ../linux-4.6.2/init: .main.o.cmd
+Only in ../linux-4.6.2/init: modules.order
+Only in ../linux-4.6.2/init: mounts.mod.c
+Only in ../linux-4.6.2/init: mounts.o
+Only in ../linux-4.6.2/init: .mounts.o.cmd
+Only in ../linux-4.6.2/init: version.o
+Only in ../linux-4.6.2/init: .version.o.cmd
+Only in ../linux-4.6.2/: initramfs.cpio
+Only in ../linux-4.6.2/ipc: built-in.mod.c
+Only in ../linux-4.6.2/ipc: built-in.o
+Only in ../linux-4.6.2/ipc: .built-in.o.cmd
+Only in ../linux-4.6.2/ipc: ipc_sysctl.o
+Only in ../linux-4.6.2/ipc: .ipc_sysctl.o.cmd
+Only in ../linux-4.6.2/ipc: modules.order
+Only in ../linux-4.6.2/ipc: msg.o
+Only in ../linux-4.6.2/ipc: .msg.o.cmd
+Only in ../linux-4.6.2/ipc: msgutil.o
+Only in ../linux-4.6.2/ipc: .msgutil.o.cmd
+Only in ../linux-4.6.2/ipc: namespace.o
+Only in ../linux-4.6.2/ipc: .namespace.o.cmd
+Only in ../linux-4.6.2/ipc: sem.o
+Only in ../linux-4.6.2/ipc: .sem.o.cmd
+Only in ../linux-4.6.2/ipc: shm.o
+Only in ../linux-4.6.2/ipc: .shm.o.cmd
+Only in ../linux-4.6.2/ipc: syscall.o
+Only in ../linux-4.6.2/ipc: .syscall.o.cmd
+Only in ../linux-4.6.2/ipc: util.o
+Only in ../linux-4.6.2/ipc: .util.o.cmd
+Only in ../linux-4.6.2/kernel: async.o
+Only in ../linux-4.6.2/kernel: .async.o.cmd
+Only in ../linux-4.6.2/kernel: bounds.s
+Only in ../linux-4.6.2/kernel: .bounds.s.cmd
+Only in ../linux-4.6.2/kernel/bpf: built-in.mod.c
+Only in ../linux-4.6.2/kernel/bpf: built-in.o
+Only in ../linux-4.6.2/kernel/bpf: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/bpf: core.o
+Only in ../linux-4.6.2/kernel/bpf: .core.o.cmd
+Only in ../linux-4.6.2/kernel/bpf: modules.order
+Only in ../linux-4.6.2/kernel: built-in.mod.c
+Only in ../linux-4.6.2/kernel: built-in.o
+Only in ../linux-4.6.2/kernel: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel: capability.o
+Only in ../linux-4.6.2/kernel: .capability.o.cmd
+Only in ../linux-4.6.2/kernel: cpu.o
+Only in ../linux-4.6.2/kernel: .cpu.o.cmd
+Only in ../linux-4.6.2/kernel: cred.o
+Only in ../linux-4.6.2/kernel: .cred.o.cmd
+Only in ../linux-4.6.2/kernel: elfcore.o
+Only in ../linux-4.6.2/kernel: .elfcore.o.cmd
+Only in ../linux-4.6.2/kernel: exec_domain.o
+Only in ../linux-4.6.2/kernel: .exec_domain.o.cmd
+diff -r linux-4.6.2/kernel/exit.c ../linux-4.6.2/kernel/exit.c
+57c57
+< 
+---
+> #include <linux/varanus.h>
+62c62,63
+< 
+---
+> #define MAP_SIZE (1 << 19) +( 1<<19 )+( 1<<16 )
+> extern int rocc_interrupt_time;
+666a668,724
+> 	/* PHMon: begin */
+>  
+> 	//unsigned long i = 0;
+> 	//unsigned long varanus_done = 0;
+> 
+> 	//getnstimeofday(&(current->t1));
+> 	//printk("%s: t1 = %lld.%.9ld\n", current->comm, (long long)current->t1.tv_sec, current->t1.tv_nsec);
+> 	/*
+> 	if ((strcmp(current->comm, "afl_fuzz") == 0)  ){
+> 		komodo_disable_all();
+> 	}
+> 	*/
+> 	if (current->monitor_enable) {
+> 		current->monitor_init = false;
+> 		current->monitor_enable = false;
+> 		
+> 		//vm_munmap(shmem_addr, MAP_SIZE);	
+> 		//kfree((unsigned long int*)shmem_addr);
+> 		
+> 		
+> 		
+> 		
+> 		/*
+> 		unsigned long int shmem_addr=komodo_info_sp_offset(5);
+> 		
+> 		
+> 		printk("%lx\n",shmem_addr);
+> 		int i=0;
+> 		
+> 		for(i=0;i<100;i++){
+> 			printk("%x %x\n",(char*)shmem_addr+i,*((char*)shmem_addr+i));
+> 		}
+> 		*/
+> 		
+> 		
+> 		
+> 		
+> 		/*
+> 		int i=0;
+> 		
+> 		for(i=0;i<MAP_SIZE;i++){
+> 			printk("%x",*((char*)shmem_addr+i));
+> 		}
+> 		*/
+> 		/*
+> 		unsigned long int phmon0=komodo_info_sp_offset(0);
+> 		unsigned long int phmon1=komodo_info_sp_offset(1);
+> 		unsigned long int phmon2=komodo_info_sp_offset(2);
+> 		unsigned long int phmon3=komodo_info_sp_offset(3);
+> 		unsigned long int phmon4=komodo_info_sp_offset(4);
+> 		unsigned long int phmon5=komodo_info_sp_offset(4);
+> 		printk("\n");
+> 		printk("exit from hello baseaddr %lx pre_loc %lx phmon2 %lx phmon3 %lx phmon4 %lx phmon5 %lx\n",phmon0,phmon1,phmon2,phmon3,phmon4,phmon5);
+> 		*/
+> 		komodo_disable_all();
+> 
+> 	}
+667a726
+> 	/* PHMon: end */
+Only in ../linux-4.6.2/kernel: exit.o
+Only in ../linux-4.6.2/kernel: .exit.o.cmd
+Only in ../linux-4.6.2/kernel: extable.o
+Only in ../linux-4.6.2/kernel: .extable.o.cmd
+Only in ../linux-4.6.2/kernel: fork.o
+Only in ../linux-4.6.2/kernel: .fork.o.cmd
+Only in ../linux-4.6.2/kernel: futex.o
+Only in ../linux-4.6.2/kernel: .futex.o.cmd
+Only in ../linux-4.6.2/kernel: groups.o
+Only in ../linux-4.6.2/kernel: .groups.o.cmd
+Only in ../linux-4.6.2/kernel/irq: built-in.mod.c
+Only in ../linux-4.6.2/kernel/irq: built-in.o
+Only in ../linux-4.6.2/kernel/irq: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/irq: chip.o
+Only in ../linux-4.6.2/kernel/irq: .chip.o.cmd
+Only in ../linux-4.6.2/kernel/irq: devres.o
+Only in ../linux-4.6.2/kernel/irq: .devres.o.cmd
+Only in ../linux-4.6.2/kernel/irq: dummychip.o
+Only in ../linux-4.6.2/kernel/irq: .dummychip.o.cmd
+Only in ../linux-4.6.2/kernel/irq: handle.o
+Only in ../linux-4.6.2/kernel/irq: .handle.o.cmd
+Only in ../linux-4.6.2/kernel/irq: irqdesc.o
+Only in ../linux-4.6.2/kernel/irq: .irqdesc.o.cmd
+Only in ../linux-4.6.2/kernel/irq: manage.o
+Only in ../linux-4.6.2/kernel/irq: .manage.o.cmd
+Only in ../linux-4.6.2/kernel/irq: modules.order
+Only in ../linux-4.6.2/kernel/irq: proc.o
+Only in ../linux-4.6.2/kernel/irq: .proc.o.cmd
+Only in ../linux-4.6.2/kernel/irq: resend.o
+Only in ../linux-4.6.2/kernel/irq: .resend.o.cmd
+Only in ../linux-4.6.2/kernel/irq: spurious.o
+Only in ../linux-4.6.2/kernel/irq: .spurious.o.cmd
+Only in ../linux-4.6.2/kernel: irq_work.o
+Only in ../linux-4.6.2/kernel: .irq_work.o.cmd
+Only in ../linux-4.6.2/kernel: kallsyms.o
+Only in ../linux-4.6.2/kernel: .kallsyms.o.cmd
+Only in ../linux-4.6.2/kernel: kmod.o
+Only in ../linux-4.6.2/kernel: .kmod.o.cmd
+Only in ../linux-4.6.2/kernel: ksysfs.o
+Only in ../linux-4.6.2/kernel: .ksysfs.o.cmd
+Only in ../linux-4.6.2/kernel: kthread.o
+Only in ../linux-4.6.2/kernel: .kthread.o.cmd
+Only in ../linux-4.6.2/kernel/livepatch: built-in.o
+Only in ../linux-4.6.2/kernel/livepatch: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/livepatch: modules.order
+Only in ../linux-4.6.2/kernel/locking: built-in.mod.c
+Only in ../linux-4.6.2/kernel/locking: built-in.o
+Only in ../linux-4.6.2/kernel/locking: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/locking: modules.order
+Only in ../linux-4.6.2/kernel/locking: mutex.o
+Only in ../linux-4.6.2/kernel/locking: .mutex.o.cmd
+Only in ../linux-4.6.2/kernel/locking: percpu-rwsem.o
+Only in ../linux-4.6.2/kernel/locking: .percpu-rwsem.o.cmd
+Only in ../linux-4.6.2/kernel/locking: rtmutex.o
+Only in ../linux-4.6.2/kernel/locking: .rtmutex.o.cmd
+Only in ../linux-4.6.2/kernel/locking: rwsem.o
+Only in ../linux-4.6.2/kernel/locking: .rwsem.o.cmd
+Only in ../linux-4.6.2/kernel/locking: rwsem-spinlock.o
+Only in ../linux-4.6.2/kernel/locking: .rwsem-spinlock.o.cmd
+Only in ../linux-4.6.2/kernel/locking: semaphore.o
+Only in ../linux-4.6.2/kernel/locking: .semaphore.o.cmd
+Only in ../linux-4.6.2/kernel: membarrier.o
+Only in ../linux-4.6.2/kernel: .membarrier.o.cmd
+Only in ../linux-4.6.2/kernel: memremap.o
+Only in ../linux-4.6.2/kernel: .memremap.o.cmd
+Only in ../linux-4.6.2/kernel: modules.order
+Only in ../linux-4.6.2/kernel: notifier.o
+Only in ../linux-4.6.2/kernel: .notifier.o.cmd
+Only in ../linux-4.6.2/kernel: nsproxy.o
+Only in ../linux-4.6.2/kernel: .nsproxy.o.cmd
+Only in ../linux-4.6.2/kernel: panic.o
+Only in ../linux-4.6.2/kernel: .panic.o.cmd
+Only in ../linux-4.6.2/kernel: params.o
+Only in ../linux-4.6.2/kernel: .params.o.cmd
+Only in ../linux-4.6.2/kernel: pid_namespace.o
+Only in ../linux-4.6.2/kernel: .pid_namespace.o.cmd
+Only in ../linux-4.6.2/kernel: pid.o
+Only in ../linux-4.6.2/kernel: .pid.o.cmd
+Only in ../linux-4.6.2/kernel/power: built-in.mod.c
+Only in ../linux-4.6.2/kernel/power: built-in.o
+Only in ../linux-4.6.2/kernel/power: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/power: modules.order
+Only in ../linux-4.6.2/kernel/power: qos.o
+Only in ../linux-4.6.2/kernel/power: .qos.o.cmd
+Only in ../linux-4.6.2/kernel/printk: built-in.mod.c
+Only in ../linux-4.6.2/kernel/printk: built-in.o
+Only in ../linux-4.6.2/kernel/printk: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/printk: modules.order
+Only in ../linux-4.6.2/kernel/printk: printk.o
+Only in ../linux-4.6.2/kernel/printk: .printk.o.cmd
+Only in ../linux-4.6.2/kernel: ptrace.o
+Only in ../linux-4.6.2/kernel: .ptrace.o.cmd
+Only in ../linux-4.6.2/kernel: range.o
+Only in ../linux-4.6.2/kernel: .range.o.cmd
+Only in ../linux-4.6.2/kernel/rcu: built-in.mod.c
+Only in ../linux-4.6.2/kernel/rcu: built-in.o
+Only in ../linux-4.6.2/kernel/rcu: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/rcu: modules.order
+Only in ../linux-4.6.2/kernel/rcu: sync.o
+Only in ../linux-4.6.2/kernel/rcu: .sync.o.cmd
+Only in ../linux-4.6.2/kernel/rcu: tiny.o
+Only in ../linux-4.6.2/kernel/rcu: .tiny.o.cmd
+Only in ../linux-4.6.2/kernel/rcu: update.o
+Only in ../linux-4.6.2/kernel/rcu: .update.o.cmd
+Only in ../linux-4.6.2/kernel: reboot.o
+Only in ../linux-4.6.2/kernel: .reboot.o.cmd
+Only in ../linux-4.6.2/kernel: resource.o
+Only in ../linux-4.6.2/kernel: .resource.o.cmd
+Only in ../linux-4.6.2/kernel/sched: built-in.mod.c
+Only in ../linux-4.6.2/kernel/sched: built-in.o
+Only in ../linux-4.6.2/kernel/sched: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/sched: clock.o
+Only in ../linux-4.6.2/kernel/sched: .clock.o.cmd
+Only in ../linux-4.6.2/kernel/sched: completion.o
+Only in ../linux-4.6.2/kernel/sched: .completion.o.cmd
+diff -r linux-4.6.2/kernel/sched/core.c ../linux-4.6.2/kernel/sched/core.c
+76a77,83
+> #include "../smpboot.h"
+> /* PHMon: begin */
+> #include <linux/varanus.h>
+> #include <linux/delay.h>
+> 
+> /* PHMon: end */
+> 
+2719c2726,2780
+< 
+---
+> 	/*
+> 	#ifdef MULTI_PROC_TRACING
+> 	if (prev->monitor_init) {
+> 		unsigned long wait_resp = 0, wait_req = 0;
+> 		komodo_disable_all(); 
+> 		//getnstimeofday(&t0);
+> 		prev->local1 = komodo_info_sp_offset(0);
+> 		prev->local2 = komodo_info_sp_offset(1);
+> 		prev->local3 = komodo_info_sp_offset(2);
+> 		prev->local4 = komodo_info_sp_offset(3);
+> 		prev->local5 = komodo_info_sp_offset(4);
+> 		prev->local6 = komodo_info_sp_offset(5);
+> 		//printk("context switch from prev thread[%s]: local1: 0x%lx local2: 0x%lx local3: 0x%lx\n", prev->comm, prev->local1, prev->local2, prev->local3);
+> 
+> 		// Maintaining the match bits and configuration 
+> 		int i, j, count = 0;
+> 		for (i = 0; i < 5; i++) {
+> 			prev->info[i].mu.care.pc_src = komodo_read_mask(i, e_SM_PC_SRC_CARE);
+> 			prev->info[i].mu.care.pc_dst = komodo_read_mask(i, e_SM_PC_DST_CARE);
+> 			prev->info[i].mu.care.inst = komodo_read_mask(i, e_SM_INST_CARE);
+> 			prev->info[i].mu.care.rd = komodo_read_mask(i, e_SM_RD_CARE);
+> 			prev->info[i].mu.care.data = komodo_read_mask(0, e_SM_DATA_CARE);
+> 			prev->info[i].mu.dont_care.pc_src = komodo_read_mask(i, e_SM_PC_SRC_DCARE);
+> 			prev->info[i].mu.dont_care.pc_dst = komodo_read_mask(i, e_SM_PC_DST_DCARE);
+> 			prev->info[i].mu.dont_care.inst = komodo_read_mask(i, e_SM_INST_DCARE);
+> 			prev->info[i].mu.dont_care.rd = komodo_read_mask(i, e_SM_RD_DCARE);
+> 			prev->info[i].mu.dont_care.data = komodo_read_mask(0, e_SM_DATA_DCARE);
+> 			prev->info[i].mu.care.instructiontag = komodo_read_mask(0, e_SM_INSTR_TAG_CARE);
+> 			prev->info[i].mu.dont_care.instructiontag = komodo_read_mask(0, e_SM_INSTR_TAG_DCARE);
+> 			prev->info[i].index = komodo_read_commit_index(i);
+> 			
+> 			//printk(" Switch from %s: MU[%d]: pc_src.care: 0x%lx pc_src.dcare: 0x%lx pc_dst.care: 0x%lx pc_dst.dcare: 0x%lx inst.care: 0x%lx inst.dcare: 0x%lx rd.care: 0x%lx rd.dcare: 0x%lx date.care: 0x%lx data.dcare: 0x%lx\n", prev->comm, i, prev->info[i].mu.care.pc_src, prev->info[i].mu.dont_care.pc_src, prev->info[i].mu.care.pc_dst, prev->info[i].mu.dont_care.pc_dst, prev->info[i].mu.care.inst, prev->info[i].mu.dont_care.inst, prev->info[i].mu.care.rd, prev->info[i].mu.dont_care.rd, prev->info[i].mu.care.data, prev->info[i].mu.dont_care.data);
+> 		}
+> 		      
+> 		for (i = 0; i < 5; i++) {
+> 			count = komodo_read_conf(i, e_SC_COUNT);
+> 			//printk("MU[%d] action count: %d\n", i, count);
+> 			prev->info[i].action_count = count;
+> 			for (j = 0 ; j < count; j++) {
+> 				prev->info[i].action[j].op_type = komodo_read_conf(i, e_SC_TYPE);
+> 				prev->info[i].action[j].in1 = komodo_read_conf(i, e_SC_IN1);
+> 				prev->info[i].action[j].in2 = komodo_read_conf(i, e_SC_IN2);
+> 				prev->info[i].action[j].fn = komodo_read_conf(i, e_SC_FN);
+> 				prev->info[i].action[j].out = komodo_read_conf(i, e_SC_OUT);
+> 				prev->info[i].action[j].data = komodo_read_conf(i, e_SC_DATA);
+> 				komodo_read_conf(i, e_SC_DONE);
+> 				//printk("Switch from: %s ; MU[%d] Conf[%d] op_type: %d in1: %d in2: %d fn: %d out: %d data: 0x%lx \n", prev->comm, i, j, prev->info[i].action[j].op_type, prev->info[i].action[j].in1, prev->info[i].action[j].in2, prev->info[i].action[j].fn, prev->info[i].action[j].out, prev->info[i].action[j].data);
+> 			}
+> 		}
+> 	}
+> 	#endif
+> 	*/
+> 	if (prev->monitor_enable) {
+> 		komodo_disable_all();  
+> 	}
+2755c2816,2859
+< 	return finish_task_switch(prev);
+---
+> 	//return finish_task_switch(prev);
+> 	   
+> 	/* PHMon: begin */
+> 	struct rq *rq_ret;
+> 	rq_ret = finish_task_switch(prev);
+> 	/*
+> 	#ifdef MULTI_PROC_TRACING
+> 	if (current->monitor_init) {
+> 		
+> 		
+> 		komodo_set_local_reg(0, (current->local1));
+> 		komodo_set_local_reg(1, (current->local2));
+> 		komodo_set_local_reg(2, (current->local3));
+> 		komodo_set_local_reg(3, (current->local4));
+> 		komodo_set_local_reg(4, (current->local5));
+> 		komodo_set_local_reg(5, (current->local6));
+> 		//printk("Context swithc to [%s]: local1: 0x%lx local2: 0x%lx local3: 0x%lx local4: 0x%lx local5: 0x%lx local6: 0x%lx\n", current->comm, current->local1, current->local2, current->local3, current->local4, current->local5, current->local6);
+> 	      
+> 		int i, j, count = 0;
+> 		for (i = 0; i < 5; i++) {
+> 			komodo_pattern(i, (mask_t *)(&current->info[i].mu));
+> 			komodo_set_commit_index(i, current->info[i].index);
+> 			count = current->info[i].action_count;
+> 			for (j = 0; j < count; j++) {
+> 				komodo_action_config(i, (act_conf_table_t *) (&current->info[i].action[count-j-1]));
+> 				//printk("Switch to: %s ; MU[%d] Conf[%d] op_type: %d in1: %d in2: %d fn: %d out: %d data: 0x%lx \n", current->comm, i, j, current->info[i].action[j].op_type, current->info[i].action[j].in1, current->info[i].action[j].in2, current->info[i].action[j].fn, current->info[i].action[j].out, current->info[i].action[j].data);
+> 			}
+> 		}
+> 	}
+> 	#endif
+> 	*/
+> 	
+> 	if (current->monitor_enable) {
+> 	        komodo_enable_all();
+> 	        asm volatile ("slli x0, x1, 0");
+> 	}
+> 	/*
+> 	if(strcmp(current->comm, "readelf") == 0){
+> 		komodo_enable_all();	
+> 		asm volatile ("slli x0, x1, 0");
+> 	}
+> 	*/
+> 	return rq_ret;
+> 	/* PHMon: end */
+Only in ../linux-4.6.2/kernel/sched: core.o
+Only in ../linux-4.6.2/kernel/sched: .core.o.cmd
+Only in ../linux-4.6.2/kernel/sched: cputime.o
+Only in ../linux-4.6.2/kernel/sched: .cputime.o.cmd
+Only in ../linux-4.6.2/kernel/sched: deadline.o
+Only in ../linux-4.6.2/kernel/sched: .deadline.o.cmd
+Only in ../linux-4.6.2/kernel/sched: debug.o
+Only in ../linux-4.6.2/kernel/sched: .debug.o.cmd
+Only in ../linux-4.6.2/kernel/sched: fair.o
+Only in ../linux-4.6.2/kernel/sched: .fair.o.cmd
+Only in ../linux-4.6.2/kernel/sched: idle.o
+Only in ../linux-4.6.2/kernel/sched: .idle.o.cmd
+Only in ../linux-4.6.2/kernel/sched: idle_task.o
+Only in ../linux-4.6.2/kernel/sched: .idle_task.o.cmd
+Only in ../linux-4.6.2/kernel/sched: loadavg.o
+Only in ../linux-4.6.2/kernel/sched: .loadavg.o.cmd
+Only in ../linux-4.6.2/kernel/sched: modules.order
+Only in ../linux-4.6.2/kernel/sched: rt.o
+Only in ../linux-4.6.2/kernel/sched: .rt.o.cmd
+Only in ../linux-4.6.2/kernel/sched: stop_task.o
+Only in ../linux-4.6.2/kernel/sched: .stop_task.o.cmd
+Only in ../linux-4.6.2/kernel/sched: swait.o
+Only in ../linux-4.6.2/kernel/sched: .swait.o.cmd
+Only in ../linux-4.6.2/kernel/sched: wait.o
+Only in ../linux-4.6.2/kernel/sched: .wait.o.cmd
+Only in ../linux-4.6.2/kernel: signal.o
+Only in ../linux-4.6.2/kernel: .signal.o.cmd
+Only in ../linux-4.6.2/kernel: smpboot.o
+Only in ../linux-4.6.2/kernel: .smpboot.o.cmd
+Only in ../linux-4.6.2/kernel: softirq.o
+Only in ../linux-4.6.2/kernel: .softirq.o.cmd
+Only in ../linux-4.6.2/kernel: sysctl_binary.o
+Only in ../linux-4.6.2/kernel: .sysctl_binary.o.cmd
+Only in ../linux-4.6.2/kernel: sysctl.o
+Only in ../linux-4.6.2/kernel: .sysctl.o.cmd
+Only in ../linux-4.6.2/kernel: sys_ni.o
+Only in ../linux-4.6.2/kernel: .sys_ni.o.cmd
+Only in ../linux-4.6.2/kernel: sys.o
+Only in ../linux-4.6.2/kernel: .sys.o.cmd
+Only in ../linux-4.6.2/kernel: task_work.o
+Only in ../linux-4.6.2/kernel: .task_work.o.cmd
+Only in ../linux-4.6.2/kernel/time: alarmtimer.o
+Only in ../linux-4.6.2/kernel/time: .alarmtimer.o.cmd
+Only in ../linux-4.6.2/kernel/time: built-in.mod.c
+Only in ../linux-4.6.2/kernel/time: built-in.o
+Only in ../linux-4.6.2/kernel/time: .built-in.o.cmd
+Only in ../linux-4.6.2/kernel/time: clockevents.o
+Only in ../linux-4.6.2/kernel/time: .clockevents.o.cmd
+Only in ../linux-4.6.2/kernel/time: clocksource.o
+Only in ../linux-4.6.2/kernel/time: .clocksource.o.cmd
+Only in ../linux-4.6.2/kernel/time: hrtimer.o
+Only in ../linux-4.6.2/kernel/time: .hrtimer.o.cmd
+Only in ../linux-4.6.2/kernel/time: itimer.o
+Only in ../linux-4.6.2/kernel/time: .itimer.o.cmd
+Only in ../linux-4.6.2/kernel/time: jiffies.o
+Only in ../linux-4.6.2/kernel/time: .jiffies.o.cmd
+Only in ../linux-4.6.2/kernel/time: modules.order
+Only in ../linux-4.6.2/kernel/time: ntp.o
+Only in ../linux-4.6.2/kernel/time: .ntp.o.cmd
+Only in ../linux-4.6.2/kernel/time: posix-clock.o
+Only in ../linux-4.6.2/kernel/time: .posix-clock.o.cmd
+Only in ../linux-4.6.2/kernel/time: posix-cpu-timers.o
+Only in ../linux-4.6.2/kernel/time: .posix-cpu-timers.o.cmd
+Only in ../linux-4.6.2/kernel/time: posix-timers.o
+Only in ../linux-4.6.2/kernel/time: .posix-timers.o.cmd
+Only in ../linux-4.6.2/kernel/time: tick-common.o
+Only in ../linux-4.6.2/kernel/time: .tick-common.o.cmd
+Only in ../linux-4.6.2/kernel/time: timeconv.o
+Only in ../linux-4.6.2/kernel/time: .timeconv.o.cmd
+Only in ../linux-4.6.2/kernel/time: timecounter.o
+Only in ../linux-4.6.2/kernel/time: .timecounter.o.cmd
+Only in ../linux-4.6.2/kernel/time: timekeeping_debug.o
+Only in ../linux-4.6.2/kernel/time: .timekeeping_debug.o.cmd
+Only in ../linux-4.6.2/kernel/time: timekeeping.o
+Only in ../linux-4.6.2/kernel/time: .timekeeping.o.cmd
+Only in ../linux-4.6.2/kernel/time: time.o
+Only in ../linux-4.6.2/kernel/time: .time.o.cmd
+Only in ../linux-4.6.2/kernel/time: timer_list.o
+Only in ../linux-4.6.2/kernel/time: .timer_list.o.cmd
+Only in ../linux-4.6.2/kernel/time: timer.o
+Only in ../linux-4.6.2/kernel/time: .timer.o.cmd
+Only in ../linux-4.6.2/kernel: up.o
+Only in ../linux-4.6.2/kernel: .up.o.cmd
+Only in ../linux-4.6.2/kernel: user.o
+Only in ../linux-4.6.2/kernel: .user.o.cmd
+Only in ../linux-4.6.2/kernel: utsname.o
+Only in ../linux-4.6.2/kernel: .utsname.o.cmd
+Only in ../linux-4.6.2/kernel: utsname_sysctl.o
+Only in ../linux-4.6.2/kernel: .utsname_sysctl.o.cmd
+Only in ../linux-4.6.2/kernel: workqueue.o
+Only in ../linux-4.6.2/kernel: .workqueue.o.cmd
+Only in ../linux-4.6.2/: kernel.patch
+Only in ../linux-4.6.2/lib: argv_split.o
+Only in ../linux-4.6.2/lib: .argv_split.o.cmd
+Only in ../linux-4.6.2/lib: bcd.o
+Only in ../linux-4.6.2/lib: .bcd.o.cmd
+Only in ../linux-4.6.2/lib: bitmap.o
+Only in ../linux-4.6.2/lib: .bitmap.o.cmd
+Only in ../linux-4.6.2/lib: bitrev.o
+Only in ../linux-4.6.2/lib: .bitrev.o.cmd
+Only in ../linux-4.6.2/lib: bsearch.o
+Only in ../linux-4.6.2/lib: .bsearch.o.cmd
+Only in ../linux-4.6.2/lib: bug.o
+Only in ../linux-4.6.2/lib: .bug.o.cmd
+Only in ../linux-4.6.2/lib: built-in.mod.c
+Only in ../linux-4.6.2/lib: built-in.o
+Only in ../linux-4.6.2/lib: .built-in.o.cmd
+Only in ../linux-4.6.2/lib: bust_spinlocks.o
+Only in ../linux-4.6.2/lib: .bust_spinlocks.o.cmd
+Only in ../linux-4.6.2/lib: checksum.o
+Only in ../linux-4.6.2/lib: .checksum.o.cmd
+Only in ../linux-4.6.2/lib: clz_ctz.o
+Only in ../linux-4.6.2/lib: .clz_ctz.o.cmd
+Only in ../linux-4.6.2/lib: cmdline.o
+Only in ../linux-4.6.2/lib: .cmdline.o.cmd
+Only in ../linux-4.6.2/lib: crc32.o
+Only in ../linux-4.6.2/lib: .crc32.o.cmd
+Only in ../linux-4.6.2/lib: crc32table.h
+Only in ../linux-4.6.2/lib: crc7.o
+Only in ../linux-4.6.2/lib: .crc7.o.cmd
+Only in ../linux-4.6.2/lib: crc-itu-t.o
+Only in ../linux-4.6.2/lib: .crc-itu-t.o.cmd
+Only in ../linux-4.6.2/lib: ctype.o
+Only in ../linux-4.6.2/lib: .ctype.o.cmd
+Only in ../linux-4.6.2/lib: debug_locks.o
+Only in ../linux-4.6.2/lib: .debug_locks.o.cmd
+Only in ../linux-4.6.2/lib: dec_and_lock.o
+Only in ../linux-4.6.2/lib: .dec_and_lock.o.cmd
+Only in ../linux-4.6.2/lib: decompress_bunzip2.o
+Only in ../linux-4.6.2/lib: .decompress_bunzip2.o.cmd
+Only in ../linux-4.6.2/lib: decompress_inflate.o
+Only in ../linux-4.6.2/lib: .decompress_inflate.o.cmd
+Only in ../linux-4.6.2/lib: decompress.o
+Only in ../linux-4.6.2/lib: .decompress.o.cmd
+Only in ../linux-4.6.2/lib: decompress_unlz4.o
+Only in ../linux-4.6.2/lib: .decompress_unlz4.o.cmd
+Only in ../linux-4.6.2/lib: decompress_unlzma.o
+Only in ../linux-4.6.2/lib: .decompress_unlzma.o.cmd
+Only in ../linux-4.6.2/lib: decompress_unlzo.o
+Only in ../linux-4.6.2/lib: .decompress_unlzo.o.cmd
+Only in ../linux-4.6.2/lib: decompress_unxz.o
+Only in ../linux-4.6.2/lib: .decompress_unxz.o.cmd
+Only in ../linux-4.6.2/lib: devres.o
+Only in ../linux-4.6.2/lib: .devres.o.cmd
+Only in ../linux-4.6.2/lib: div64.o
+Only in ../linux-4.6.2/lib: .div64.o.cmd
+Only in ../linux-4.6.2/lib: dma-noop.o
+Only in ../linux-4.6.2/lib: .dma-noop.o.cmd
+Only in ../linux-4.6.2/lib: dump_stack.o
+Only in ../linux-4.6.2/lib: .dump_stack.o.cmd
+Only in ../linux-4.6.2/lib: earlycpio.o
+Only in ../linux-4.6.2/lib: .earlycpio.o.cmd
+Only in ../linux-4.6.2/lib: extable.o
+Only in ../linux-4.6.2/lib: .extable.o.cmd
+Only in ../linux-4.6.2/lib: fault-inject.o
+Only in ../linux-4.6.2/lib: .fault-inject.o.cmd
+Only in ../linux-4.6.2/lib: find_bit.o
+Only in ../linux-4.6.2/lib: .find_bit.o.cmd
+Only in ../linux-4.6.2/lib: flex_array.o
+Only in ../linux-4.6.2/lib: .flex_array.o.cmd
+Only in ../linux-4.6.2/lib: flex_proportions.o
+Only in ../linux-4.6.2/lib: .flex_proportions.o.cmd
+Only in ../linux-4.6.2/lib: gcd.o
+Only in ../linux-4.6.2/lib: .gcd.o.cmd
+Only in ../linux-4.6.2/lib: gen_crc32table
+Only in ../linux-4.6.2/lib: .gen_crc32table.cmd
+Only in ../linux-4.6.2/lib: halfmd4.o
+Only in ../linux-4.6.2/lib: .halfmd4.o.cmd
+Only in ../linux-4.6.2/lib: hexdump.o
+Only in ../linux-4.6.2/lib: .hexdump.o.cmd
+Only in ../linux-4.6.2/lib: hweight.o
+Only in ../linux-4.6.2/lib: .hweight.o.cmd
+Only in ../linux-4.6.2/lib: idr.o
+Only in ../linux-4.6.2/lib: .idr.o.cmd
+Only in ../linux-4.6.2/lib: int_sqrt.o
+Only in ../linux-4.6.2/lib: .int_sqrt.o.cmd
+Only in ../linux-4.6.2/lib: iomap_copy.o
+Only in ../linux-4.6.2/lib: .iomap_copy.o.cmd
+Only in ../linux-4.6.2/lib: ioremap.o
+Only in ../linux-4.6.2/lib: .ioremap.o.cmd
+Only in ../linux-4.6.2/lib: iov_iter.o
+Only in ../linux-4.6.2/lib: .iov_iter.o.cmd
+Only in ../linux-4.6.2/lib: irq_regs.o
+Only in ../linux-4.6.2/lib: .irq_regs.o.cmd
+Only in ../linux-4.6.2/lib: is_single_threaded.o
+Only in ../linux-4.6.2/lib: .is_single_threaded.o.cmd
+Only in ../linux-4.6.2/lib: kasprintf.o
+Only in ../linux-4.6.2/lib: .kasprintf.o.cmd
+Only in ../linux-4.6.2/lib: kfifo.o
+Only in ../linux-4.6.2/lib: .kfifo.o.cmd
+Only in ../linux-4.6.2/lib: klist.o
+Only in ../linux-4.6.2/lib: .klist.o.cmd
+Only in ../linux-4.6.2/lib: kobject.o
+Only in ../linux-4.6.2/lib: .kobject.o.cmd
+Only in ../linux-4.6.2/lib: kobject_uevent.o
+Only in ../linux-4.6.2/lib: .kobject_uevent.o.cmd
+Only in ../linux-4.6.2/lib: kstrtox.o
+Only in ../linux-4.6.2/lib: .kstrtox.o.cmd
+Only in ../linux-4.6.2/lib: lcm.o
+Only in ../linux-4.6.2/lib: .lcm.o.cmd
+Only in ../linux-4.6.2/lib: lib.a
+Only in ../linux-4.6.2/lib: .lib.a.cmd
+Only in ../linux-4.6.2/lib: list_sort.o
+Only in ../linux-4.6.2/lib: .list_sort.o.cmd
+Only in ../linux-4.6.2/lib: llist.o
+Only in ../linux-4.6.2/lib: .llist.o.cmd
+Only in ../linux-4.6.2/lib: lockref.o
+Only in ../linux-4.6.2/lib: .lockref.o.cmd
+Only in ../linux-4.6.2/lib/lz4: built-in.mod.c
+Only in ../linux-4.6.2/lib/lz4: built-in.o
+Only in ../linux-4.6.2/lib/lz4: .built-in.o.cmd
+Only in ../linux-4.6.2/lib/lz4: lz4_decompress.o
+Only in ../linux-4.6.2/lib/lz4: .lz4_decompress.o.cmd
+Only in ../linux-4.6.2/lib/lz4: modules.order
+Only in ../linux-4.6.2/lib/lzo: built-in.mod.c
+Only in ../linux-4.6.2/lib/lzo: built-in.o
+Only in ../linux-4.6.2/lib/lzo: .built-in.o.cmd
+Only in ../linux-4.6.2/lib/lzo: lzo1x_decompress_safe.o
+Only in ../linux-4.6.2/lib/lzo: .lzo1x_decompress_safe.o.cmd
+Only in ../linux-4.6.2/lib/lzo: lzo_decompress.mod.c
+Only in ../linux-4.6.2/lib/lzo: lzo_decompress.o
+Only in ../linux-4.6.2/lib/lzo: .lzo_decompress.o.cmd
+Only in ../linux-4.6.2/lib/lzo: modules.order
+Only in ../linux-4.6.2/lib: md5.o
+Only in ../linux-4.6.2/lib: .md5.o.cmd
+Only in ../linux-4.6.2/lib: memweight.o
+Only in ../linux-4.6.2/lib: .memweight.o.cmd
+Only in ../linux-4.6.2/lib: modules.order
+Only in ../linux-4.6.2/lib: net_utils.o
+Only in ../linux-4.6.2/lib: .net_utils.o.cmd
+Only in ../linux-4.6.2/lib: nlattr.o
+Only in ../linux-4.6.2/lib: .nlattr.o.cmd
+Only in ../linux-4.6.2/lib: nmi_backtrace.o
+Only in ../linux-4.6.2/lib: .nmi_backtrace.o.cmd
+Only in ../linux-4.6.2/lib: once.o
+Only in ../linux-4.6.2/lib: .once.o.cmd
+Only in ../linux-4.6.2/lib: parser.o
+Only in ../linux-4.6.2/lib: .parser.o.cmd
+Only in ../linux-4.6.2/lib: percpu_ida.o
+Only in ../linux-4.6.2/lib: .percpu_ida.o.cmd
+Only in ../linux-4.6.2/lib: percpu-refcount.o
+Only in ../linux-4.6.2/lib: .percpu-refcount.o.cmd
+Only in ../linux-4.6.2/lib: plist.o
+Only in ../linux-4.6.2/lib: .plist.o.cmd
+Only in ../linux-4.6.2/lib: proportions.o
+Only in ../linux-4.6.2/lib: .proportions.o.cmd
+Only in ../linux-4.6.2/lib: radix-tree.o
+Only in ../linux-4.6.2/lib: .radix-tree.o.cmd
+Only in ../linux-4.6.2/lib: random32.o
+Only in ../linux-4.6.2/lib: .random32.o.cmd
+Only in ../linux-4.6.2/lib: ratelimit.o
+Only in ../linux-4.6.2/lib: .ratelimit.o.cmd
+Only in ../linux-4.6.2/lib: rbtree.o
+Only in ../linux-4.6.2/lib: .rbtree.o.cmd
+Only in ../linux-4.6.2/lib: reciprocal_div.o
+Only in ../linux-4.6.2/lib: .reciprocal_div.o.cmd
+Only in ../linux-4.6.2/lib: rhashtable.o
+Only in ../linux-4.6.2/lib: .rhashtable.o.cmd
+Only in ../linux-4.6.2/lib: scatterlist.o
+Only in ../linux-4.6.2/lib: .scatterlist.o.cmd
+Only in ../linux-4.6.2/lib: seq_buf.o
+Only in ../linux-4.6.2/lib: .seq_buf.o.cmd
+Only in ../linux-4.6.2/lib: sha1.o
+Only in ../linux-4.6.2/lib: .sha1.o.cmd
+Only in ../linux-4.6.2/lib: show_mem.o
+Only in ../linux-4.6.2/lib: .show_mem.o.cmd
+Only in ../linux-4.6.2/lib: sort.o
+Only in ../linux-4.6.2/lib: .sort.o.cmd
+Only in ../linux-4.6.2/lib: string_helpers.o
+Only in ../linux-4.6.2/lib: .string_helpers.o.cmd
+Only in ../linux-4.6.2/lib: string.o
+Only in ../linux-4.6.2/lib: .string.o.cmd
+Only in ../linux-4.6.2/lib: strncpy_from_user.o
+Only in ../linux-4.6.2/lib: .strncpy_from_user.o.cmd
+Only in ../linux-4.6.2/lib: strnlen_user.o
+Only in ../linux-4.6.2/lib: .strnlen_user.o.cmd
+Only in ../linux-4.6.2/lib: syscall.o
+Only in ../linux-4.6.2/lib: .syscall.o.cmd
+Only in ../linux-4.6.2/lib: timerqueue.o
+Only in ../linux-4.6.2/lib: .timerqueue.o.cmd
+Only in ../linux-4.6.2/lib: uuid.o
+Only in ../linux-4.6.2/lib: .uuid.o.cmd
+Only in ../linux-4.6.2/lib: vsprintf.o
+Only in ../linux-4.6.2/lib: .vsprintf.o.cmd
+Only in ../linux-4.6.2/lib/xz: built-in.mod.c
+Only in ../linux-4.6.2/lib/xz: built-in.o
+Only in ../linux-4.6.2/lib/xz: .built-in.o.cmd
+Only in ../linux-4.6.2/lib/xz: modules.order
+Only in ../linux-4.6.2/lib/xz: xz_dec_bcj.o
+Only in ../linux-4.6.2/lib/xz: .xz_dec_bcj.o.cmd
+Only in ../linux-4.6.2/lib/xz: xz_dec_lzma2.o
+Only in ../linux-4.6.2/lib/xz: .xz_dec_lzma2.o.cmd
+Only in ../linux-4.6.2/lib/xz: xz_dec.mod.c
+Only in ../linux-4.6.2/lib/xz: xz_dec.o
+Only in ../linux-4.6.2/lib/xz: .xz_dec.o.cmd
+Only in ../linux-4.6.2/lib/xz: xz_dec_stream.o
+Only in ../linux-4.6.2/lib/xz: .xz_dec_stream.o.cmd
+Only in ../linux-4.6.2/lib/xz: xz_dec_syms.o
+Only in ../linux-4.6.2/lib/xz: .xz_dec_syms.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: built-in.mod.c
+Only in ../linux-4.6.2/lib/zlib_inflate: built-in.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .built-in.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: inffast.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .inffast.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: inflate.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .inflate.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: inflate_syms.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .inflate_syms.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: inftrees.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .inftrees.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: infutil.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .infutil.o.cmd
+Only in ../linux-4.6.2/lib/zlib_inflate: modules.order
+Only in ../linux-4.6.2/lib/zlib_inflate: zlib_inflate.mod.c
+Only in ../linux-4.6.2/lib/zlib_inflate: zlib_inflate.o
+Only in ../linux-4.6.2/lib/zlib_inflate: .zlib_inflate.o.cmd
+Only in ../linux-4.6.2/: linuxconfig
+Only in ../linux-4.6.2/: .missing-syscalls.d
+Only in ../linux-4.6.2/mm: backing-dev.o
+Only in ../linux-4.6.2/mm: .backing-dev.o.cmd
+Only in ../linux-4.6.2/mm: built-in.mod.c
+Only in ../linux-4.6.2/mm: built-in.o
+Only in ../linux-4.6.2/mm: .built-in.o.cmd
+Only in ../linux-4.6.2/mm: cma.o
+Only in ../linux-4.6.2/mm: .cma.o.cmd
+Only in ../linux-4.6.2/mm: compaction.o
+Only in ../linux-4.6.2/mm: .compaction.o.cmd
+Only in ../linux-4.6.2/mm: debug.o
+Only in ../linux-4.6.2/mm: .debug.o.cmd
+Only in ../linux-4.6.2/mm: dmapool.o
+Only in ../linux-4.6.2/mm: .dmapool.o.cmd
+Only in ../linux-4.6.2/mm: fadvise.o
+Only in ../linux-4.6.2/mm: .fadvise.o.cmd
+Only in ../linux-4.6.2/mm: filemap.o
+Only in ../linux-4.6.2/mm: .filemap.o.cmd
+Only in ../linux-4.6.2/mm: gup.o
+Only in ../linux-4.6.2/mm: .gup.o.cmd
+Only in ../linux-4.6.2/mm: highmem.o
+Only in ../linux-4.6.2/mm: .highmem.o.cmd
+Only in ../linux-4.6.2/mm: init-mm.o
+Only in ../linux-4.6.2/mm: .init-mm.o.cmd
+Only in ../linux-4.6.2/mm: interval_tree.o
+Only in ../linux-4.6.2/mm: .interval_tree.o.cmd
+Only in ../linux-4.6.2/mm: list_lru.o
+Only in ../linux-4.6.2/mm: .list_lru.o.cmd
+Only in ../linux-4.6.2/mm: maccess.o
+Only in ../linux-4.6.2/mm: .maccess.o.cmd
+Only in ../linux-4.6.2/mm: madvise.o
+Only in ../linux-4.6.2/mm: .madvise.o.cmd
+Only in ../linux-4.6.2/mm: memblock.o
+Only in ../linux-4.6.2/mm: .memblock.o.cmd
+Only in ../linux-4.6.2/mm: memory.o
+Only in ../linux-4.6.2/mm: .memory.o.cmd
+Only in ../linux-4.6.2/mm: mempool.o
+Only in ../linux-4.6.2/mm: .mempool.o.cmd
+Only in ../linux-4.6.2/mm: migrate.o
+Only in ../linux-4.6.2/mm: .migrate.o.cmd
+Only in ../linux-4.6.2/mm: mincore.o
+Only in ../linux-4.6.2/mm: .mincore.o.cmd
+Only in ../linux-4.6.2/mm: mlock.o
+Only in ../linux-4.6.2/mm: .mlock.o.cmd
+Only in ../linux-4.6.2/mm: mmap.o
+Only in ../linux-4.6.2/mm: .mmap.o.cmd
+Only in ../linux-4.6.2/mm: mm_init.o
+Only in ../linux-4.6.2/mm: .mm_init.o.cmd
+Only in ../linux-4.6.2/mm: mmu_context.o
+Only in ../linux-4.6.2/mm: .mmu_context.o.cmd
+Only in ../linux-4.6.2/mm: mmzone.o
+Only in ../linux-4.6.2/mm: .mmzone.o.cmd
+Only in ../linux-4.6.2/mm: modules.order
+Only in ../linux-4.6.2/mm: mprotect.o
+Only in ../linux-4.6.2/mm: .mprotect.o.cmd
+Only in ../linux-4.6.2/mm: mremap.o
+Only in ../linux-4.6.2/mm: .mremap.o.cmd
+Only in ../linux-4.6.2/mm: msync.o
+Only in ../linux-4.6.2/mm: .msync.o.cmd
+Only in ../linux-4.6.2/mm: nobootmem.o
+Only in ../linux-4.6.2/mm: .nobootmem.o.cmd
+Only in ../linux-4.6.2/mm: oom_kill.o
+Only in ../linux-4.6.2/mm: .oom_kill.o.cmd
+Only in ../linux-4.6.2/mm: page_alloc.o
+Only in ../linux-4.6.2/mm: .page_alloc.o.cmd
+Only in ../linux-4.6.2/mm: page_io.o
+Only in ../linux-4.6.2/mm: .page_io.o.cmd
+Only in ../linux-4.6.2/mm: page_isolation.o
+Only in ../linux-4.6.2/mm: .page_isolation.o.cmd
+Only in ../linux-4.6.2/mm: pagewalk.o
+Only in ../linux-4.6.2/mm: .pagewalk.o.cmd
+Only in ../linux-4.6.2/mm: page-writeback.o
+Only in ../linux-4.6.2/mm: .page-writeback.o.cmd
+Only in ../linux-4.6.2/mm: percpu.o
+Only in ../linux-4.6.2/mm: .percpu.o.cmd
+Only in ../linux-4.6.2/mm: pgtable-generic.o
+Only in ../linux-4.6.2/mm: .pgtable-generic.o.cmd
+Only in ../linux-4.6.2/mm: readahead.o
+Only in ../linux-4.6.2/mm: .readahead.o.cmd
+Only in ../linux-4.6.2/mm: rmap.o
+Only in ../linux-4.6.2/mm: .rmap.o.cmd
+Only in ../linux-4.6.2/mm: shmem.o
+Only in ../linux-4.6.2/mm: .shmem.o.cmd
+Only in ../linux-4.6.2/mm: slab_common.o
+Only in ../linux-4.6.2/mm: .slab_common.o.cmd
+Only in ../linux-4.6.2/mm: slub.o
+Only in ../linux-4.6.2/mm: .slub.o.cmd
+Only in ../linux-4.6.2/mm: swapfile.o
+Only in ../linux-4.6.2/mm: .swapfile.o.cmd
+Only in ../linux-4.6.2/mm: swap.o
+Only in ../linux-4.6.2/mm: .swap.o.cmd
+Only in ../linux-4.6.2/mm: swap_state.o
+Only in ../linux-4.6.2/mm: .swap_state.o.cmd
+Only in ../linux-4.6.2/mm: truncate.o
+Only in ../linux-4.6.2/mm: .truncate.o.cmd
+Only in ../linux-4.6.2/mm: util.o
+Only in ../linux-4.6.2/mm: .util.o.cmd
+Only in ../linux-4.6.2/mm: vmacache.o
+Only in ../linux-4.6.2/mm: .vmacache.o.cmd
+Only in ../linux-4.6.2/mm: vmalloc.o
+Only in ../linux-4.6.2/mm: .vmalloc.o.cmd
+Only in ../linux-4.6.2/mm: vmscan.o
+Only in ../linux-4.6.2/mm: .vmscan.o.cmd
+Only in ../linux-4.6.2/mm: vmstat.o
+Only in ../linux-4.6.2/mm: .vmstat.o.cmd
+Only in ../linux-4.6.2/mm: workingset.o
+Only in ../linux-4.6.2/mm: .workingset.o.cmd
+Only in ../linux-4.6.2/: modules.order
+Only in ../linux-4.6.2/: Module.symvers
+Only in ../linux-4.6.2/net/802: built-in.o
+Only in ../linux-4.6.2/net/802: .built-in.o.cmd
+Only in ../linux-4.6.2/net/802: modules.order
+Only in ../linux-4.6.2/net: built-in.mod.c
+Only in ../linux-4.6.2/net: built-in.o
+Only in ../linux-4.6.2/net: .built-in.o.cmd
+Only in ../linux-4.6.2/net/core: built-in.mod.c
+Only in ../linux-4.6.2/net/core: built-in.o
+Only in ../linux-4.6.2/net/core: .built-in.o.cmd
+Only in ../linux-4.6.2/net/core: datagram.o
+Only in ../linux-4.6.2/net/core: .datagram.o.cmd
+Only in ../linux-4.6.2/net/core: dev_addr_lists.o
+Only in ../linux-4.6.2/net/core: .dev_addr_lists.o.cmd
+Only in ../linux-4.6.2/net/core: dev_ioctl.o
+Only in ../linux-4.6.2/net/core: .dev_ioctl.o.cmd
+Only in ../linux-4.6.2/net/core: dev.o
+Only in ../linux-4.6.2/net/core: .dev.o.cmd
+Only in ../linux-4.6.2/net/core: dst.o
+Only in ../linux-4.6.2/net/core: .dst.o.cmd
+Only in ../linux-4.6.2/net/core: ethtool.o
+Only in ../linux-4.6.2/net/core: .ethtool.o.cmd
+Only in ../linux-4.6.2/net/core: filter.o
+Only in ../linux-4.6.2/net/core: .filter.o.cmd
+Only in ../linux-4.6.2/net/core: flow_dissector.o
+Only in ../linux-4.6.2/net/core: .flow_dissector.o.cmd
+Only in ../linux-4.6.2/net/core: gen_estimator.o
+Only in ../linux-4.6.2/net/core: .gen_estimator.o.cmd
+Only in ../linux-4.6.2/net/core: gen_stats.o
+Only in ../linux-4.6.2/net/core: .gen_stats.o.cmd
+Only in ../linux-4.6.2/net/core: link_watch.o
+Only in ../linux-4.6.2/net/core: .link_watch.o.cmd
+Only in ../linux-4.6.2/net/core: modules.order
+Only in ../linux-4.6.2/net/core: neighbour.o
+Only in ../linux-4.6.2/net/core: .neighbour.o.cmd
+Only in ../linux-4.6.2/net/core: netevent.o
+Only in ../linux-4.6.2/net/core: .netevent.o.cmd
+Only in ../linux-4.6.2/net/core: net_namespace.o
+Only in ../linux-4.6.2/net/core: .net_namespace.o.cmd
+Only in ../linux-4.6.2/net/core: net-procfs.o
+Only in ../linux-4.6.2/net/core: .net-procfs.o.cmd
+Only in ../linux-4.6.2/net/core: net-sysfs.o
+Only in ../linux-4.6.2/net/core: .net-sysfs.o.cmd
+Only in ../linux-4.6.2/net/core: request_sock.o
+Only in ../linux-4.6.2/net/core: .request_sock.o.cmd
+Only in ../linux-4.6.2/net/core: rtnetlink.o
+Only in ../linux-4.6.2/net/core: .rtnetlink.o.cmd
+Only in ../linux-4.6.2/net/core: scm.o
+Only in ../linux-4.6.2/net/core: .scm.o.cmd
+Only in ../linux-4.6.2/net/core: secure_seq.o
+Only in ../linux-4.6.2/net/core: .secure_seq.o.cmd
+Only in ../linux-4.6.2/net/core: skbuff.o
+Only in ../linux-4.6.2/net/core: .skbuff.o.cmd
+Only in ../linux-4.6.2/net/core: sock_diag.o
+Only in ../linux-4.6.2/net/core: .sock_diag.o.cmd
+Only in ../linux-4.6.2/net/core: sock.o
+Only in ../linux-4.6.2/net/core: .sock.o.cmd
+Only in ../linux-4.6.2/net/core: sock_reuseport.o
+Only in ../linux-4.6.2/net/core: .sock_reuseport.o.cmd
+Only in ../linux-4.6.2/net/core: stream.o
+Only in ../linux-4.6.2/net/core: .stream.o.cmd
+Only in ../linux-4.6.2/net/core: sysctl_net_core.o
+Only in ../linux-4.6.2/net/core: .sysctl_net_core.o.cmd
+Only in ../linux-4.6.2/net/core: tso.o
+Only in ../linux-4.6.2/net/core: .tso.o.cmd
+Only in ../linux-4.6.2/net/core: utils.o
+Only in ../linux-4.6.2/net/core: .utils.o.cmd
+Only in ../linux-4.6.2/net/ethernet: built-in.mod.c
+Only in ../linux-4.6.2/net/ethernet: built-in.o
+Only in ../linux-4.6.2/net/ethernet: .built-in.o.cmd
+Only in ../linux-4.6.2/net/ethernet: eth.o
+Only in ../linux-4.6.2/net/ethernet: .eth.o.cmd
+Only in ../linux-4.6.2/net/ethernet: modules.order
+Only in ../linux-4.6.2/net/ipv4: af_inet.o
+Only in ../linux-4.6.2/net/ipv4: .af_inet.o.cmd
+Only in ../linux-4.6.2/net/ipv4: arp.o
+Only in ../linux-4.6.2/net/ipv4: .arp.o.cmd
+Only in ../linux-4.6.2/net/ipv4: built-in.mod.c
+Only in ../linux-4.6.2/net/ipv4: built-in.o
+Only in ../linux-4.6.2/net/ipv4: .built-in.o.cmd
+Only in ../linux-4.6.2/net/ipv4: datagram.o
+Only in ../linux-4.6.2/net/ipv4: .datagram.o.cmd
+Only in ../linux-4.6.2/net/ipv4: devinet.o
+Only in ../linux-4.6.2/net/ipv4: .devinet.o.cmd
+Only in ../linux-4.6.2/net/ipv4: fib_frontend.o
+Only in ../linux-4.6.2/net/ipv4: .fib_frontend.o.cmd
+Only in ../linux-4.6.2/net/ipv4: fib_semantics.o
+Only in ../linux-4.6.2/net/ipv4: .fib_semantics.o.cmd
+Only in ../linux-4.6.2/net/ipv4: fib_trie.o
+Only in ../linux-4.6.2/net/ipv4: .fib_trie.o.cmd
+Only in ../linux-4.6.2/net/ipv4: gre_offload.o
+Only in ../linux-4.6.2/net/ipv4: .gre_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv4: icmp.o
+Only in ../linux-4.6.2/net/ipv4: .icmp.o.cmd
+Only in ../linux-4.6.2/net/ipv4: igmp.o
+Only in ../linux-4.6.2/net/ipv4: .igmp.o.cmd
+Only in ../linux-4.6.2/net/ipv4: inet_connection_sock.o
+Only in ../linux-4.6.2/net/ipv4: .inet_connection_sock.o.cmd
+Only in ../linux-4.6.2/net/ipv4: inet_fragment.o
+Only in ../linux-4.6.2/net/ipv4: .inet_fragment.o.cmd
+Only in ../linux-4.6.2/net/ipv4: inet_hashtables.o
+Only in ../linux-4.6.2/net/ipv4: .inet_hashtables.o.cmd
+Only in ../linux-4.6.2/net/ipv4: inetpeer.o
+Only in ../linux-4.6.2/net/ipv4: .inetpeer.o.cmd
+Only in ../linux-4.6.2/net/ipv4: inet_timewait_sock.o
+Only in ../linux-4.6.2/net/ipv4: .inet_timewait_sock.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_forward.o
+Only in ../linux-4.6.2/net/ipv4: .ip_forward.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_fragment.o
+Only in ../linux-4.6.2/net/ipv4: .ip_fragment.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_input.o
+Only in ../linux-4.6.2/net/ipv4: .ip_input.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_options.o
+Only in ../linux-4.6.2/net/ipv4: .ip_options.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_output.o
+Only in ../linux-4.6.2/net/ipv4: .ip_output.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_sockglue.o
+Only in ../linux-4.6.2/net/ipv4: .ip_sockglue.o.cmd
+Only in ../linux-4.6.2/net/ipv4: ip_tunnel_core.o
+Only in ../linux-4.6.2/net/ipv4: .ip_tunnel_core.o.cmd
+Only in ../linux-4.6.2/net/ipv4: modules.order
+Only in ../linux-4.6.2/net/ipv4: ping.o
+Only in ../linux-4.6.2/net/ipv4: .ping.o.cmd
+Only in ../linux-4.6.2/net/ipv4: proc.o
+Only in ../linux-4.6.2/net/ipv4: .proc.o.cmd
+Only in ../linux-4.6.2/net/ipv4: protocol.o
+Only in ../linux-4.6.2/net/ipv4: .protocol.o.cmd
+Only in ../linux-4.6.2/net/ipv4: raw.o
+Only in ../linux-4.6.2/net/ipv4: .raw.o.cmd
+Only in ../linux-4.6.2/net/ipv4: route.o
+Only in ../linux-4.6.2/net/ipv4: .route.o.cmd
+Only in ../linux-4.6.2/net/ipv4: sysctl_net_ipv4.o
+Only in ../linux-4.6.2/net/ipv4: .sysctl_net_ipv4.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_cong.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_cong.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_cubic.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_cubic.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_fastopen.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_fastopen.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_input.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_input.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_ipv4.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_ipv4.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_metrics.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_metrics.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_minisocks.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_minisocks.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp.o
+Only in ../linux-4.6.2/net/ipv4: .tcp.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_offload.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_output.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_output.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_recovery.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_recovery.o.cmd
+Only in ../linux-4.6.2/net/ipv4: tcp_timer.o
+Only in ../linux-4.6.2/net/ipv4: .tcp_timer.o.cmd
+Only in ../linux-4.6.2/net/ipv4: udplite.o
+Only in ../linux-4.6.2/net/ipv4: .udplite.o.cmd
+Only in ../linux-4.6.2/net/ipv4: udp.o
+Only in ../linux-4.6.2/net/ipv4: .udp.o.cmd
+Only in ../linux-4.6.2/net/ipv4: udp_offload.o
+Only in ../linux-4.6.2/net/ipv4: .udp_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv6: addrconf_core.o
+Only in ../linux-4.6.2/net/ipv6: .addrconf_core.o.cmd
+Only in ../linux-4.6.2/net/ipv6: built-in.mod.c
+Only in ../linux-4.6.2/net/ipv6: built-in.o
+Only in ../linux-4.6.2/net/ipv6: .built-in.o.cmd
+Only in ../linux-4.6.2/net/ipv6: exthdrs_core.o
+Only in ../linux-4.6.2/net/ipv6: .exthdrs_core.o.cmd
+Only in ../linux-4.6.2/net/ipv6: exthdrs_offload.o
+Only in ../linux-4.6.2/net/ipv6: .exthdrs_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv6: ip6_checksum.o
+Only in ../linux-4.6.2/net/ipv6: .ip6_checksum.o.cmd
+Only in ../linux-4.6.2/net/ipv6: ip6_icmp.o
+Only in ../linux-4.6.2/net/ipv6: .ip6_icmp.o.cmd
+Only in ../linux-4.6.2/net/ipv6: ip6_offload.o
+Only in ../linux-4.6.2/net/ipv6: .ip6_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv6: modules.order
+Only in ../linux-4.6.2/net/ipv6: output_core.o
+Only in ../linux-4.6.2/net/ipv6: .output_core.o.cmd
+Only in ../linux-4.6.2/net/ipv6: protocol.o
+Only in ../linux-4.6.2/net/ipv6: .protocol.o.cmd
+Only in ../linux-4.6.2/net/ipv6: tcpv6_offload.o
+Only in ../linux-4.6.2/net/ipv6: .tcpv6_offload.o.cmd
+Only in ../linux-4.6.2/net/ipv6: udp_offload.o
+Only in ../linux-4.6.2/net/ipv6: .udp_offload.o.cmd
+Only in ../linux-4.6.2/net: modules.order
+Only in ../linux-4.6.2/net/netlink: af_netlink.o
+Only in ../linux-4.6.2/net/netlink: .af_netlink.o.cmd
+Only in ../linux-4.6.2/net/netlink: built-in.mod.c
+Only in ../linux-4.6.2/net/netlink: built-in.o
+Only in ../linux-4.6.2/net/netlink: .built-in.o.cmd
+Only in ../linux-4.6.2/net/netlink: genetlink.o
+Only in ../linux-4.6.2/net/netlink: .genetlink.o.cmd
+Only in ../linux-4.6.2/net/netlink: modules.order
+Only in ../linux-4.6.2/net/sched: built-in.mod.c
+Only in ../linux-4.6.2/net/sched: built-in.o
+Only in ../linux-4.6.2/net/sched: .built-in.o.cmd
+Only in ../linux-4.6.2/net/sched: modules.order
+Only in ../linux-4.6.2/net/sched: sch_generic.o
+Only in ../linux-4.6.2/net/sched: .sch_generic.o.cmd
+Only in ../linux-4.6.2/net/sched: sch_mq.o
+Only in ../linux-4.6.2/net/sched: .sch_mq.o.cmd
+Only in ../linux-4.6.2/net: socket.o
+Only in ../linux-4.6.2/net: .socket.o.cmd
+Only in ../linux-4.6.2/net: sysctl_net.o
+Only in ../linux-4.6.2/net: .sysctl_net.o.cmd
+Only in ../linux-4.6.2/net/unix: af_unix.o
+Only in ../linux-4.6.2/net/unix: .af_unix.o.cmd
+Only in ../linux-4.6.2/net/unix: built-in.mod.c
+Only in ../linux-4.6.2/net/unix: built-in.o
+Only in ../linux-4.6.2/net/unix: .built-in.o.cmd
+Only in ../linux-4.6.2/net/unix: garbage.o
+Only in ../linux-4.6.2/net/unix: .garbage.o.cmd
+Only in ../linux-4.6.2/net/unix: modules.order
+Only in ../linux-4.6.2/net/unix: sysctl_net_unix.o
+Only in ../linux-4.6.2/net/unix: .sysctl_net_unix.o.cmd
+Only in ../linux-4.6.2/net/unix: unix.mod.c
+Only in ../linux-4.6.2/net/unix: unix.o
+Only in ../linux-4.6.2/net/unix: .unix.o.cmd
+Only in ../linux-4.6.2/: README.md
+Only in ../linux-4.6.2/scripts/basic: fixdep
+Only in ../linux-4.6.2/scripts/basic: .fixdep.cmd
+Only in ../linux-4.6.2/scripts/basic: modules.order
+Only in ../linux-4.6.2/scripts: kallsyms
+Only in ../linux-4.6.2/scripts: .kallsyms.cmd
+Only in ../linux-4.6.2/scripts/kconfig: conf
+Only in ../linux-4.6.2/scripts/kconfig: .conf.cmd
+Only in ../linux-4.6.2/scripts/kconfig: conf.o
+Only in ../linux-4.6.2/scripts/kconfig: .conf.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: checklist.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .checklist.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: inputbox.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .inputbox.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: menubox.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .menubox.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: textbox.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .textbox.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: util.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .util.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: yesno.o
+Only in ../linux-4.6.2/scripts/kconfig/lxdialog: .yesno.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig: mconf
+Only in ../linux-4.6.2/scripts/kconfig: .mconf.cmd
+Only in ../linux-4.6.2/scripts/kconfig: mconf.o
+Only in ../linux-4.6.2/scripts/kconfig: .mconf.o.cmd
+Only in ../linux-4.6.2/scripts/kconfig: zconf.hash.c
+Only in ../linux-4.6.2/scripts/kconfig: zconf.lex.c
+Only in ../linux-4.6.2/scripts/kconfig: zconf.tab.c
+Only in ../linux-4.6.2/scripts/kconfig: zconf.tab.o
+Only in ../linux-4.6.2/scripts/kconfig: .zconf.tab.o.cmd
+Only in ../linux-4.6.2/scripts/mod: devicetable-offsets.h
+Only in ../linux-4.6.2/scripts/mod: .devicetable-offsets.h.cmd
+Only in ../linux-4.6.2/scripts/mod: devicetable-offsets.s
+Only in ../linux-4.6.2/scripts/mod: .devicetable-offsets.s.cmd
+Only in ../linux-4.6.2/scripts/mod: elfconfig.h
+Only in ../linux-4.6.2/scripts/mod: .elfconfig.h.cmd
+Only in ../linux-4.6.2/scripts/mod: empty.o
+Only in ../linux-4.6.2/scripts/mod: .empty.o.cmd
+Only in ../linux-4.6.2/scripts/mod: file2alias.o
+Only in ../linux-4.6.2/scripts/mod: .file2alias.o.cmd
+Only in ../linux-4.6.2/scripts/mod: mk_elfconfig
+Only in ../linux-4.6.2/scripts/mod: .mk_elfconfig.cmd
+Only in ../linux-4.6.2/scripts/mod: modpost
+Only in ../linux-4.6.2/scripts/mod: .modpost.cmd
+Only in ../linux-4.6.2/scripts/mod: modpost.o
+Only in ../linux-4.6.2/scripts/mod: .modpost.o.cmd
+Only in ../linux-4.6.2/scripts/mod: modules.order
+Only in ../linux-4.6.2/scripts/mod: sumversion.o
+Only in ../linux-4.6.2/scripts/mod: .sumversion.o.cmd
+Only in ../linux-4.6.2/scripts: modules.order
+Only in ../linux-4.6.2/security: built-in.mod.c
+Only in ../linux-4.6.2/security: built-in.o
+Only in ../linux-4.6.2/security: .built-in.o.cmd
+Only in ../linux-4.6.2/security: commoncap.o
+Only in ../linux-4.6.2/security: .commoncap.o.cmd
+Only in ../linux-4.6.2/security: min_addr.o
+Only in ../linux-4.6.2/security: .min_addr.o.cmd
+Only in ../linux-4.6.2/security: modules.order
+Only in ../linux-4.6.2/: shm_kmod
+Only in ../linux-4.6.2/sound: built-in.o
+Only in ../linux-4.6.2/sound: .built-in.o.cmd
+Only in ../linux-4.6.2/sound: modules.order
+Only in ../linux-4.6.2/: spi_sd_power_hack.patch
+Only in ../linux-4.6.2/: System.map
+Only in ../linux-4.6.2/: .tmp_kallsyms1.o
+Only in ../linux-4.6.2/: .tmp_kallsyms1.S
+Only in ../linux-4.6.2/: .tmp_kallsyms2.o
+Only in ../linux-4.6.2/: .tmp_kallsyms2.S
+Only in ../linux-4.6.2/: .tmp_System.map
+Only in ../linux-4.6.2/: .tmp_versions
+Only in ../linux-4.6.2/: .tmp_vmlinux1
+Only in ../linux-4.6.2/: .tmp_vmlinux2
+Only in ../linux-4.6.2/usr: built-in.mod.c
+Only in ../linux-4.6.2/usr: built-in.o
+Only in ../linux-4.6.2/usr: .built-in.o.cmd
+Only in ../linux-4.6.2/usr: gen_init_cpio
+Only in ../linux-4.6.2/usr: .gen_init_cpio.cmd
+Only in ../linux-4.6.2/usr: .initramfs_data.cpio.d
+Only in ../linux-4.6.2/usr: initramfs_data.cpio.gz
+Only in ../linux-4.6.2/usr: .initramfs_data.cpio.gz.cmd
+Only in ../linux-4.6.2/usr: initramfs_data.o
+Only in ../linux-4.6.2/usr: .initramfs_data.o.cmd
+Only in ../linux-4.6.2/usr: modules.order
+Only in ../linux-4.6.2/: .version
+Only in ../linux-4.6.2/virt: built-in.mod.c
+Only in ../linux-4.6.2/virt: built-in.o
+Only in ../linux-4.6.2/virt: .built-in.o.cmd
+Only in ../linux-4.6.2/virt/lib: built-in.o
+Only in ../linux-4.6.2/virt/lib: .built-in.o.cmd
+Only in ../linux-4.6.2/virt/lib: modules.order
+Only in ../linux-4.6.2/virt: modules.order
+Only in ../linux-4.6.2/: vmlinux
+Only in ../linux-4.6.2/: vmlinux.bak
+Only in ../linux-4.6.2/: .vmlinux.cmd
+Only in ../linux-4.6.2/: vmlinux.dump
+Only in ../linux-4.6.2/: vmlinux.o
