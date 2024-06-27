@@ -16,10 +16,13 @@ Although we have extensively tested the code, Tatoo is a research prototype and 
 - `Analyzer`: the idapython script to analyze the branch instruction and jump instruction.
 - `Tagger`: the script that write the tag into memory. 
 - `Evaluation`: some script about running experiment; some modification about AFL_QEMU to run the experiement.
-- `GDB`: native debugger in riscv for debugging
+
 ## Preparation
 
 1. install vivado
+download vivado and install vivado_ubuntu_JTAG/UART driver
+Uart: https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+Jtag: http://training.eeworld.com.cn/video/15232
 2. download lowrisc-chip
 3. download riscv-gnu-toolchain
 4. download busybox
@@ -31,15 +34,11 @@ Although we have extensively tested the code, Tatoo is a research prototype and 
 - https://github.com/llvm/llvm-project: commit fed41342a82f5a3a9201819a82bf7a48313e296b
 - https://github.com/ucb-bar/rocket-chip.git: commit 1bd43fe1f154c0d180e1dd8be4b62602ce160045
 - https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git: commit 07e0b709cab7dc987b5071443789865e20481119
-
 - https://github.com/lowRISC/riscv-gnu-toolchain.git: commit ff21e26eb8c4d55dad7ad0b57e7bd8f7784a60e9
-
 - https://github.com/lowRISC/lowrisc-chip/tree/kc705_update
-
 - https://github.com/lowRISC/lowrisc-chip: commit b4d89f25f431a3f29ce72f1ce6dece1c439d788f
-
-- https://github.com/jim-wilson/riscv-linux-native-gdb.git: commit
-82e1308f1b595049b0a1deedd6b391bdd27855fa
+- https://github.com/jim-wilson/riscv-linux-native-gdb.git: commit 82e1308f1b595049b0a1deedd6b391bdd27855fa
+- https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.2.tar.xz : curl https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.6.2.tar.xz | tar -xJ
 
 ## Usage
 
@@ -48,11 +47,9 @@ Make sure to install riscv-gnu-toolchain[lowrisc toolchain] and linux-4.6 and se
 source /opt/Xilinx/Vivado/2015.4/settings64.sh
 
 ### patch the gnu
+
 gnu is modified to provide the 'tagr' and 'tagw' instructions.
-
     git apply gnu.patch
-
-
 
 ### patch the linux kernel
     patch -p1 < kernel.patch
@@ -60,19 +57,17 @@ gnu is modified to provide the 'tagr' and 'tagw' instructions.
 ### patch the AFL
     patch -p1 < AFL.patch
 
-### Compile tagger
-    
+### Compile tagger    
     $ cd tagging
     $ make
     
 ### Compile configurer
-    
     $ cd config/{the configurer}
     $ make
     
 
 ### Analyze the binary file
-Since angr didn't support riscv64 at the time of riscv, we used idapro to analyze it.
+Since angr didn't support riscv64 when we do the experiment, we used idapro to analyze it.
 
     open file afl1. run readelfinstru.py in ida 
     open file bare2. run readelfnoinstru.py  in ida
@@ -90,7 +85,7 @@ Since angr didn't support riscv64 at the time of riscv, we used idapro to analyz
 ### Tagging the program
 
     
-    ./tagger input_file output_file nasm.bare nasm pc1.txt
+    ./tagger input_file output_file tag_file
     
 e,g. /mnt/tatto/copyfiles nasm.bare nasm pc1.txt
 
