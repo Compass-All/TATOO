@@ -123,12 +123,15 @@ after Linux boot, you can run the protected program.
 ### Citation
 If you use this repository for research, please cite our paper:
 
-
-### Publication
-
-
-### Paper
-
+```
+@inproceedings{wu2024tatoo,
+  title={Tatoo: A Flexible Hardware Platform for Binary-Only Fuzzing},
+  author={Wu, Jinting and Zheng, Haodong and Wang, Yu and Yue, Tai and Zhang, Fengwei},
+  booktitle={Proceedings of the 61st ACM/IEEE Design Automation Conference},
+  pages={1--6},
+  year={2024}
+}
+```
 
 
 
